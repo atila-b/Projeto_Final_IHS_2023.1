@@ -8,9 +8,20 @@ PROT_EXEC = 0x4
 MAP_PRIVATE = 0x2
 MAP_ANONYMOUS = 0x20
 
-def insert_instruction(bytecode, instruction):
-    bytecode.extend(instruction)
+# Insere instrução no final do bytecode
+def append_instruction(instructions_array, instruction):
+    instructions_array.append(instruction)
     
+# Insere instrução em uma posição específica do bytecode
+def insert_instruction_in_position(instructions_array, instruction, position):
+    instructions_array.insert(position, instruction)
+
+# Gera código x86_64
+def generate_code_x86(code, instructions_array):
+    for instruction in instructions_array:
+        code.extend(instruction)
+    
+# Compila e executa o bytecode
 def compile_and_execute(code):
     try:
         # Aloca memória executável
@@ -27,7 +38,7 @@ def compile_and_execute(code):
         a = 5
         b = 7
         result = jit(a, b)
-        print(f"A soma de {a} e {b} é {result}")
+        print(f"A soma de {a} e {b} é: {result}")
         
         # Libera a memória alocada
         mem.close()
@@ -36,12 +47,23 @@ def compile_and_execute(code):
         print(error)
         
 # Main
-    
+
+instructions_array = []
 code_x86 = bytearray()
 
-# Inserindo instruções no bytearray
-insert_instruction(code_x86, b"\x48\x89\xf8")
-insert_instruction(code_x86, b"\x48\x01\xf0")
-insert_instruction(code_x86, b"\xc3")
+# Insere instruções no array de instruções
+append_instruction(instructions_array, b"\x48\x89\xf8")
+append_instruction(instructions_array, b"\x48\x01\xf0")
+append_instruction(instructions_array, b"\xc3")
 
+# Insere instrução NOP na posição 2
+#code_x86 = insert_instruction_in_position(code_x86, b"\x90", 2)
+
+# Gera código x86_64
+generate_code_x86(code_x86, instructions_array)
+
+# Compila e executa código
 compile_and_execute(code_x86)
+
+print(code_x86)
+print(instructions_array)
