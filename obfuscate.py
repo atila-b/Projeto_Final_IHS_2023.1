@@ -43,10 +43,10 @@ def compile_and_execute(code):
         # Libera a memória alocada
         mem.close()
     
-    except error:
+    except Exception as error:
         print(error)
         
-# Main
+# Main code
 
 instructions_array = []
 code_x86 = bytearray()
@@ -56,8 +56,8 @@ append_instruction(instructions_array, b"\x48\x89\xf8")
 append_instruction(instructions_array, b"\x48\x01\xf0")
 append_instruction(instructions_array, b"\xc3")
 
-# Insere instrução NOP na posição 2
-#code_x86 = insert_instruction_in_position(code_x86, b"\x90", 2)
+# Insere instrução NOP na posição X
+insert_instruction_in_position(instructions_array, b"\x90", 1)
 
 # Gera código x86_64
 generate_code_x86(code_x86, instructions_array)
