@@ -8,36 +8,40 @@ PROT_EXEC = 0x4
 MAP_PRIVATE = 0x2
 MAP_ANONYMOUS = 0x20
 
-# Monta o código de máquina x86_64
-def generate_x86_64_code():
-    code = bytearray()
+def insert_instruction(bytecode, instruction):
+    bytecode.extend(instruction)
     
-    # Código de máquina x86_64 para a função soma
-    # int soma(int a, int b) {
-    #     return a + b;
-    # }
-    code.extend(b"\x48\x89\xf8")  # mov rax, rdi 
-    code.extend(b"\x48\x01\xf0")  # add rax, rsi 
-    code.extend(b"\xc3")          # ret 
+def compile_and_execute(code):
+    try:
+        # Aloca memória executável
+        mem = mmap.mmap(-1, len(code)+1, prot=PROT_READ | PROT_WRITE | PROT_EXEC, flags=MAP_PRIVATE | MAP_ANONYMOUS)
+        
+        # Copia o código gerado para a memória alocada
+        mem.write(code)
+        
+        # Cria um protótipo de função em Python que chama o código de máquina
+        prototype = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_int, use_errno=True)
+        jit = prototype(ctypes.addressof(ctypes.c_void_p.from_buffer(mem)))
+        
+        # Chama a função gerada
+        a = 5
+        b = 7
+        result = jit(a, b)
+        print(f"A soma de {a} e {b} é {result}")
+        
+        # Libera a memória alocada
+        mem.close()
     
-    return code
+    except error:
+        print(error)
+        
+# Main
+    
+code_x86 = bytearray()
 
-# Aloca memória executável
-code = generate_x86_64_code()
-mem = mmap.mmap(-1, len(code)+1, prot=PROT_READ | PROT_WRITE | PROT_EXEC, flags=MAP_PRIVATE | MAP_ANONYMOUS)
+# Inserindo instruções no bytearray
+insert_instruction(code_x86, b"\x48\x89\xf8")
+insert_instruction(code_x86, b"\x48\x01\xf0")
+insert_instruction(code_x86, b"\xc3")
 
-# Copia o código gerado para a memória alocada
-mem.write(code)
-
-# Cria um protótipo de função em Python que chama o código de máquina
-prototype = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_int, use_errno=True)
-jit = prototype(ctypes.addressof(ctypes.c_void_p.from_buffer(mem)))
-
-# Chama a função gerada
-a = 5
-b = 7
-result = jit(a, b)
-print(f"A soma de {a} e {b} é {result}")
-
-# Libera a memória alocada
-mem.close()
+compile_and_execute(code_x86)
