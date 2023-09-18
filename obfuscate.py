@@ -97,7 +97,9 @@ generate_code_x86(code_x86, instructions_array)
 
 print(f"Bytecode antes da ofuscação: {code_x86}")
 
-# Insere instrução aleatória na posição X
+# Insere instruções aleatórias na posição X
+insert_instruction_in_position(instructions_array, random_instruction_code_x86(), 1)
+insert_instruction_in_position(instructions_array, random_instruction_code_x86(), 1)
 insert_instruction_in_position(instructions_array, random_instruction_code_x86(), 1)
 
 # Gera código x86_64
