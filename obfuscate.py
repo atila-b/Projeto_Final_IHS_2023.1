@@ -1,3 +1,21 @@
+# Implementação das instruções aleatórias em x86_64
+
+from keystone import *
+import random
+
+# Registradores
+regs = ["rdi", "rsi", "rax", "rbx", "rcx", "rdx", "r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15"]
+
+# Inicialize o Keystone com a arquitetura x86_64
+ks = Ks(KS_ARCH_X86, KS_MODE_64)
+
+# Retorna o código de máquina x86_64 de uma instrução 'mov rx, int' aleatória (por exemplo, "mov rbx, 42")
+def random_mov_rx_int():
+    assembly_code = f"mov {random.choice(regs)}, {random.randint(-10000, 10000)}"
+    print(f"Inserindo código x86_64 da instrução: {assembly_code}")
+    bytecode, _ = ks.asm(assembly_code)
+    return bytes(bytecode)
+
 import ctypes
 import mmap
 
@@ -56,14 +74,19 @@ append_instruction(instructions_array, b"\x48\x89\xf8")
 append_instruction(instructions_array, b"\x48\x01\xf0")
 append_instruction(instructions_array, b"\xc3")
 
-# Insere instrução NOP na posição X
-insert_instruction_in_position(instructions_array, b"\x90", 1)
+# Gera código x86_64
+generate_code_x86(code_x86, instructions_array)
+
+print(f"Bytecode antes da ofuscação: {code_x86}")
+
+# Insere instrução aleatória na posição X
+insert_instruction_in_position(instructions_array, random_mov_rx_int(), 1)
 
 # Gera código x86_64
 generate_code_x86(code_x86, instructions_array)
 
-# Compila e executa código
-compile_and_execute(code_x86)
+print(f"Bytecode depois da ofuscação: {code_x86}")
 
-print(code_x86)
-print(instructions_array)
+# Compila e executa código
+print("Execução do bytecode:")
+compile_and_execute(code_x86)
