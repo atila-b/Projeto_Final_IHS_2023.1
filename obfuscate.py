@@ -1,5 +1,4 @@
 # Implementação das instruções aleatórias em x86_64
-
 from keystone import *
 import random
 
@@ -73,8 +72,9 @@ def compile_and_execute(code):
         # Chama a função gerada
         a = 5
         b = 7
-        result = jit(a, b)
-        print(f"A soma de {a} e {b} é: {result}")
+        #result = jit(a, b)
+        #print(f"A soma de {a} e {b} é: {result}")
+        jit(1, 1)
         
         # Libera a memória alocada
         mem.close()
@@ -82,8 +82,85 @@ def compile_and_execute(code):
     except Exception as error:
         print(error)
         
-# Main code
+# Handler arquivos .bin
+try:
+    # Ler o arquivo binário
+    with open('hello.bin', 'rb') as file:
+        binary_data = file.read()
 
+    # Criar um espaço de memória executável
+    exec_memory = mmap.mmap(-1, len(binary_data), mmap.MAP_PRIVATE | mmap.MAP_ANONYMOUS, mmap.PROT_READ | mmap.PROT_WRITE | mmap.PROT_EXEC)
+
+    # Copiar o código binário para o espaço de memória executável
+    exec_memory.write(binary_data)
+
+    # Executar o código no espaço de memória
+    func = ctypes.CFUNCTYPE(None)(ctypes.addressof(ctypes.c_void_p.from_buffer(exec_memory)))
+    func()
+
+    # Fechar o espaço de memória
+    exec_memory.close()
+
+except Exception as e:
+    print("Erro:", str(e))
+
+print("Executou")
+'''
+from elftools.elf.elffile import ELFFile
+
+def get_entry_point(file_path):
+    with open(file_path, 'rb') as f:
+        elf = ELFFile(f)
+        entry_point = elf.header['e_entry']
+        return entry_point
+
+elf_file_path = 'hello'
+entry_point = get_entry_point(elf_file_path)
+print(f"Endereço de início: 0x{entry_point:X}")
+
+import os
+from capstone import Cs, CS_ARCH_X86, CS_MODE_64
+
+def binary_to_instructions(file_name, code):
+    # Obtenha o diretório atual
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    
+    # Construa o caminho completo para o arquivo binário
+    binary_file_path = os.path.join(current_directory, file_name)
+
+    instructions = []
+
+    # Inicialize o desmontador Capstone para x86_64
+    md = Cs(CS_ARCH_X86, CS_MODE_64)
+
+    with open(binary_file_path, 'rb') as binary_file:
+        binary_data = binary_file.read()
+
+        # Disassemble each instruction
+        for insn in md.disasm(binary_data, entry_point):  # Endereço de início arbitrário
+            instruction_bytes = bytes(insn.bytes)
+            instructions.append(instruction_bytes)
+            
+            code += insn.bytes
+    
+    #print(f"Bytecode antes da ofuscação: {code}")
+
+    # Compila e executa código
+    # Aloca memória executável
+    mem = mmap.mmap(-1, len(code)+1, prot=PROT_READ | PROT_WRITE | PROT_EXEC, flags=MAP_PRIVATE | MAP_ANONYMOUS)
+    
+    # Copia o código gerado para a memória alocada
+    mem.write(code)
+    
+    # Cria um protótipo de função em Python que chama o código de máquina
+    prototype = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_int, use_errno=True)
+    jit = prototype(ctypes.addressof(ctypes.c_void_p.from_buffer(mem)))
+    
+    jit(1, 1)
+
+    return instructions
+        
+# Main code
 instructions_array = []
 code_x86 = bytearray()
 
@@ -92,10 +169,17 @@ append_instruction(instructions_array, b"\x48\x89\xf8")
 append_instruction(instructions_array, b"\x48\x01\xf0")
 append_instruction(instructions_array, b"\xc3")
 
+
+instructions_array = binary_to_instructions('hello', code_x86)
+
 # Gera código x86_64
 generate_code_x86(code_x86, instructions_array)
 
 print(f"Bytecode antes da ofuscação: {code_x86}")
+
+# Compila e executa código
+print("Execução do bytecode:")
+compile_and_execute(code_x86)
 
 # Insere instruções aleatórias na posição X
 insert_instruction_in_position(instructions_array, random_instruction_code_x86(), 1)
@@ -110,3 +194,4 @@ print(f"Bytecode depois da ofuscação: {code_x86}")
 # Compila e executa código
 print("Execução do bytecode:")
 compile_and_execute(code_x86)
+'''
