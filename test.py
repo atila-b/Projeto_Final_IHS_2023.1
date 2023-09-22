@@ -1,34 +1,45 @@
-import ctypes
-import mmap
+import struct
+from elftools.elf.elffile import ELFFile
+from elftools.elf.sections import Section
 
-# Nome do arquivo binário que você deseja carregar e executar
-nome_arquivo_binario = 'hello.bin'
+def extract_text_section(elf_filename, output_filename):
+    with open(elf_filename, 'rb') as elf_file:
+        elf = ELFFile(elf_file)
+        text_section = None
 
-try:
-    # Abre o arquivo binário em modo leitura binária e mapeia-o em memória
-    with open(nome_arquivo_binario, 'rb') as arquivo_binario:
+        # Encontre a seção .text
+        for section in elf.iter_sections():
+            if section.name == '.text':
+                text_section = section
+                break
 
-        # Copiar o código binário para o espaço de memória executável
-        binary_data = arquivo_binario.read()
-        
-        #print(bytearray(binary_data))
-        
-        exec_memory = mmap.mmap(-1, len(binary_data), mmap.MAP_PRIVATE | mmap.MAP_ANONYMOUS, mmap.PROT_READ | mmap.PROT_WRITE | mmap.PROT_EXEC)
-        
-        exec_memory.write(binary_data)
+        if text_section:
+            # Extraia os dados da seção .text
+            text_data = text_section.data()
+            
+            # Escreva os dados modificados no arquivo ELF original
+            elf_file.seek(text_section['sh_offset'])
+            
+            # Insira instrução na seção .text
+            text_data = insert_instruction_in_position(text_data, b'\x90\x90\x90\x90', 0)
+            
+            print(text_data)
+            #elf_file.write(text_data)
+            #print(f'Instrução inserida na posição {hex(address)} na seção .text e salva no arquivo ELF.')
+            
+            # Escreva os dados em um arquivo de saída
+            with open(output_filename, 'wb') as output_file:
+                output_file.write(text_data)
+            print(f'Seção .text extraída e salva em {output_filename}')
+        else:
+            print('Seção .text não encontrada no arquivo ELF.')
+            
+def insert_instruction_in_position(code, inst, position):
+    return code[:position] + inst + code[position:]
+    
 
-        # Executar o código no espaço de memória
-        func = ctypes.CFUNCTYPE(None)(ctypes.addressof(ctypes.c_void_p.from_buffer(exec_memory)))
-        resultado = func()
+if __name__ == '__main__':
+    elf_filename = 'hello.bin'  # Substitua pelo nome do seu arquivo ELF
+    output_filename = 'text_section.bin'  # Nome do arquivo de saída
 
-    # Fechar o espaço de memória
-    exec_memory.close()
-
-    # Imprime o resultado (você pode personalizar isso de acordo com o que sua função retorna)
-    print(f"Resultado da execução: {resultado}")
-
-except FileNotFoundError:
-    print(f'O arquivo "{nome_arquivo_binario}" não foi encontrado.')
-
-except Exception as e:
-    print(f'Ocorreu um erro ao executar o arquivo binário: {str(e)}')
+    extract_text_section(elf_filename, output_filename)
