@@ -23,7 +23,7 @@ def disassemble_binary(binary_data):
             except Exception as e:
                 print(e)
 
-def extract_edit_save_text_section(input_file_path, output_file_path, new_text_section_data):
+def extract_edit_save_text_section(input_file_path, output_file_path):
     # Abra o arquivo binário em modo de leitura.
     with open(input_file_path, 'rb') as file:
         # Leitura do arquivo binário
@@ -43,7 +43,7 @@ def extract_edit_save_text_section(input_file_path, output_file_path, new_text_s
     section_end   = section_start + elf_section['sh_size']
     
     # Insira instrução na seção .text
-    text_data = insert_instruction_in_position(text_data, b'\x90', 5)
+    text_data = insert_instruction_in_position(text_data, b'\x90', 11)
     #disassemble_binary(text_data)
     print(text_data)
     
@@ -59,9 +59,32 @@ def extract_edit_save_text_section(input_file_path, output_file_path, new_text_s
     
 def insert_instruction_in_position(code, inst, position):
     return code[:position] + inst + code[position:]
+    
+# Executa arquivo binário
+import subprocess
+
+def exec_bin():
+    arquivo_binario = 'helloM.bin'
+    
+    # Comando para executar o arquivo binário.
+    comando = f'./{arquivo_binario}' 
+    
+    # Tente executar o arquivo binário e capturar a saída.
+    try:
+        resultado = subprocess.run(comando, shell=True, check=True, stdout=subprocess.PIPE, text=True)
+        saida = resultado.stdout
+        print(f"Saída do arquivo binário:\n{saida}")
+        return 0
+    except subprocess.CalledProcessError as e:
+        print(f"Erro ao executar o arquivo binário: {e}")
+        return -1
+    except FileNotFoundError:
+        print(f"O arquivo binário '{arquivo_binario}' não foi encontrado.")
+        return -1
+
 
 # Main
 input_file_path = 'hello.bin'
 output_file_path = 'helloM.bin'
-new_text_section_data = b'\x90\x90\x90\x90'  # Substitua com os dados desejados para a seção .text
-extract_edit_save_text_section(input_file_path, output_file_path, new_text_section_data)
+extract_edit_save_text_section(input_file_path, output_file_path)
+exec_bin()
