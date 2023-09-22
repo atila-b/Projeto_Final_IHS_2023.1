@@ -39,7 +39,7 @@ def insert_instruction_in_position(code, inst, position):
     
 
 if __name__ == '__main__':
-    elf_filename = 'hello.bin'  # Substitua pelo nome do seu arquivo ELF
+    elf_filename = 'helloM.bin'  # Substitua pelo nome do seu arquivo ELF
     output_filename = 'text_section.bin'  # Nome do arquivo de saída
 
     extract_text_section(elf_filename, output_filename)
