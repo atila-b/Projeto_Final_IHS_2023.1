@@ -83,7 +83,7 @@ def extract_edit_save_text_section(input_file_path, output_file_path):
     # Insira instruções na seção .text até a execução ser bem sucedida
     while 1:
         # Instrução a ser inserida na section .text
-        inst = b'\x90\x90\x90'
+        inst = random_instruction_code_x86()
         position = random.randint(0, len(text_data))
         
         # Insira instrução em posição aleatória da section .text
