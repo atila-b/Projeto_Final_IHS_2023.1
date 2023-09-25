@@ -4,6 +4,39 @@ from elftools.elf.elffile import ELFFile
 from keystone import *
 from iced_x86 import *
 
+# Implementação do gerador de instruções aleatórias em x86_64
+
+# Registradores
+regs = ["rdi", "rsi", "rax", "rbx", "rcx", "rdx", "r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15"]
+
+# Random instructions
+asm_instructions = [f"mov {random.choice(regs)}, {random.randint(-10000, 10000)}", 
+                    f"mov {random.choice(regs)}, {random.choice(regs)}",
+                    f"cmp {random.choice(regs)}, {random.choice(regs)}",
+                    f"jmp {random.randint(-1000, 1000)}",
+                    f"jg {random.randint(-1000, 1000)}",
+                    f"jl {random.randint(-1000, 1000)}",
+                    f"je {random.randint(-1000, 1000)}",
+                    f"jne {random.randint(-1000, 1000)}",
+                    f"add {random.choice(regs)}, {random.choice(regs)}",
+                    f"sub {random.choice(regs)}, {random.choice(regs)}",
+                    f"and {random.choice(regs)}, {random.choice(regs)}",
+                    f"or {random.choice(regs)}, {random.choice(regs)}",
+                    f"xor {random.choice(regs)}, {random.choice(regs)}",
+                    f"shl {random.choice(regs)}, {random.randint(1, 64)}", 
+                    f"shr {random.choice(regs)}, {random.randint(1, 64)}", 
+                    ]
+
+# Inicialize o Keystone com a arquitetura x86_64
+ks = Ks(KS_ARCH_X86, KS_MODE_64)
+
+# Retorna o código de máquina x86_64 de uma instrução 'mov rx, int' aleatória (por exemplo, "mov rbx, 42")
+def random_instruction_code_x86():
+    assembly_code = random.choice(asm_instructions)
+    print(f"Inserindo código x86_64 da instrução: {assembly_code}")
+    bytecode, _ = ks.asm(assembly_code)
+    return bytes(bytecode)
+
 class Individual:
     def __init__(self, text_section, init_inst):
         self.text_section = text_section
