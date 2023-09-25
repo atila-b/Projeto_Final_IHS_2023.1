@@ -20,6 +20,8 @@ asm_instructions = [f"mov {random.choice(regs)}, {random.randint(-10000, 10000)}
                     f"jne {random.randint(-1000, 1000)}",
                     f"add {random.choice(regs)}, {random.choice(regs)}",
                     f"sub {random.choice(regs)}, {random.choice(regs)}",
+                    f"imul {random.choice(regs)}, {random.choice(regs)}",
+                    f"idiv {random.choice(regs)}",
                     f"and {random.choice(regs)}, {random.choice(regs)}",
                     f"or {random.choice(regs)}, {random.choice(regs)}",
                     f"xor {random.choice(regs)}, {random.choice(regs)}",
@@ -128,6 +130,9 @@ def exec_bin():
         print(f"Saída do arquivo binário:\n{saida}")
         return 0
     except subprocess.CalledProcessError as e:
+        #print(f"Erro ao executar o arquivo binário: {e}")
+        return -1
+    except Exception as e:
         #print(f"Erro ao executar o arquivo binário: {e}")
         return -1
     except FileNotFoundError:
