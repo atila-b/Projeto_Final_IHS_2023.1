@@ -8,34 +8,56 @@ from iced_x86 import *
 
 # Registradores
 regs = ["rdi", "rsi", "rax", "rbx", "rcx", "rdx", "r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15"]
-
-# Random instructions
-asm_instructions = [f"mov {random.choice(regs)}, {random.randint(-10000, 10000)}", 
-                    f"mov {random.choice(regs)}, {random.choice(regs)}",
-                    f"cmp {random.choice(regs)}, {random.choice(regs)}",
-                    f"jmp {random.randint(-1000, 1000)}",
-                    f"jg {random.randint(-1000, 1000)}",
-                    f"jl {random.randint(-1000, 1000)}",
-                    f"je {random.randint(-1000, 1000)}",
-                    f"jne {random.randint(-1000, 1000)}",
-                    f"add {random.choice(regs)}, {random.choice(regs)}",
-                    f"sub {random.choice(regs)}, {random.choice(regs)}",
-                    f"imul {random.choice(regs)}, {random.choice(regs)}",
-                    f"idiv {random.choice(regs)}",
-                    f"and {random.choice(regs)}, {random.choice(regs)}",
-                    f"or {random.choice(regs)}, {random.choice(regs)}",
-                    f"xor {random.choice(regs)}, {random.choice(regs)}",
-                    f"shl {random.choice(regs)}, {random.randint(1, 64)}", 
-                    f"shr {random.choice(regs)}, {random.randint(1, 64)}", 
-                    ]
+         
+# Opcodes das instruções           
+opcodes = ["mov", "cmp", "jmp", "jg", "jl", "je", "jne", "add", "sub", "imul", "idiv",
+           "and", "or", "xor", "shl", "shr"]
 
 # Inicialize o Keystone com a arquitetura x86_64
 ks = Ks(KS_ARCH_X86, KS_MODE_64)
 
 # Retorna o código de máquina x86_64 de uma instrução 'mov rx, int' aleatória (por exemplo, "mov rbx, 42")
 def random_instruction_code_x86():
-    assembly_code = random.choice(asm_instructions)
+    # Selecione um opcode aleatório
+    opcode = random.choice(opcodes)
+    
+    # Monte uma instrução aleatória com o opcode
+    if opcode == "mov":
+        assembly_code =  f"mov {random.choice(regs)}, {random.choice(regs)}"
+    elif opcode == "cmp":
+        assembly_code = f"cmp {random.choice(regs)}, {random.choice(regs)}"
+    elif opcode == "jmp":
+        assembly_code = f"jmp {random.randint(-1000, 1000)}"
+    elif opcode == "jg":
+        assembly_code = f"jg {random.randint(-1000, 1000)}"
+    elif opcode == "jl":
+        assembly_code = f"jl {random.randint(-1000, 1000)}"
+    elif opcode == "je":
+        assembly_code = f"je {random.randint(-1000, 1000)}"
+    elif opcode == "jne":
+        assembly_code = f"jne {random.randint(-1000, 1000)}"
+    elif opcode == "add":
+        assembly_code = f"add {random.choice(regs)}, {random.choice(regs)}"
+    elif opcode == "sub":
+        assembly_code = f"sub {random.choice(regs)}, {random.choice(regs)}"
+    elif opcode == "imul":
+        assembly_code = f"imul {random.choice(regs)}, {random.choice(regs)}"
+    elif opcode == "idiv":
+        assembly_code = f"idiv {random.choice(regs)}"
+    elif opcode == "and":
+        assembly_code = f"and {random.choice(regs)}, {random.choice(regs)}"
+    elif opcode == "or":
+        assembly_code = f"or {random.choice(regs)}, {random.choice(regs)}"
+    elif opcode == "xor":
+        assembly_code = f"xor {random.choice(regs)}, {random.choice(regs)}"
+    elif opcode == "shl":
+        assembly_code = f"shl {random.choice(regs)}, {random.randint(1, 64)}"
+    elif opcode == "shr":
+        assembly_code = f"shr {random.choice(regs)}, {random.randint(1, 64)}"
+
     print(f"Inserindo código x86_64 da instrução: {assembly_code}")
+    
+    # Get código x86_64 da instrução e retorne
     bytecode, _ = ks.asm(assembly_code)
     return bytes(bytecode)
 
@@ -203,4 +225,4 @@ edit_save_text_section(input_file_path, output_file_path)
 # Algoritmo genético
 model = GA(population_size=100, generations=1000)
 model.init_population()
-model.crossover()
+#model.crossover()
