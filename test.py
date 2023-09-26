@@ -40,12 +40,12 @@ def random_instruction_code_x86():
     return bytes(bytecode)
 
 class Individual:
-    def __init__(self, text_section, init_inst):
+    def __init__(self, text_section, obfuscation_insts, fit_value):
         self.text_section = text_section
-        self.obfuscation_insts = [init_inst]
-        self.fit_value = 0
+        self.obfuscation_insts = [obfuscation_insts]
+        self.fit_value = fit_value
 
-class Model:
+class GA:
     def __init__(self, population_size, generations):
         self.population_size = population_size
         self.generations = generations
@@ -56,12 +56,63 @@ class Model:
         for i in range(self.population_size):
           # Gere um indivíduo
           text_section, init_inst = extract_edit_save_text_section(input_file_path, output_file_path)
-          individual = Individual(text_section=text_section, init_inst=init_inst)
-          individual.fit_value += 1
+          individual = Individual(text_section=text_section, obfuscation_insts=init_inst, fit_value=1)
     
           # Insira o indivíduo na população
           self.population.append(individual)
-
+          
+    def crossover(self):
+        for i in range(0, int(self.population_size/2), 2):
+            # Escolha aleatoriamente quem será o pai 1 e o pai 2
+            fathers = [self.population[i], self.population[i+1]]
+            father_1 = random.choice(fathers)
+            for i in range(2):
+                if fathers[i] == father_1:
+                    continue
+                else:
+                    father_2 = fathers[i]
+                    
+            # Fit value inicial
+            fit_value = father_1.fit_value
+                    
+            # Get text section do pai 1
+            text_section = father_1.text_section
+            
+            # Get obfuscation insts do pai 1
+            obfuscation_insts = father_1.obfuscation_insts
+            
+            # Cruze com a text section do pai 2
+            for j in range(len(father_2.obfuscation_insts)):
+                # Get instrução e posição de cada dead code
+                inst = father_2.obfuscation_insts[j][0][0]
+                position = father_2.obfuscation_insts[j][0][1]
+                
+                # Insira instrução em posição aleatória da section .text
+                new_text_data = insert_instruction_in_position(text_section, inst, position)
+                
+                # Modificação dos dados do arquivo original
+                new_data = data[:section_start] + new_text_data + data[section_end:]
+            
+                # Salve as edições de volta no arquivo binário.
+                with open(output_file_path, 'wb') as file:
+                    file.write(new_data)
+                
+                # Defina as permissões de execução no arquivo editado.
+                os.chmod(output_file_path, 0o777)  
+                
+                # Execute o arquivo e verifica se o retorno está correto.
+                if(exec_bin() == 0):
+                    # Incremente fit value, atualiza text section e insere instrução de ofuscação, se sucesso
+                    fit_value += 1
+                    text_section = new_text_data
+                    obfuscation_insts.append([inst, position])
+                  
+            # Gere novo filho  
+            children = Individual(text_section=text_section, obfuscation_insts=obfuscation_insts, fit_value=fit_value)
+            
+            # Insira novo filho na população
+            self.population.append(children)
+    
 # Extrai a section .text do arquivo e insere instruções nela até que a execução funcione
 def extract_edit_save_text_section(input_file_path, output_file_path):
     # Abra o arquivo binário em modo de leitura.
@@ -104,7 +155,7 @@ def extract_edit_save_text_section(input_file_path, output_file_path):
         # Execute o arquivo e verifica se o retorno está correto.
         if(exec_bin() == 0):
             #print(new_text_data)
-            return new_text_data, (inst, position)
+            return new_text_data, [[inst, position]]
             break
     
 # Insere código x86_64 em uma posição específica do bytearray
@@ -141,10 +192,13 @@ def exec_bin():
 
 
 # Main
+# Variáveis globais
 input_file_path = 'hello.bin'
 output_file_path = 'helloM.bin'
+data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
 extract_edit_save_text_section(input_file_path, output_file_path)
 
 # Algoritmo genético
-model = Model(population_size=100, generations=1000)
+model = GA(population_size=100, generations=1000)
 model.init_population()
+model.crossover()
