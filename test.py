@@ -55,7 +55,7 @@ class GA:
     def init_population(self):
         for i in range(self.population_size):
           # Gere um indivíduo
-          text_section, init_inst = extract_edit_save_text_section(input_file_path, output_file_path)
+          text_section, init_inst = edit_save_text_section(input_file_path, output_file_path)
           individual = Individual(text_section=text_section, obfuscation_insts=init_inst, fit_value=1)
     
           # Insira o indivíduo na população
@@ -112,9 +112,9 @@ class GA:
             
             # Insira novo filho na população
             self.population.append(children)
-    
-# Extrai a section .text do arquivo e insere instruções nela até que a execução funcione
-def extract_edit_save_text_section(input_file_path, output_file_path):
+     
+# Extrai a section .text do arquivo binário       
+def extract_text_section(input_file_path, output_file_path):
     # Abra o arquivo binário em modo de leitura.
     with open(input_file_path, 'rb') as file:
         # Leitura do arquivo binário
@@ -133,6 +133,10 @@ def extract_edit_save_text_section(input_file_path, output_file_path):
     section_start = elf_section['sh_offset'] 
     section_end   = section_start + elf_section['sh_size']
     
+    return data, text_data, section_start, section_end
+    
+# Edita a section .text do arquivo binário e insere instruções nela até que a execução funcione
+def edit_save_text_section(input_file_path, output_file_path):
     # Insira instruções na seção .text até a execução ser bem sucedida
     while 1:
         # Instrução a ser inserida na section .text
@@ -164,7 +168,6 @@ def insert_instruction_in_position(code, inst, position):
     code[position:position+len(inst)] = inst
     return bytes(code)
 
-    
 # Executa arquivo binário
 import subprocess
 
@@ -190,13 +193,12 @@ def exec_bin():
         #print(f"O arquivo binário '{arquivo_binario}' não foi encontrado.")
         return -1
 
-
 # Main
 # Variáveis globais
 input_file_path = 'hello.bin'
 output_file_path = 'helloM.bin'
-data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
-extract_edit_save_text_section(input_file_path, output_file_path)
+data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
+edit_save_text_section(input_file_path, output_file_path)
 
 # Algoritmo genético
 model = GA(population_size=100, generations=1000)
