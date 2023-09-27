@@ -223,10 +223,8 @@ def insert_instruction_in_position(code, inst, position):
 import subprocess
 
 def exec_bin():
-    arquivo_binario = 'helloM.bin'
-    
     # Comando para executar o arquivo binário.
-    comando = f'./{arquivo_binario} 2>/dev/null' 
+    comando = f'./{output_file_path} 2>/dev/null' 
     
     # Tente executar o arquivo binário e capturar a saída.
     try:
@@ -246,8 +244,8 @@ def exec_bin():
 
 # Main
 # Variáveis globais
-input_file_path = 'hello.bin'
-output_file_path = 'helloM.bin'
+input_file_path = input("Insira o nome do arquivo de entrada: ")
+output_file_path = f"obfuscated_{input_file_path}"
 
 # Extrai dados e seção .text do arquivo de entrada
 data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
