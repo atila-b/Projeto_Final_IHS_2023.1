@@ -124,10 +124,12 @@ class GA:
                 
                 # Execute o arquivo e verifica se o retorno está correto.
                 if(exec_bin() == 0):
-                    # Incremente fit value, atualiza text section e insere instrução de ofuscação, se sucesso
-                    fit_value += 1
-                    text_section = new_text_data
-                    obfuscation_insts.append([inst, position])
+                    # Se a instrução ainda não foi inserida
+                    if([inst, position] not in obfuscation_insts):
+                        # Incremente fit value, atualize a text section e insira a instrução de ofuscação
+                        fit_value += 1
+                        text_section = new_text_data
+                        obfuscation_insts.append([inst, position])
                   
             # Gere novo filho  
             children = Individual(text_section=text_section, obfuscation_insts=obfuscation_insts, fit_value=fit_value)
