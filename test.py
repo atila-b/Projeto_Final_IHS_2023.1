@@ -226,7 +226,7 @@ def exec_bin():
     arquivo_binario = 'helloM.bin'
     
     # Comando para executar o arquivo binário.
-    comando = f'./{arquivo_binario}' 
+    comando = f'./{arquivo_binario} 2>/dev/null' 
     
     # Tente executar o arquivo binário e capturar a saída.
     try:
@@ -253,7 +253,7 @@ output_file_path = 'helloM.bin'
 data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
 
 # Algoritmo genético
-model = GA(population_size=10, generations=2)
+model = GA(population_size=10, generations=10)
 model.evolution()
 
 # Pegue o melhor indivíduo
