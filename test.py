@@ -77,7 +77,7 @@ class GA:
     def init_population(self):
         for i in range(self.population_size):
           # Gere um indivíduo
-          text_section, init_inst = edit_save_text_section(input_file_path, output_file_path)
+          text_section, init_inst = edit_save_text_section(text_data, input_file_path, output_file_path)
           individual = Individual(text_section=text_section, obfuscation_insts=init_inst, fit_value=1)
     
           # Insira o indivíduo na população
@@ -132,8 +132,20 @@ class GA:
             # Gere novo filho  
             children = Individual(text_section=text_section, obfuscation_insts=obfuscation_insts, fit_value=fit_value)
             
+            # Aplique a mutação no filho
+            self.mutation(children)
+            
             # Insira novo filho na população
             self.population.append(children)
+            
+    def mutation(self, children):
+        # Insira uma instrução aleatória na text section do filho
+        text_section, inst = edit_save_text_section(children.text_section, input_file_path, output_file_path)
+        
+        # Atualize os atributos do filho
+        children.text_section = text_section
+        children.obfuscation_insts.append(inst)
+        children.fit_value += 1
      
 # Extrai a section .text do arquivo binário       
 def extract_text_section(input_file_path, output_file_path):
@@ -158,7 +170,7 @@ def extract_text_section(input_file_path, output_file_path):
     return data, text_data, section_start, section_end
     
 # Edita a section .text do arquivo binário e insere instruções nela até que a execução funcione
-def edit_save_text_section(input_file_path, output_file_path):
+def edit_save_text_section(text_data, input_file_path, output_file_path):
     # Insira instruções na seção .text até a execução ser bem sucedida
     while 1:
         # Instrução a ser inserida na section .text
@@ -220,9 +232,9 @@ def exec_bin():
 input_file_path = 'hello.bin'
 output_file_path = 'helloM.bin'
 data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
-edit_save_text_section(input_file_path, output_file_path)
+edit_save_text_section(text_data, input_file_path, output_file_path)
 
 # Algoritmo genético
 model = GA(population_size=100, generations=1000)
 model.init_population()
-#model.crossover()
+model.crossover()
