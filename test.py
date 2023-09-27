@@ -146,6 +146,10 @@ class GA:
         children.text_section = text_section
         children.obfuscation_insts.append(inst)
         children.fit_value += 1
+        
+    def tournament(self):
+        # Sort population pelo fit value
+        return sorted(self.population, key = lambda x: x.fit_value, reverse=False)
      
 # Extrai a section .text do arquivo binário       
 def extract_text_section(input_file_path, output_file_path):
@@ -235,6 +239,7 @@ data, text_data, section_start, section_end = extract_text_section(input_file_pa
 edit_save_text_section(text_data, input_file_path, output_file_path)
 
 # Algoritmo genético
-model = GA(population_size=100, generations=1000)
+model = GA(population_size=10, generations=1000)
 model.init_population()
 model.crossover()
+model.tournament()
