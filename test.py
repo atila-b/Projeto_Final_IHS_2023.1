@@ -106,10 +106,10 @@ class GA:
             # Cruze com a text section do pai 2
             for j in range(len(father_2.obfuscation_insts)):
                 # Get instrução e posição de cada dead code
-                inst = father_2.obfuscation_insts[j][0][0]
-                position = father_2.obfuscation_insts[j][0][1]
+                inst = father_2.obfuscation_insts[j][0]
+                position = father_2.obfuscation_insts[j][1]
                 
-                # Insira instrução em posição aleatória da section .text
+                # Insira a instrução em uma posição aleatória da section .text
                 new_text_data = insert_instruction_in_position(text_section, inst, position)
                 
                 # Modificação dos dados do arquivo original
@@ -142,6 +142,9 @@ class GA:
         # Insira uma instrução aleatória na text section do filho
         text_section, inst = edit_save_text_section(children.text_section, input_file_path, output_file_path)
         
+        print(text_section)
+        print(inst)
+        
         # Atualize os atributos do filho
         children.text_section = text_section
         children.obfuscation_insts.append(inst)
@@ -150,7 +153,16 @@ class GA:
     def tournament(self):
         # Sort population pelo fit value
         return sorted(self.population, key = lambda x: x.fit_value, reverse=False)
-     
+        
+    def evolution(self):
+        # Inicialize a população
+        self.init_population()
+        
+        # Para cada geração, aplique o crossover e evolua a população
+        for i in range(self.generations):
+          self.crossover()
+          self.population = self.tournament()[:self.population_size]
+
 # Extrai a section .text do arquivo binário       
 def extract_text_section(input_file_path, output_file_path):
     # Abra o arquivo binário em modo de leitura.
@@ -197,7 +209,7 @@ def edit_save_text_section(text_data, input_file_path, output_file_path):
         # Execute o arquivo e verifica se o retorno está correto.
         if(exec_bin() == 0):
             #print(new_text_data)
-            return new_text_data, [[inst, position]]
+            return new_text_data, [inst, position]
             break
     
 # Insere código x86_64 em uma posição específica do bytearray
@@ -239,7 +251,5 @@ data, text_data, section_start, section_end = extract_text_section(input_file_pa
 edit_save_text_section(text_data, input_file_path, output_file_path)
 
 # Algoritmo genético
-model = GA(population_size=10, generations=1000)
-model.init_population()
-model.crossover()
-model.tournament()
+model = GA(population_size=10, generations=10)
+model.evolution()
