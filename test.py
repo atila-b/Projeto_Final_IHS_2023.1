@@ -107,10 +107,10 @@ class GA:
             for j in range(len(father_2.obfuscation_insts)):
                 # Get instrução e posição de cada dead code
                 inst = father_2.obfuscation_insts[j][0]
-                position = father_2.obfuscation_insts[j][1]
+                #position = father_2.obfuscation_insts[j][1]
                 
                 # Insira a instrução em uma posição aleatória da section .text
-                new_text_data = insert_instruction_in_position(text_section, inst, position)
+                new_text_data, position = insert_instruction_in_position(text_section, inst)
                 
                 # Modificação dos dados do arquivo original
                 new_data = data[:section_start] + new_text_data + data[section_end:]
@@ -192,10 +192,10 @@ def edit_save_text_section(text_data, input_file_path, output_file_path):
     while 1:
         # Instrução a ser inserida na section .text
         inst = random_instruction_code_x86()
-        position = random.randint(0, len(text_data))
-        
+        #position = random.randint(0, len(text_data))
+
         # Insira instrução em posição aleatória da section .text
-        new_text_data = insert_instruction_in_position(text_data, inst, position)
+        new_text_data, position = insert_instruction_in_position(text_data, inst)
         
         # Modificação dos dados do arquivo original
         new_data = data[:section_start] + new_text_data + data[section_end:]
@@ -212,12 +212,52 @@ def edit_save_text_section(text_data, input_file_path, output_file_path):
             #print(new_text_data)
             return new_text_data, [inst, position]
             break
+        
+def disassemble_bytearray(bytecode):
+    # Crie um decodificador
+    decoder = Decoder(64, bytearray(bytecode), ip=0x1000)
+
+    instructions = []
+
+    # Loop para decodificar cada instrução
+    for instr in decoder:
+        # Obtém o tamanho da instrução em bytes
+        instr_size = instr.len
+
+        # Obtém os bytes da instrução a partir do bytearray original
+        instruction_bytes = bytecode[:instr_size]
+
+        # Atualize o bytearray original para avançar para a próxima instrução
+        bytecode = bytecode[instr_size:]
+
+        # Adicione os bytes da instrução à lista de instruções
+        instructions.append(instruction_bytes)
+
+    return instructions
+    
+def assemble_bytecode(instructions):
+    # Inicialize um bytearray vazio para armazenar o bytecode reconstruído
+    bytecode = bytearray()
+    
+    # Concatene os bytes de cada instrução
+    for instr_bytes in instructions:
+        bytecode.extend(instr_bytes)
+
+    return bytes(bytecode)
     
 # Insere código x86_64 em uma posição específica do bytearray
-def insert_instruction_in_position(code, inst, position):
-    code = bytearray(code)
-    code[position:position+len(inst)] = inst
-    return bytes(code)
+def insert_instruction_in_position(code, inst):
+    # Disassemble o bytecode
+    instructions = disassemble_bytearray(code)
+    
+    # Escolha uma posição aleatória
+    position = random.randint(0, len(instructions))
+    
+    # Insira a instrução na posição
+    instructions.insert(position, inst)
+    
+    # Assemble o bytecode novamente e retorne
+    return assemble_bytecode(instructions), position
 
 # Executa arquivo binário
 import subprocess
@@ -231,6 +271,7 @@ def exec_bin():
         resultado = subprocess.run(comando, shell=True, check=True, stdout=subprocess.PIPE, text=True)
         saida = resultado.stdout
         #print(f"Saída do arquivo binário:\n{saida}")
+        print("execução bem sucedida")
         return 0
     except subprocess.CalledProcessError as e:
         #print(f"Erro ao executar o arquivo binário: {e}")
@@ -251,7 +292,7 @@ output_file_path = f"obfuscated_{input_file_path}"
 data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
 
 # Algoritmo genético
-model = GA(population_size=10, generations=10)
+model = GA(population_size=100, generations=100)
 model.evolution()
 
 # Pegue o melhor indivíduo
