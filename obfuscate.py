@@ -11,12 +11,12 @@ regs = ["rdi", "rsi", "rax", "rbx", "rcx", "rdx", "r8", "r9", "r10", "r11", "r12
          
 # Opcodes das instruções           
 opcodes = ["mov", "cmp", "jmp", "jg", "jl", "je", "jne", "add", "sub", "imul", "idiv",
-           "and", "or", "xor", "shl", "shr"]
+           "and", "or", "xor", "shl", "shr", "test", "inc"]
 
 # Inicialize o Keystone com a arquitetura x86_64
 ks = Ks(KS_ARCH_X86, KS_MODE_64)
 
-# Retorna o código de máquina x86_64 de uma instrução 'mov rx, int' aleatória (por exemplo, "mov rbx, 42")
+# Retorna o código de máquina x86_64 de uma instrução aleatória (por exemplo, "mov rax, rdx")
 def random_instruction_code_x86():
     # Selecione um opcode aleatório
     opcode = random.choice(opcodes)
@@ -54,6 +54,10 @@ def random_instruction_code_x86():
         assembly_code = f"shl {random.choice(regs)}, {random.randint(1, 64)}"
     elif opcode == "shr":
         assembly_code = f"shr {random.choice(regs)}, {random.randint(1, 64)}"
+    elif opcode == "test":
+        assembly_code = f"test {random.choice(regs)}, {random.choice(regs)}"
+    elif opcode == "inc":
+        assembly_code = f"inc {random.choice(regs)}"
 
     #print(f"Inserindo código x86_64 da instrução: {assembly_code}")
     
@@ -74,6 +78,7 @@ class GA:
         self.population = []
         self.top_individual = None
         
+    # Inicia uma população de indivíduos de tamanho population_size
     def init_population(self):
         for i in range(self.population_size):
           # Gere um indivíduo
@@ -83,7 +88,9 @@ class GA:
           # Insira o indivíduo na população
           self.population.append(individual)
           
+    # Cruza a população, de 2 em 2 indivíduos
     def crossover(self):
+        # Selecione o par de indivíduos
         for i in range(0, int(self.population_size/2), 2):
             # Escolha aleatoriamente quem será o pai 1 e o pai 2
             fathers = [self.population[i], self.population[i+1]]
@@ -141,6 +148,7 @@ class GA:
             # Insira novo filho na população
             self.population.append(children)
             
+    # Insere uma instrução aleatória no filho gerado pelo crossover
     def mutation(self, children):
         # Insira uma instrução aleatória na text section do filho
         text_section, inst = edit_save_text_section(children.text_section, input_file_path, output_file_path)
@@ -150,10 +158,12 @@ class GA:
         children.obfuscation_insts.append(inst)
         children.fit_value += 1
         
+    # Ordena os indivíduos pelo fit value e retorna os melhores
     def tournament(self):
         # Sort population pelo fit value
-        return sorted(self.population, key = lambda x: x.fit_value, reverse=True)
+        return sorted(self.population, key = lambda x: x.fit_value, reverse=True)[:self.population_size]
         
+    # Inicializa a população e faz o loop de gerações
     def evolution(self):
         print("Inicializando a população de indivíduos...")
         # Inicialize a população
@@ -163,7 +173,7 @@ class GA:
         # Para cada geração, aplique o crossover e evolua a população
         for i in range(self.generations):
           self.crossover()
-          self.population = self.tournament()[:self.population_size]
+          self.population = self.tournament()
 
 # Extrai a section .text do arquivo binário       
 def extract_text_section(input_file_path, output_file_path):
@@ -224,20 +234,21 @@ def insert_instruction_in_position(code, inst, position):
     return bytes(code)
     
 # Execução de arquivos
-
 import subprocess
 
 # Execute e capture a saída do arquivo original
 input_file_path = input("Insira o caminho do arquivo de entrada: ")
 command = f'{input_file_path}'
 
-output_1 = subprocess.check_output([command], text=True)
+output_1 = subprocess.check_output([command])
 
 def exec_bin():
+    # Comando para executar o binário ofuscado
     command = f'{output_file_path}'
     
     try:
-        output_2 = subprocess.check_output([command], text=True)
+        # Capture a saída da execução
+        output_2 = subprocess.check_output([command])
         
         # Execute o comando e capture a saída (stdout e stderr)
         result = subprocess.run([command])
@@ -261,10 +272,10 @@ def exec_bin():
 # Variáveis globais
 output_file_path = f"{input_file_path}_obfuscated"
 
-# Extrai dados e seção .text do arquivo de entrada
+# Extraia os dados e a seção .text do arquivo de entrada
 data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
 
-# Algoritmo genético
+# Execute o algoritmo genético
 model = GA(population_size=20, generations=20)
 model.evolution()
 
@@ -286,5 +297,3 @@ with open(output_file_path, 'wb') as file:
 
 # Defina as permissões de execução no arquivo editado.
 os.chmod(output_file_path, 0o755)
-
-
