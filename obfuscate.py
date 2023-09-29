@@ -121,7 +121,7 @@ class GA:
                     file.close()
                 
                 # Defina as permissões de execução no arquivo editado.
-                os.chmod(output_file_path, 0o777)  
+                os.chmod(output_file_path, 0o755)  
                 
                 # Execute o arquivo e verifica se o retorno está correto.
                 if(exec_bin() == 0):
@@ -209,7 +209,7 @@ def edit_save_text_section(text_data, input_file_path, output_file_path):
             file.close()
         
         # Defina as permissões de execução no arquivo editado.
-        os.chmod(output_file_path, 0o777)  
+        os.chmod(output_file_path, 0o755)  
         
         # Execute o arquivo e verifica se o retorno está correto.
         if(exec_bin() == 0):
@@ -224,100 +224,48 @@ def insert_instruction_in_position(code, inst, position):
     return bytes(code)
     
 # Execução de arquivos
-    
-# Função para comparar dois arquivos de texto
-def equal_files(file1, file2):
-    with open(file1, 'r') as f1, open(file2, 'r') as f2:
-        content1 = f1.read()
-        content2 = f2.read()
-        f1.close()
-        f2.close()
 
-    # Compare o conteúdo dos arquivos
-    if content1 == content2:
-        return 0
-    else:
-        return -1
-
-'''
 import subprocess
 
 # Execute e capture a saída do arquivo original
-input_file_path = input("Insira o nome do arquivo de entrada: ")
-comand = f'./{input_file_path}'
-#comand = f'./{input_file_path} > stdout_input.txt'
-#os.system(comand)
+input_file_path = input("Insira o caminho do arquivo de entrada: ")
+command = f'{input_file_path}'
 
-# Execute o comando e capture a saída (stdout e stderr)
-resultado = subprocess.run(comand, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-
-# Obtenha a saída padrão (stdout) e a saída de erro (stderr)
-stdout_1 = resultado.stdout
-stderr_1 = resultado.stderr
+output_1 = subprocess.check_output([command], text=True)
 
 def exec_bin():
-    comand = f'./{output_file_path}'
+    command = f'{output_file_path}'
     
     try:
+        output_2 = subprocess.check_output([command], text=True)
+        
         # Execute o comando e capture a saída (stdout e stderr)
-        #resultado = subprocess.check_output(comand, shell=False, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, env=os.environ)
-        
-        # Obtenha a saída padrão (stdout) e a saída de erro (stderr)
-        #stdout_2 = resultado.stdout
-        #stderr_2 = resultado.stderr
-        
-        saida = subprocess.check_output(comand, shell=True, stderr=subprocess.STDOUT, text=True)
-        
-        return 0
-        # Verifique se a execução foi bem-sucedida (código de saída 0)
-        #if stdout_1 == stdout_2 and stderr_1 == stderr_2 and resultado.returncode == 0:
-            #print(f"Comando '{comando}' executado com sucesso")
-            #return 0
-        #else:
-            #print(f"Erro ao executar o comando '{comando}' (código de saída {resultado.returncode})")
-            #return -1
+        result = subprocess.run([command])
 
+        # Verifique se a execução foi bem-sucedida
+        if output_1 == output_2 and result.returncode == 0:
+            return 0
+        else:
+            #print(f"Erro ao executar o comando '{comando}' (código de saída {resultado.returncode})")
+            return -1
     except subprocess.CalledProcessError as e:
         #print(f"Erro ao executar o comando '{comando}': {e}")
         return -1
     except Exception as e:
+        #print(f"Erro ao executar o comando '{comando}': {e}")
         return -1
     
     return -1
-'''
-def exec_bin():
-    # Comando para executar o arquivo binário
-    comando = f'./{output_file_path}'
-    #comando = f'./{output_file_path} > stdout_output.txt 2>&1'
-    
-    # Tente executar o arquivo binário
-    try:
-        ret = os.system(comando)
-        #ret = os.system(f'./{output_file_path} 2> output_error.txt')
-        
-        # O valor de retorno será o código de saída do programa binário.
-        if ret == 0:
-        #if equal_files("stdout_input.txt", "stdout_output.txt") == 0 and ret == 0:
-            #print("Execução bem-sucedida")
-            return 0
-        else:
-            #print(f"Erro durante a execução (código de saída {retorno})")
-            return -1
-    except Exception as e:
-        # Se ocorrer um erro durante a execução, será capturada uma exceção
-        #print(f"Erro ao executar o arquivo binário: {e}")
-        return -1
 
 # Main
 # Variáveis globais
-input_file_path = input("Insira o nome do arquivo de entrada: ")
-output_file_path = f"obfuscated_{input_file_path}"
+output_file_path = f"{input_file_path}_obfuscated"
 
 # Extrai dados e seção .text do arquivo de entrada
 data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
 
 # Algoritmo genético
-model = GA(population_size=10, generations=10)
+model = GA(population_size=20, generations=20)
 model.evolution()
 
 # Pegue o melhor indivíduo
@@ -326,8 +274,6 @@ top_individual = model.population[0]
 # Printe os resultados
 print(f"Melhor indivíduo:")
 print(f"Número de instruções de ofuscação inseridas = {top_individual.fit_value}")
-#print(f"Instruções de ofuscação = {top_individual.obfuscation_insts}")
-#print(f"Bytecode final = {top_individual.text_section}")
 
 # Crie o arquivo de saída final com a section .text do melhor indivíduo
 # Modificação dos dados do arquivo original
@@ -339,4 +285,6 @@ with open(output_file_path, 'wb') as file:
     file.close()
 
 # Defina as permissões de execução no arquivo editado.
-os.chmod(output_file_path, 0o777)
+os.chmod(output_file_path, 0o755)
+
+
