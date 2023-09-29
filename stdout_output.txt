@@ -1,9 +1,0 @@
-README.md
-disassemble_ls.txt
-disassemble_obfuscated_ls.txt
-ls
-obfuscate.py
-obfuscated_ls
-stdout_input.txt
-stdout_output.txt
-test.py
