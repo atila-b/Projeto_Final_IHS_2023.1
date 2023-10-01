@@ -172,6 +172,7 @@ class GA:
         print("Evoluindo as gerações...")
         # Para cada geração, aplique o crossover e evolua a população
         for i in range(self.generations):
+          print(f"Crossover da geração {i+1}...")
           self.crossover()
           self.population = self.tournament()
 
@@ -234,34 +235,27 @@ def insert_instruction_in_position(code, inst, position):
     return bytes(code)
     
 # Execução de arquivos
-import subprocess
+import pexpect
 
-# Execute e capture a saída do arquivo original
+# Execute e capture a saída do arquivo executável original
 input_file_path = input("Insira o caminho do arquivo de entrada: ")
 command = f'{input_file_path}'
 
-output_1 = subprocess.check_output([command])
+original_ret = pexpect.run(command)
 
 def exec_bin():
     # Comando para executar o binário ofuscado
     command = f'{output_file_path}'
     
     try:
-        # Capture a saída da execução
-        output_2 = subprocess.check_output([command])
-        
-        # Execute o comando e capture a saída (stdout e stderr)
-        result = subprocess.run([command])
+        # Execute e capture a saída do binário ofuscado
+        obfuscated_ret = pexpect.run(command)
 
-        # Verifique se a execução foi bem-sucedida
-        if output_1 == output_2 and result.returncode == 0:
+        # Verifique se a saída original e ofuscada são iguais
+        if original_ret == obfuscated_ret:
             return 0
         else:
-            #print(f"Erro ao executar o comando '{comando}' (código de saída {resultado.returncode})")
             return -1
-    except subprocess.CalledProcessError as e:
-        #print(f"Erro ao executar o comando '{comando}': {e}")
-        return -1
     except Exception as e:
         #print(f"Erro ao executar o comando '{comando}': {e}")
         return -1
@@ -276,7 +270,7 @@ output_file_path = f"{input_file_path}_obfuscated"
 data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
 
 # Execute o algoritmo genético
-model = GA(population_size=20, generations=20)
+model = GA(population_size=10, generations=10)
 model.evolution()
 
 # Pegue o melhor indivíduo
