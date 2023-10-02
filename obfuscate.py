@@ -240,7 +240,7 @@ import pty
 
 # Execute e capture a saída do arquivo executável original
 input_file_path = input("Insira o caminho do arquivo de entrada: ")
-command = f'{input_file_path}'
+original_command = f'{input_file_path}'
 
 # Crie um terminal virtual (pty)
 master, sl = pty.openpty()
@@ -251,18 +251,19 @@ import fcntl
 fcntl.fcntl(master, fcntl.F_SETFL, os.O_NONBLOCK)
 
 # Execute o binário original
-subprocess.call(command, stdout=sl, stderr=sl, timeout=2)
+subprocess.call(original_command, stdout=sl, stderr=sl, timeout=2)
 
 # Capture a saída da execução
 original_stdout = os.read(master, 1024)
 
+# Comando para executar o binário ofuscado
+output_file_path = f"{input_file_path}_obfuscated"
+obfuscated_command = f'{output_file_path}'
+
 def exec_bin():
-    # Comando para executar o binário ofuscado
-    command = f'{output_file_path}'
-    
     try:
         # Execute o binário ofuscado
-        subprocess.call(command, stdout=sl, stderr=sl, timeout=0.1)
+        subprocess.call(obfuscated_command, stdout=sl, stderr=sl, timeout=0.1)
         
         # Capture a saída da execução
         obfuscated_stdout = os.read(master, 1024)
@@ -279,8 +280,6 @@ def exec_bin():
     return -1
 
 # Main
-# Variáveis globais
-output_file_path = f"{input_file_path}_obfuscated"
 
 # Extraia os dados e a seção .text do arquivo de entrada
 data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
