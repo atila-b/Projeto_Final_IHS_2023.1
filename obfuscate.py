@@ -235,31 +235,47 @@ def insert_instruction_in_position(code, inst, position):
     return bytes(code)
     
 # Execução de arquivos
-import pexpect
+import subprocess
+import pty
 
 # Execute e capture a saída do arquivo executável original
 input_file_path = input("Insira o caminho do arquivo de entrada: ")
 command = f'{input_file_path}'
 
-original_ret = pexpect.run(command)
+# Crie um terminal virtual (pty)
+master, sl = pty.openpty()
+
+import fcntl
+
+# Configure o master como não bloqueante
+fcntl.fcntl(master, fcntl.F_SETFL, os.O_NONBLOCK)
+
+# Execute o binário original
+subprocess.call(command, stdout=sl, stderr=sl, timeout=2)
+
+# Capture a saída da execução
+original_stdout = os.read(master, 1024)
 
 def exec_bin():
     # Comando para executar o binário ofuscado
     command = f'{output_file_path}'
     
     try:
-        # Execute e capture a saída do binário ofuscado
-        obfuscated_ret = pexpect.run(command)
-
-        # Verifique se a saída original e ofuscada são iguais
-        if original_ret == obfuscated_ret:
+        # Execute o binário ofuscado
+        subprocess.call(command, stdout=sl, stderr=sl, timeout=0.1)
+        
+        # Capture a saída da execução
+        obfuscated_stdout = os.read(master, 1024)
+        
+        # Verifique se as saídas são iguais
+        if original_stdout == obfuscated_stdout:
             return 0
         else:
             return -1
+        
     except Exception as e:
-        #print(f"Erro ao executar o comando '{comando}': {e}")
+        #print(f"Erro ao executar o comando '{command}': {e}")
         return -1
-    
     return -1
 
 # Main
@@ -270,7 +286,7 @@ output_file_path = f"{input_file_path}_obfuscated"
 data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
 
 # Execute o algoritmo genético
-model = GA(population_size=10, generations=10)
+model = GA(population_size=20, generations=20)
 model.evolution()
 
 # Pegue o melhor indivíduo
