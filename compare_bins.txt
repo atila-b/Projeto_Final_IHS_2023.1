@@ -1,0 +1,26 @@
+'''
+objdump -d  -j .text ./bin/ls > ./disassemble/ls
+objdump -d  -j .text ./bin/ls_obfuscated > ./disassemble/ls_obfuscated
+diff_count=$(cmp -l ./disassemble/ls ./disassemble/ls_obfuscated | wc -l)
+text_size1=$(stat -c %s ./disassemble/ls)
+percentage_diff=$(echo "scale=4; ($diff_count / $text_size1) * 100" | bc)
+echo "Porcentagem de diferença da seção .text: $percentage_diff%"
+'''
+
+'''
+objdump -d  -j .text ./bin/pwd > ./disassemble/pwd
+objdump -d  -j .text ./bin/pwd_obfuscated > ./disassemble/pwd_obfuscated
+diff_count=$(cmp -l ./disassemble/pwd ./disassemble/pwd_obfuscated | wc -l)
+text_size1=$(stat -c %s ./disassemble/pwd)
+percentage_diff=$(echo "scale=4; ($diff_count / $text_size1) * 100" | bc)
+echo "Porcentagem de diferença da seção .text: $percentage_diff%"
+'''
+
+'''
+objdump -d  -j .text ./bin/whoami > ./disassemble/whoami
+objdump -d  -j .text ./bin/whoami_obfuscated > ./disassemble/whoami_obfuscated
+diff_count=$(cmp -l ./disassemble/whoami ./disassemble/whoami_obfuscated | wc -l)
+text_size1=$(stat -c %s ./disassemble/whoami)
+percentage_diff=$(echo "scale=4; ($diff_count / $text_size1) * 100" | bc)
+echo "Porcentagem de diferença da seção .text: $percentage_diff%"
+'''
