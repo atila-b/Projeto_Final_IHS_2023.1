@@ -1,0 +1,3732 @@
+
+./bin/whoami_obfuscated:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000000025b0 <.text>:
+    25b0:	4d 31 ff             	xor    %r15,%r15
+    25b3:	ff 48 7c             	decl   0x7c(%rax)
+    25b6:	1b 3e                	sbb    (%rsi),%edi
+    25b8:	49 c1 e9 14          	shr    $0x14,%r9
+    25bc:	00 48 49             	add    %cl,0x49(%rax)
+    25bf:	f7 fc                	idiv   %esp
+    25c1:	0f 1e fa             	nop    %edx
+    25c4:	41 56                	push   %r14
+    25c6:	41 55                	push   %r13
+    25c8:	41 54                	push   %r12
+    25ca:	55                   	push   %rbp
+    25cb:	53                   	push   %rbx
+    25cc:	48 8b 1e             	mov    (%rsi),%rbx
+    25cf:	49 c7 c0 58 48 29 c9 	mov    $0xffffffffc9294858,%r8
+    25d6:	7f 6d                	jg     2645 <__ctype_b_loc@plt+0xa5>
+    25d8:	41 89 fd             	mov    %edi,%r13d
+    25db:	4c 21 ea             	and    %r13,%rdx
+    25de:	48 89 df             	mov    %rbx,%rdi
+    25e1:	be 2f 00 00 00       	mov    $0x2f,%esi
+    25e6:	e8 25 fe ff ff       	call   2410 <strrchr@plt>
+    25eb:	48 89 c5             	mov    %rax,%rbp
+    25ee:	48 85 48 c1          	test   %rcx,-0x3f(%rax)
+    25f2:	4c 01 fa             	add    %r15,%rdx
+    25f5:	c1 e6 2d             	shl    $0x2d,%esi
+    25f8:	85 d2                	test   %edx,%edx
+    25fa:	48 29 48 ff          	sub    %rcx,-0x1(%rax)
+    25fe:	c0 f8 06             	sar    $0x6,%al
+    2601:	7e 3d                	jle    2640 <__ctype_b_loc@plt+0xa0>
+    2603:	4d 31 0f             	xor    %r9,(%r15)
+    2606:	4d 01 c9             	add    %r9,%r9
+    2609:	00 00                	add    %al,(%rax)
+    260b:	84 4d 49             	test   %cl,0x49(%rbp)
+    260e:	c7 c7 45 fd ff ff    	mov    $0xfffffd45,%edi
+    2614:	4d 09 fe             	or     %r15,%r14
+    2617:	0f 85 7e 02 00 00    	jne    289b <__ctype_b_loc@plt+0x2fb>
+    261d:	4d 01 0f             	add    %r9,(%r15)
+    2620:	8f                   	(bad)  
+    2621:	0f 49 39             	cmovns (%rcx),%edi
+    2624:	f5                   	cmc    
+    2625:	49 ff c5             	inc    %r13
+    2628:	8c e9                	mov    %gs,%ecx
+    262a:	6a 01                	push   $0x1
+    262c:	00 00                	add    %al,(%rax)
+    262e:	c3                   	ret    
+    262f:	65 fd                	gs std 
+    2631:	0f 8f 2b fc ff ff    	jg     2262 <__cxa_finalize@plt-0x8e>
+    2637:	0f 85 fa fe ff ff    	jne    2537 <fseeko@plt+0x7>
+    263d:	89 c2                	mov    %eax,%edx
+    263f:	00 48 8b             	add    %cl,-0x75(%rax)
+    2642:	05 81 59 00 00       	add    $0x5981,%eax
+    2647:	48 0f 8f a2 00 00 00 	rex.W jg 26f0 <__ctype_b_loc@plt+0x150>
+    264e:	bf 06 00 00 00       	mov    $0x6,%edi
+    2653:	48                   	rex.W
+    2654:	49 c1 e0 25          	shl    $0x25,%r8
+    2658:	00 00                	add    %al,(%rax)
+    265a:	74 52                	je     26ae <__ctype_b_loc@plt+0x10e>
+    265c:	c1 e7 0b             	shl    $0xb,%edi
+    265f:	0f 8c 16 ff eb 4f    	jl     4fec257b <__ctype_b_loc@plt+0x4febffdb>
+    2665:	97                   	xchg   %eax,%edi
+    2666:	48 31 c1             	xor    %rax,%rcx
+    2669:	48 8d 35 f4 2a 00 00 	lea    0x2af4(%rip),%rsi        # 5164 <__ctype_b_loc@plt+0x2bc4>
+    2670:	48 89 ef             	mov    %rbp,%rdi
+    2673:	e8 28 fd ff ff       	call   23a0 <bindtextdomain@plt>
+    2678:	4c 31 c3             	xor    %r8,%rbx
+    267b:	e8 f0 fc ff ff       	call   2370 <textdomain@plt>
+    2680:	48                   	rex.W
+    2681:	49 0f af df          	imul   %r15,%rbx
+    2685:	00 00                	add    %al,(%rax)
+    2687:	4d                   	rex.WRB
+    2688:	49 c1 e8 23          	shr    $0x23,%r8
+    268c:	48 83 ec 08          	sub    $0x8,%rsp
+    2690:	49 29 f6             	sub    %rsi,%r14
+    2693:	48 8d 05 e1 2a 00 00 	lea    0x2ae1(%rip),%rax        # 517b <__ctype_b_loc@plt+0x2bdb>
+    269a:	6a 00                	push   $0x0
+    269c:	49 c7 c0 96 fd ff ff 	mov    $0xfffffffffffffd96,%r8
+    26a3:	8d 05 cd 2a 00 4d    	lea    0x4d002acd(%rip),%eax        # 4d005176 <__ctype_b_loc@plt+0x4d002bd6>
+    26a9:	89 ce                	mov    %ecx,%esi
+    26ab:	0d 49 c1 ed 2f       	or     $0x2fedc149,%eax
+    26b0:	50                   	push   %rax
+    26b1:	48                   	rex.W
+    26b2:	49 21 f1             	and    %rsi,%r9
+    26b5:	21 df                	and    %ebx,%edi
+    26b7:	4c 31 ea             	xor    %r13,%rdx
+    26ba:	15 4c 01 f7 00       	adc    $0xf7014c,%eax
+    26bf:	44 89 ef             	mov    %r13d,%edi
+    26c2:	50                   	push   %rax
+    26c3:	31 c0                	xor    %eax,%eax
+    26c5:	e8 f6 08 00 00       	call   2fc0 <__ctype_b_loc@plt+0xa20>
+    26ca:	48 8b 05 e7 58 00 00 	mov    0x58e7(%rip),%rax        # 7fb8 <__ctype_b_loc@plt+0x5a18>
+    26d1:	48 83 c4 20          	add    $0x20,%rsp
+    26d5:	48 63 00             	movslq (%rax),%rax
+    26d8:	44 39 e8             	cmp    %r13d,%eax
+    26db:	0f 85 9e 00 00 00    	jne    277f <__ctype_b_loc@plt+0x1df>
+    26e1:	e8 3a fc ff ff       	call   2320 <__errno_location@plt>
+    26e6:	7c 78                	jl     2760 <__ctype_b_loc@plt+0x1c0>
+    26e8:	af                   	scas   %es:(%rdi),%eax
+    26e9:	f2 4d 29 e0          	repnz sub %r12,%r8
+    26ed:	89 c5                	mov    %eax,%ebp
+    26ef:	e8 4c fd ff ff       	call   2440 <geteuid@plt>
+    26f4:	89 c3                	mov    %eax,%ebx
+    26f6:	49 c7 c7 8b 01 00 00 	mov    $0x18b,%r15
+    26fd:	48 c1 e1 03          	shl    $0x3,%rcx
+    2701:	89 df                	mov    %ebx,%edi
+    2703:	e8 88 fc ff ff       	call   2390 <getpwuid@plt>
+    2708:	48                   	rex.W
+    2709:	49 01 f3             	add    %rsi,%r11
+    270c:	2e 48 8b 38          	cs mov (%rax),%rdi
+    2710:	e8 4b fc ff ff       	call   2360 <puts@plt>
+    2715:	5b                   	pop    %rbx
+    2716:	31 c0                	xor    %eax,%eax
+    2718:	5d                   	pop    %rbp
+    2719:	41 5c                	pop    %r12
+    271b:	41 5d                	pop    %r13
+    271d:	41 5e                	pop    %r14
+    271f:	c3                   	ret    
+    2720:	4c 01 4d 01          	add    %r9,0x1(%rbp)
+    2724:	d2 48 85             	rorb   %cl,-0x7b(%rax)
+    2727:	c2 85 48             	ret    $0x4885
+    272a:	31 d0                	xor    %edx,%eax
+    272c:	7c fd                	jl     272b <__ctype_b_loc@plt+0x18b>
+    272e:	ff                   	(bad)  
+    272f:	ff 15 7f 0f 85 6f    	call   *0x6f850f7f(%rip)        # 6f8536b4 <__ctype_b_loc@plt+0x6f851114>
+    2735:	fe                   	(bad)  
+    2736:	ff                   	(bad)  
+    2737:	ff                   	(bad)  
+    2738:	ff                   	(bad)  
+    2739:	ff 84 49 f7 f8 ff eb 	incl   -0x14000709(%rcx,%rcx,2)
+    2740:	9e                   	sahf   
+    2741:	fe 0f                	decb   (%rdi)
+    2743:	8c 7d 4d             	mov    %?,0x4d(%rbp)
+    2746:	48 21 4c 21 4d       	and    %rcx,0x4d(%rcx,%riz,1)
+    274b:	0f af f0             	imul   %eax,%esi
+    274e:	0f af ff             	imul   %edi,%edi
+    2751:	39 49 85             	cmp    %ecx,-0x7b(%rcx)
+    2754:	d1 0f                	rorl   (%rdi)
+    2756:	af                   	scas   %es:(%rdi),%eax
+    2757:	f3 4c 29 c6          	repz sub %r8,%rsi
+    275b:	49 c1 ee 24          	shr    $0x24,%r14
+    275f:	cf                   	iret   
+    2760:	ff 49 c7             	decl   -0x39(%rcx)
+    2763:	c0 65 03 00          	shlb   $0x0,0x3(%rbp)
+    2767:	49 f7 fe             	idiv   %r14
+    276a:	c0 c3 49             	rol    $0x49,%bl
+    276d:	21 f7                	and    %esi,%edi
+    276f:	89 48 c1             	mov    %ecx,-0x3f(%rax)
+    2772:	0f 8f 27 03 00 00    	jg     2a9f <__ctype_b_loc@plt+0x4ff>
+    2778:	89 cb                	mov    %ecx,%ebx
+    277a:	00 66 01             	add    %ah,0x1(%rsi)
+    277d:	00 49 c7             	add    %cl,-0x39(%rcx)
+    2780:	c7 82 4d 21 cc c2 49 	movl   $0xceaf0f49,-0x3d33deb3(%rdx)
+    2787:	0f af ce 
+    278a:	4d                   	rex.WRB
+    278b:	49 09 48 c7          	or     %rcx,-0x39(%r8)
+    278f:	c0 16 01             	rclb   $0x1,(%rsi)
+    2792:	e9 49 c1 e3 37       	jmp    37e3e8e0 <__ctype_b_loc@plt+0x37e3c340>
+    2797:	f3 c4                	repz (bad) 
+    2799:	fc                   	cld    
+    279a:	ff 48 c7             	decl   -0x39(%rax)
+    279d:	c6                   	(bad)  
+    279e:	ca 00 00             	lret   $0x0
+    27a1:	00 4d 85             	add    %cl,-0x7b(%rbp)
+    27a4:	c7 c1 0f 8f 6c fd    	mov    $0xfd6c8f0f,%ecx
+    27aa:	ff                   	(bad)  
+    27ab:	ff 09                	decl   (%rcx)
+    27ad:	c8 54 48 c1          	enter  $0x4854,$0xc1
+    27b1:	0f 48 f7             	cmovs  %edi,%esi
+    27b4:	fa                   	cli    
+    27b5:	ff                   	(bad)  
+    27b6:	ff 0f                	decl   (%rdi)
+    27b8:	48 31 d9             	xor    %rbx,%rcx
+    27bb:	00 00                	add    %al,(%rax)
+    27bd:	ff 00                	incl   (%rax)
+    27bf:	00 4c 0f af          	add    %cl,-0x51(%rdi,%rcx,1)
+    27c3:	c6                   	(bad)  
+    27c4:	31 ed                	xor    %ebp,%ebp
+    27c6:	49 89 d1             	mov    %rdx,%r9
+    27c9:	5e                   	pop    %rsi
+    27ca:	48 89 e2             	mov    %rsp,%rdx
+    27cd:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+    27d1:	50                   	push   %rax
+    27d2:	54                   	push   %rsp
+    27d3:	49 21 c4             	and    %rax,%r12
+    27d6:	31 c9                	xor    %ecx,%ecx
+    27d8:	48 8d 3d e1 fd ff ff 	lea    -0x21f(%rip),%rdi        # 25c0 <__ctype_b_loc@plt+0x20>
+    27df:	ff 15 bb 57 00 00    	call   *0x57bb(%rip)        # 7fa0 <__ctype_b_loc@plt+0x5a00>
+    27e5:	f4                   	hlt    
+    27e6:	4c 21 de             	and    %r11,%rsi
+    27e9:	4d 21 c0             	and    %r8,%r8
+    27ec:	39 c6                	cmp    %eax,%esi
+    27ee:	07                   	(bad)  
+    27ef:	4d                   	rex.WRB
+    27f0:	48 c1 4d 89 d7       	rorq   $0xd7,-0x77(%rbp)
+    27f5:	48                   	rex.W
+    27f6:	49 09 ce             	or     %rcx,%r14
+    27f9:	0f                   	(bad)  
+    27fa:	0f 8c 72 01 00 00    	jl     2972 <__ctype_b_loc@plt+0x3d2>
+    2800:	48 39 f3             	cmp    %rsi,%rbx
+    2803:	00 00                	add    %al,(%rax)
+    2805:	49 21 cf             	and    %rcx,%r15
+    2808:	48 f7 4d 01 fe ec 30 	testq  $0x4830ecfe,0x1(%rbp)
+    280f:	48 
+    2810:	0f 85 d2 03 00 00    	jne    2be8 <__ctype_b_loc@plt+0x648>
+    2816:	d2 e9                	shr    %cl,%cl
+    2818:	4e 03 00             	rex.WRX add (%rax),%r8
+    281b:	00 00                	add    %al,(%rax)
+    281d:	4d 29 ce             	sub    %r9,%r14
+    2820:	48 8d 3d 71 58 00 00 	lea    0x5871(%rip),%rdi        # 8098 <__ctype_b_loc@plt+0x5af8>
+    2827:	48 8d 35 6a 58 00 00 	lea    0x586a(%rip),%rsi        # 8098 <__ctype_b_loc@plt+0x5af8>
+    282e:	48 29 fe             	sub    %rdi,%rsi
+    2831:	4d 0f 8f 23 fd ff ff 	rex.WRB jg 255b <exit@plt+0xb>
+    2838:	48                   	rex.W
+    2839:	48                   	rex.W
+    283a:	49 89 f9             	mov    %rdi,%r9
+    283d:	49 09 db             	or     %rbx,%r11
+    2840:	d1 fe                	sar    %esi
+    2842:	74 14                	je     2858 <__ctype_b_loc@plt+0x2b8>
+    2844:	48 8b 0f             	mov    (%rdi),%rcx
+    2847:	8c 49 48             	mov    %cs,0x48(%rcx)
+    284a:	c7                   	(bad)  
+    284b:	4c 39 fa             	cmp    %r15,%rdx
+    284e:	00 48 31             	add    %cl,0x31(%rax)
+    2851:	d2 7f 48             	sarb   %cl,0x48(%rdi)
+    2854:	c1 e3 16             	shl    $0x16,%ebx
+    2857:	49 c1 e6 18          	shl    $0x18,%r14
+    285b:	05 03 00 00 49       	add    $0x49000003,%eax
+    2860:	c7 c1 cb 4d 39 dc    	mov    $0xdc394dcb,%ecx
+    2866:	c3                   	ret    
+    2867:	5b                   	pop    %rbx
+    2868:	49                   	rex.WB
+    2869:	48 c7 c6 be fd ff ff 	mov    $0xfffffffffffffdbe,%rsi
+    2870:	0f af 4c 0f 85       	imul   -0x7b(%rdi,%rcx,1),%ecx
+    2875:	17                   	(bad)  
+    2876:	01 00                	add    %eax,(%rax)
+    2878:	00 01                	add    %al,(%rcx)
+    287a:	00 00                	add    %al,(%rax)
+    287c:	c5 03 00             	(bad)
+    287f:	4d 89 e6             	mov    %r12,%r14
+    2882:	ef                   	out    %eax,(%dx)
+    2883:	00 00                	add    %al,(%rax)
+    2885:	00 48 39             	add    %cl,0x39(%rax)
+    2888:	cf                   	iret   
+    2889:	85 4c 48 f7          	test   %ecx,-0x9(%rax,%rcx,2)
+    288d:	fb                   	sti    
+    288e:	48                   	rex.W
+    288f:	4c 85 c8             	test   %r9,%rax
+    2892:	85 49 29             	test   %ecx,0x29(%rcx)
+    2895:	d5                   	(bad)  
+    2896:	03 00                	add    (%rax),%eax
+    2898:	00 49 c1             	add    %cl,-0x3f(%rcx)
+    289b:	e4 2d                	in     $0x2d,%al
+    289d:	91                   	xchg   %eax,%ecx
+    289e:	00 00                	add    %al,(%rax)
+    28a0:	00 ed                	add    %ch,%ch
+    28a2:	0f 8f e9 93 fc ff    	jg     fffffffffffcbc91 <__ctype_b_loc@plt+0xfffffffffffc96f1>
+    28a8:	ff 89 c8 e9 1f ff    	decl   -0xe01638(%rcx)
+    28ae:	ff                   	(bad)  
+    28af:	ff 00                	incl   (%rax)
+    28b1:	00 00                	add    %al,(%rax)
+    28b3:	7c 7f                	jl     2934 <__ctype_b_loc@plt+0x394>
+    28b5:	5d                   	pop    %rbp
+    28b6:	00 4d 4d             	add    %cl,0x4d(%rbp)
+    28b9:	89 f5                	mov    %esi,%ebp
+    28bb:	00 00                	add    %al,(%rax)
+    28bd:	0f 8c 7c 4c 49 85    	jl     ffffffff8549753f <__ctype_b_loc@plt+0xffffffff85494f9f>
+    28c3:	d8 21                	fsubs  (%rcx)
+    28c5:	c4                   	(bad)  
+    28c6:	0f 8f ef fd ff ff    	jg     26bb <__ctype_b_loc@plt+0x11b>
+    28cc:	48 ff 0f             	decq   (%rdi)
+    28cf:	8c 53 01             	mov    %ss,0x1(%rbx)
+    28d2:	00 00                	add    %al,(%rax)
+    28d4:	c1 74 8a 0f 85       	shll   $0x85,0xf(%rdx,%rcx,4)
+    28d9:	58                   	pop    %rax
+    28da:	0f 85 22 fd ff ff    	jne    2602 <__ctype_b_loc@plt+0x62>
+    28e0:	4d 0f 4d 85 d4 ff ff 	cmovge 0xfffffd4(%r13),%r8
+    28e7:	0f 
+    28e8:	0f 85 b9 03 00 00    	jne    2ca7 <__ctype_b_loc@plt+0x707>
+    28ee:	e9 00 f3 0f 1e       	jmp    1e101bf3 <__ctype_b_loc@plt+0x1e0ff653>
+    28f3:	fa                   	cli    
+    28f4:	e9 27 ff ff ff       	jmp    2820 <__ctype_b_loc@plt+0x280>
+    28f9:	49                   	rex.WB
+    28fa:	48 c1 e7 09          	shl    $0x9,%rdi
+    28fe:	ff                   	(bad)  
+    28ff:	ff                   	(bad)  
+    2900:	fb                   	sti    
+    2901:	4d 89 ea             	mov    %r13,%r10
+    2904:	0f 84 76 02 00 00    	je     2b80 <__ctype_b_loc@plt+0x5e0>
+    290a:	0b 02                	or     (%rdx),%eax
+    290c:	00 00                	add    %al,(%rax)
+    290e:	f9                   	stc    
+    290f:	0f 85 49 29 c8 dd    	jne    ffffffffddc8525e <__ctype_b_loc@plt+0xffffffffddc82cbe>
+    2915:	87 b6 00 49 0f 49    	xchg   %esi,0x490f4900(%rsi)
+    291b:	c7 c3 61 fc ff ff    	mov    $0xfffffc61,%ebx
+    2921:	13 fe                	adc    %esi,%edi
+    2923:	ff                   	(bad)  
+    2924:	ff d5                	call   *%rbp
+    2926:	02 00                	add    (%rax),%al
+    2928:	00 3d ff ff 4d 31    	add    %bh,0x314dffff(%rip)        # 314e292d <__ctype_b_loc@plt+0x314e038d>
+    292e:	48 0f 8c f8 fd ff ff 	rex.W jl 272d <__ctype_b_loc@plt+0x18d>
+    2935:	00 00                	add    %al,(%rax)
+    2937:	03 e9                	add    %ecx,%ebp
+    2939:	65 49 85 f8          	gs test %rdi,%r8
+    293d:	03 49 74             	add    0x74(%rcx),%ecx
+    2940:	61                   	(bad)  
+    2941:	af                   	scas   %es:(%rdi),%eax
+    2942:	48 29 d8             	sub    %rbx,%rax
+    2945:	49 ff c4             	inc    %r12
+    2948:	21 4d 01             	and    %ecx,0x1(%rbp)
+    294b:	49 01 de             	add    %rbx,%r14
+    294e:	8f                   	(bad)  
+    294f:	b1 00                	mov    $0x0,%cl
+    2951:	00 00                	add    %al,(%rax)
+    2953:	48 29 d1             	sub    %rdx,%rcx
+    2956:	f9                   	stc    
+    2957:	ff 48 c1             	decl   -0x3f(%rax)
+    295a:	e7 23                	out    %eax,$0x23
+    295c:	c1 e0 4d             	shl    $0x4d,%eax
+    295f:	09 ef                	or     %ebp,%edi
+    2961:	ff ca                	dec    %edx
+    2963:	eb 02                	jmp    2967 <__ctype_b_loc@plt+0x3c7>
+    2965:	ff 0f                	decl   (%rdi)
+    2967:	49 c7 c2 e8 fd ff ff 	mov    $0xfffffffffffffde8,%r10
+    296e:	c7                   	(bad)  
+    296f:	c8 4c 39 c0          	enter  $0x394c,$0xc0
+    2973:	ff 0f                	decl   (%rdi)
+    2975:	8f 80 00 00 00 ea    	pop    -0x16000000(%rax)
+    297b:	21 cf                	and    %ecx,%edi
+    297d:	5c                   	pop    %rsp
+    297e:	fd                   	std    
+    297f:	ff                   	(bad)  
+    2980:	ff                   	(bad)  
+    2981:	7c ea                	jl     296d <__ctype_b_loc@plt+0x3cd>
+    2983:	8c 00                	mov    %es,(%rax)
+    2985:	00 00                	add    %al,(%rax)
+    2987:	c2 0f 8c             	ret    $0x8c0f
+    298a:	d5                   	(bad)  
+    298b:	01 00                	add    %eax,(%rax)
+    298d:	00 49 89             	add    %cl,-0x77(%rcx)
+    2990:	49 c1 48 49 09       	rorq   $0x9,0x49(%r8)
+    2995:	cb                   	lret   
+    2996:	48                   	rex.W
+    2997:	48 f7 f9             	idiv   %rcx
+    299a:	41                   	rex.B
+    299b:	48 ff c2             	inc    %rdx
+    299e:	7f be                	jg     295e <__ctype_b_loc@plt+0x3be>
+    29a0:	49 c1 ed 3e          	shr    $0x3e,%r13
+    29a4:	75 7a                	jne    2a20 <__ctype_b_loc@plt+0x480>
+    29a6:	49 31 cc             	xor    %rcx,%r12
+    29a9:	c3                   	ret    
+    29aa:	00 00                	add    %al,(%rax)
+    29ac:	48                   	rex.W
+    29ad:	49 f7 fc             	idiv   %r12
+    29b0:	db ff                	(bad)  
+    29b2:	ff 0f                	decl   (%rdi)
+    29b4:	49 c7 c5 b5 0f 8c e4 	mov    $0xffffffffe48c0fb5,%r13
+    29bb:	00 00                	add    %al,(%rax)
+    29bd:	00 4d 48             	add    %cl,0x48(%rbp)
+    29c0:	ff 4c 39 e3          	decl   -0x1d(%rcx,%rdi,1)
+    29c4:	d4                   	(bad)  
+    29c5:	4c 29 0f             	sub    %r9,(%rdi)
+    29c8:	8f                   	(bad)  
+    29c9:	4c 39 e7             	cmp    %r12,%rdi
+    29cc:	85 ca                	test   %ecx,%edx
+    29ce:	31 f6                	xor    %esi,%esi
+    29d0:	4d                   	rex.WRB
+    29d1:	49 0f 84 91 00 00 00 	rex.WB je 2a69 <__ctype_b_loc@plt+0x4c9>
+    29d8:	40                   	rex
+    29d9:	4c 39 e0             	cmp    %r12,%rax
+    29dc:	3e 4d 89 f3          	ds mov %r14,%r11
+    29e0:	40 eb 1e             	rex jmp 2a01 <__ctype_b_loc@plt+0x461>
+    29e3:	4c 21 4c 01 e9       	and    %r9,-0x17(%rcx,%rax,1)
+    29e8:	fd                   	std    
+    29e9:	ff 48 f7             	decl   -0x9(%rax)
+    29ec:	f8                   	clc    
+    29ed:	de 84 8a 4d 49 0f 84 	fiadds -0x7bf0b6b3(%rdx,%rcx,4)
+    29f4:	be 0f 85 1c 4d       	mov    $0x4d1c850f,%esi
+    29f9:	09 d1                	or     %edx,%ecx
+    29fb:	8c 54 4c 01          	mov    %ss,0x1(%rsp,%rcx,2)
+    29ff:	da 4d 89             	fimull -0x77(%rbp)
+    2a02:	ee                   	out    %al,(%dx)
+    2a03:	e9 29 fd ff ff       	jmp    2731 <__ctype_b_loc@plt+0x191>
+    2a08:	ff                   	(bad)  
+    2a09:	ff 49 c7             	decl   -0x39(%rcx)
+    2a0c:	c4                   	(bad)  
+    2a0d:	3e fd                	ds std 
+    2a0f:	ff                   	(bad)  
+    2a10:	ff 89 4d 39 f0 4c    	decl   0x4cf0394d(%rcx)
+    2a16:	31 f6                	xor    %esi,%esi
+    2a18:	4d                   	rex.WRB
+    2a19:	4d 09 f9             	or     %r15,%r9
+    2a1c:	09 fd                	or     %edi,%ebp
+    2a1e:	ff 48 39             	decl   0x39(%rax)
+    2a21:	ff f7                	push   %rdi
+    2a23:	49 09 c6             	or     %rax,%r14
+    2a26:	01 c3                	add    %eax,%ebx
+    2a28:	8f                   	(bad)  
+    2a29:	0f 84 cb fc ff ff    	je     26fa <__ctype_b_loc@plt+0x15a>
+    2a2f:	85 48 0f             	test   %ecx,0xf(%rax)
+    2a32:	af                   	scas   %es:(%rdi),%eax
+    2a33:	da e2                	(bad)  
+    2a35:	4c 31 49 09          	xor    %r9,0x9(%rcx)
+    2a39:	c4                   	(bad)  
+    2a3a:	fe                   	(bad)  
+    2a3b:	ff                   	(bad)  
+    2a3c:	ff 21                	jmp    *(%rcx)
+    2a3e:	fc                   	cld    
+    2a3f:	49 c1 e8 14          	shr    $0x14,%r8
+    2a43:	fa                   	cli    
+    2a44:	01 0f                	add    %ecx,(%rdi)
+    2a46:	8f 48 f7 fb          	(bad)
+    2a4a:	ff c1                	inc    %ecx
+    2a4c:	e8 48 0f af ff       	call   ffffffffffaf3999 <__ctype_b_loc@plt+0xffffffffffaf13f9>
+    2a51:	4c 29 e9             	sub    %r13,%rcx
+    2a54:	81 fd 4c 89 48 c7    	cmp    $0xc748894c,%ebp
+    2a5a:	c7                   	(bad)  
+    2a5b:	0f 8f db fd ff ff    	jg     283c <__ctype_b_loc@plt+0x29c>
+    2a61:	01 4c 49 c7          	add    %ecx,-0x39(%rcx,%rcx,2)
+    2a65:	75 d5                	jne    2a3c <__ctype_b_loc@plt+0x49c>
+    2a67:	00 00                	add    %al,(%rax)
+    2a69:	00 c7                	add    %al,%bh
+    2a6b:	ff                   	(bad)  
+    2a6c:	bf 4d 49 c1 e1       	mov    $0xe1c1494d,%edi
+    2a71:	2d f6 c6 31 0f       	sub    $0xf31c6f6,%eax
+    2a76:	49 ff c7             	inc    %r15
+    2a79:	b8 fc ff 49 0f       	mov    $0xf49fffc,%eax
+    2a7e:	8f                   	(bad)  
+    2a7f:	1a fc                	sbb    %ah,%bh
+    2a81:	ff                   	(bad)  
+    2a82:	ff                   	(bad)  
+    2a83:	ff                   	(bad)  
+    2a84:	ff 31                	push   (%rcx)
+    2a86:	49                   	rex.WB
+    2a87:	4d 01 c6             	add    %r8,%r14
+    2a8a:	d8 35 0f 49 c1 e4    	fdivs  -0x1b3eb6f1(%rip)        # ffffffffe4c1739f <__ctype_b_loc@plt+0xffffffffe4c14dff>
+    2a90:	1b e7                	sbb    %edi,%esp
+    2a92:	32 c0                	xor    %al,%al
+    2a94:	4d 31 c4             	xor    %r8,%r12
+    2a97:	00 4c 85 74          	add    %cl,0x74(%rbp,%rax,4)
+    2a9b:	7c af                	jl     2a4c <__ctype_b_loc@plt+0x4ac>
+    2a9d:	f2 49 29 4d 01       	repnz sub %rcx,0x1(%r13)
+    2aa2:	c8 ff ff 00          	enter  $0xffff,$0x0
+    2aa6:	00 01                	add    %al,(%rcx)
+    2aa8:	4d 31 49 89          	xor    %r9,-0x77(%r9)
+    2aac:	f7 49 39 c9 ca 00 03 	testl  $0x300cac9,0x39(%rcx)
+    2ab3:	4d 21 eb             	and    %r13,%r11
+    2ab6:	48 c1 ea 03          	shr    $0x3,%rdx
+    2aba:	00 4c 89 48          	add    %cl,0x48(%rcx,%rcx,4)
+    2abe:	01 49 c1             	add    %ecx,-0x3f(%rcx)
+    2ac1:	49                   	rex.WB
+    2ac2:	4d 85 cb             	test   %r9,%r11
+    2ac5:	af                   	scas   %es:(%rdi),%eax
+    2ac6:	49 09 ff             	or     %rdi,%r15
+    2ac9:	c1 ee 1f             	shr    $0x1f,%esi
+    2acc:	ce                   	(bad)  
+    2acd:	00 0f                	add    %cl,(%rdi)
+    2acf:	49 21 f3             	and    %rsi,%r11
+    2ad2:	00 00                	add    %al,(%rax)
+    2ad4:	31 f7                	xor    %esi,%edi
+    2ad6:	49 ff 4d 29          	decq   0x29(%r13)
+    2ada:	f9                   	stc    
+    2adb:	31 48 0f             	xor    %ecx,0xf(%rax)
+    2ade:	af                   	scas   %es:(%rdi),%eax
+    2adf:	f1                   	int1   
+    2ae0:	09 f5                	or     %esi,%ebp
+    2ae2:	1e                   	(bad)  
+    2ae3:	ff                   	(bad)  
+    2ae4:	ff 49 c7             	decl   -0x39(%rcx)
+    2ae7:	48 0f 8f d5 03 00 00 	rex.W jg 2ec3 <__ctype_b_loc@plt+0x923>
+    2aee:	48 c1 e2 35          	shl    $0x35,%rdx
+    2af2:	39 e9                	cmp    %ebp,%ecx
+    2af4:	b6 e9                	mov    $0xe9,%dh
+    2af6:	55                   	push   %rbp
+    2af7:	03 00                	add    (%rax),%eax
+    2af9:	49 ff c2             	inc    %r10
+    2afc:	49 c7                	rex.WB (bad) 
+    2afe:	49                   	rex.WB
+    2aff:	4c 85 f9             	test   %r15,%rcx
+    2b02:	ff c2                	inc    %edx
+    2b04:	00 e1                	add    %ah,%cl
+    2b06:	1e                   	(bad)  
+    2b07:	89 04 0f             	mov    %eax,(%rdi,%rcx,1)
+    2b0a:	48 01 c2             	add    %rax,%rdx
+    2b0d:	fc                   	cld    
+    2b0e:	ff                   	(bad)  
+    2b0f:	ff 37                	push   (%rdi)
+    2b11:	0f 8c 51 fc ff ff    	jl     2768 <__ctype_b_loc@plt+0x1c8>
+    2b17:	d0 85 4d 49 f7 fc    	rolb   -0x308b6b3(%rbp)
+    2b1d:	4d 01 4c 89 f8       	add    %r9,-0x8(%r9,%rcx,4)
+    2b22:	db 0f                	fisttpl (%rdi)
+    2b24:	85 81 fd ff ff 8c    	test   %eax,-0x73000003(%rcx)
+    2b2a:	fc                   	cld    
+    2b2b:	ff                   	(bad)  
+    2b2c:	ff 29                	ljmp   *(%rcx)
+    2b2e:	df 4d 29             	fisttps 0x29(%rbp)
+    2b31:	49 ff c3             	inc    %r11
+    2b34:	d9 00                	flds   (%rax)
+    2b36:	e9 75 25 00 00       	jmp    50b0 <__ctype_b_loc@plt+0x2b10>
+    2b3b:	49 29 48 c1          	sub    %rcx,-0x3f(%r8)
+    2b3f:	e7 0f                	out    %eax,$0xf
+    2b41:	8c e4                	mov    %fs,%esp
+    2b43:	01 00                	add    %eax,(%rax)
+    2b45:	00 0f                	add    %cl,(%rdi)
+    2b47:	fe 49 21             	decb   0x21(%rcx)
+    2b4a:	f6 85 ee 9e 03 00 00 	testb  $0x0,0x39eee(%rbp)
+    2b51:	31 d0                	xor    %edx,%eax
+    2b53:	09 48 0f             	or     %ecx,0xf(%rax)
+    2b56:	8f                   	(bad)  
+    2b57:	e6 0f                	out    %al,$0xf
+    2b59:	49 0f af f7          	imul   %r15,%rsi
+    2b5d:	00 52 ff             	add    %dl,-0x1(%rdx)
+    2b60:	4d 01 d8             	add    %r11,%r8
+    2b63:	ff c3                	inc    %ebx
+    2b65:	48 ff c0             	inc    %rax
+    2b68:	4d 09 f1             	or     %r14,%r9
+    2b6b:	48 31 c6             	xor    %rax,%rsi
+    2b6e:	ec                   	in     (%dx),%al
+    2b6f:	11 0f                	adc    %ecx,(%rdi)
+    2b71:	85 d5                	test   %edx,%ebp
+    2b73:	fe                   	(bad)  
+    2b74:	ff                   	(bad)  
+    2b75:	ff 49 c1             	decl   -0x3f(%rcx)
+    2b78:	e8 30 0f 8c 48       	call   488c3aad <__ctype_b_loc@plt+0x488c150d>
+    2b7d:	c1 eb 1a             	shr    $0x1a,%ebx
+    2b80:	0c c1                	or     $0xc1,%al
+    2b82:	eb 22                	jmp    2ba6 <__ctype_b_loc@plt+0x606>
+    2b84:	48 09 d8             	or     %rbx,%rax
+    2b87:	48 f7 49 21 f5 00 00 	testq  $0xffffffff890000f5,0x21(%rcx)
+    2b8e:	89 
+    2b8f:	49                   	rex.WB
+    2b90:	4d 39 49 4c          	cmp    %r9,0x4c(%r9)
+    2b94:	e9 ef fc ff ff       	jmp    2888 <__ctype_b_loc@plt+0x2e8>
+    2b99:	4c 39 c2             	cmp    %r8,%rdx
+    2b9c:	48 ff c1             	inc    %rcx
+    2b9f:	f7 48 c7 c0 a7 02 00 	testl  $0x2a7c0,-0x39(%rax)
+    2ba6:	49                   	rex.WB
+    2ba7:	4d                   	rex.WRB
+    2ba8:	4c 29 f2             	sub    %r14,%rdx
+    2bab:	e9 0f 85 7c 03       	jmp    37cb0bf <__ctype_b_loc@plt+0x37c8b1f>
+    2bb0:	00 e9                	add    %ch,%cl
+    2bb2:	d7                   	xlat   %ds:(%rbx)
+    2bb3:	fd                   	std    
+    2bb4:	ff                   	(bad)  
+    2bb5:	ff 49 21             	decl   0x21(%rcx)
+    2bb8:	cd 0f                	int    $0xf
+    2bba:	84 19                	test   %bl,(%rcx)
+    2bbc:	01 00                	add    %eax,(%rax)
+    2bbe:	00 0f                	add    %cl,(%rdi)
+    2bc0:	0f 84 3a 03 00 49    	je     49002f00 <__ctype_b_loc@plt+0x49000960>
+    2bc6:	c7 c1 e9 fe ff 49    	mov    $0x49fffee9,%ecx
+    2bcc:	29 cb                	sub    %ecx,%ebx
+    2bce:	66 4d 89 ff          	data16 mov %r15,%r15
+    2bd2:	ef                   	out    %eax,(%dx)
+    2bd3:	0f 8f 49 03 74 d4    	jg     ffffffffd4742f22 <__ctype_b_loc@plt+0xffffffffd4740982>
+    2bd9:	00 4c 89 e8          	add    %cl,-0x18(%rcx,%rcx,4)
+    2bdd:	6a 02                	push   $0x2
+    2bdf:	00 e9                	add    %ch,%cl
+    2be1:	61                   	(bad)  
+    2be2:	fe                   	(bad)  
+    2be3:	ff                   	(bad)  
+    2be4:	ff                   	(bad)  
+    2be5:	ff                   	(bad)  
+    2be6:	ff 49 48             	decl   0x48(%rcx)
+    2be9:	49 21 f4             	and    %rsi,%r12
+    2bec:	f6 ff                	idiv   %bh
+    2bee:	00 ce                	add    %cl,%dh
+    2bf0:	4d 0f af d8          	imul   %r8,%r11
+    2bf4:	4c 0f af c9          	imul   %rcx,%r9
+    2bf8:	d3 4d 89             	rorl   %cl,-0x77(%rbp)
+    2bfb:	fb                   	sti    
+    2bfc:	0f ff 48 f7          	ud0    -0x9(%rax),%ecx
+    2c00:	f9                   	stc    
+    2c01:	e0 15                	loopne 2c18 <__ctype_b_loc@plt+0x678>
+    2c03:	49 0f af d8          	imul   %r8,%rbx
+    2c07:	af                   	scas   %es:(%rdi),%eax
+    2c08:	c5 85 00             	(bad)
+    2c0b:	00 0f                	add    %cl,(%rdi)
+    2c0d:	85 af 02 00 00 9f    	test   %ebp,-0x60fffffe(%rdi)
+    2c13:	4d 21 cb             	and    %r9,%r11
+    2c16:	0f 84 b8 0f 4c 01    	je     14c3bd4 <__ctype_b_loc@plt+0x14c1634>
+    2c1c:	db ff                	(bad)  
+    2c1e:	ff c7                	inc    %edi
+    2c20:	c0 a2 49 89 f6 fe ff 	shlb   $0xff,-0x10976b7(%rdx)
+    2c27:	49 c1 e2 02          	shl    $0x2,%r10
+    2c2b:	7c 0f                	jl     2c3c <__ctype_b_loc@plt+0x69c>
+    2c2d:	85 72 fe             	test   %esi,-0x2(%rdx)
+    2c30:	ff                   	(bad)  
+    2c31:	ff 02                	incl   (%rdx)
+    2c33:	4c                   	rex.WR
+    2c34:	49 c1 48 49 39       	rorq   $0x39,0x49(%r8)
+    2c39:	f6 fa                	idiv   %dl
+    2c3b:	ff                   	(bad)  
+    2c3c:	ff 49 0f             	decl   0xf(%rcx)
+    2c3f:	49 ff c0             	inc    %r8
+    2c42:	49 f7 f9             	idiv   %r9
+    2c45:	af                   	scas   %es:(%rdi),%eax
+    2c46:	4d 31 f9             	xor    %r15,%r9
+    2c49:	ff 48 4d             	decl   0x4d(%rax)
+    2c4c:	85 0f                	test   %ecx,(%rdi)
+    2c4e:	8c 68 4d             	mov    %gs,0x4d(%rax)
+    2c51:	85 49 c1             	test   %ecx,-0x3f(%rcx)
+    2c54:	e8 24 48 01 c7       	call   ffffffffc701747d <__ctype_b_loc@plt+0xffffffffc7014edd>
+    2c59:	cf                   	iret   
+    2c5a:	01 48 29             	add    %ecx,0x29(%rax)
+    2c5d:	f2 8c 03             	repnz mov %es,(%rbx)
+    2c60:	0f 8f b6 00 00 00    	jg     2d1c <__ctype_b_loc@plt+0x77c>
+    2c66:	48 89 cb             	mov    %rcx,%rbx
+    2c69:	49                   	rex.WB
+    2c6a:	48 ff c3             	inc    %rbx
+    2c6d:	ff 4c 39 49          	decl   0x49(%rcx,%rdi,1)
+    2c71:	29 dd                	sub    %ebx,%ebp
+    2c73:	af                   	scas   %es:(%rdi),%eax
+    2c74:	cc                   	int3   
+    2c75:	ff 4d 01             	decl   0x1(%rbp)
+    2c78:	c9                   	leave  
+    2c79:	4d 31 ca             	xor    %r9,%r10
+    2c7c:	49                   	rex.WB
+    2c7d:	48                   	rex.W
+    2c7e:	4c                   	rex.WR
+    2c7f:	4d 39 eb             	cmp    %r13,%r11
+    2c82:	00 ff                	add    %bh,%bh
+    2c84:	48 01 fa             	add    %rdi,%rdx
+    2c87:	48 c1 ea 31          	shr    $0x31,%rdx
+    2c8b:	29 4c 39 f1          	sub    %ecx,-0xf(%rcx,%rdi,1)
+    2c8f:	e0 0f                	loopne 2ca0 <__ctype_b_loc@plt+0x700>
+    2c91:	8f                   	(bad)  
+    2c92:	a0 02 00 49 f7 fd 0f 	movabs 0xc850ffdf7490002,%al
+    2c99:	85 0c 
+    2c9b:	fd                   	std    
+    2c9c:	ff 48 01             	decl   0x1(%rax)
+    2c9f:	d7                   	xlat   %ds:(%rbx)
+    2ca0:	84 0f                	test   %cl,(%rdi)
+    2ca2:	85 cd                	test   %ecx,%ebp
+    2ca4:	fd                   	std    
+    2ca5:	ff                   	(bad)  
+    2ca6:	ff 4c 89 f3          	decl   -0xd(%rcx,%rcx,4)
+    2caa:	8f 48 01 de          	(bad)
+    2cae:	0f 8f 88 4d 21 dc    	jg     ffffffffdc217a3c <__ctype_b_loc@plt+0xffffffffdc21549c>
+    2cb4:	0f af fc             	imul   %esp,%edi
+    2cb7:	24 c7                	and    $0xc7,%al
+    2cb9:	c2 58 fd             	ret    $0xfd58
+    2cbc:	ff                   	(bad)  
+    2cbd:	ff 49 49             	decl   0x49(%rcx)
+    2cc0:	c1 e6 0c             	shl    $0xc,%esi
+    2cc3:	48                   	rex.W
+    2cc4:	49 85 f7             	test   %rsi,%r15
+    2cc7:	ff 86 49 0f af c2    	incl   -0x3d50f0b7(%rsi)
+    2ccd:	0f 84 48 01 c6 00    	je     c62e1b <__ctype_b_loc@plt+0xc6087b>
+    2cd3:	4c 21 d8             	and    %r11,%rax
+    2cd6:	09 dc                	or     %ebx,%esp
+    2cd8:	74 48                	je     2d22 <__ctype_b_loc@plt+0x782>
+    2cda:	85 c9                	test   %ecx,%ecx
+    2cdc:	0f 84 72 02 48 c1    	je     ffffffffc1482f54 <__ctype_b_loc@plt+0xffffffffc14809b4>
+    2ce2:	ee                   	out    %al,(%dx)
+    2ce3:	0f 85 d4 49 21 da    	jne    ffffffffda2176bd <__ctype_b_loc@plt+0xffffffffda21511d>
+    2ce9:	c1 48 c1 eb          	rorl   $0xeb,-0x3f(%rax)
+    2ced:	1e                   	(bad)  
+    2cee:	f7 f9                	idiv   %ecx
+    2cf0:	af                   	scas   %es:(%rdi),%eax
+    2cf1:	fb                   	sti    
+    2cf2:	49 c1 ed 20          	shr    $0x20,%r13
+    2cf6:	92                   	xchg   %eax,%edx
+    2cf7:	01 00                	add    %eax,(%rax)
+    2cf9:	00 48 49             	add    %cl,0x49(%rax)
+    2cfc:	39 dd                	cmp    %ebx,%ebp
+    2cfe:	21 8c cd 48 01 f9 0f 	and    %ecx,0xff90148(%rbp,%rcx,8)
+    2d05:	48 c7 c1 17 ff 48 48 	mov    $0x4848ff17,%rcx
+    2d0c:	89 d8                	mov    %ebx,%eax
+    2d0e:	8c 49 49             	mov    %cs,0x49(%rcx)
+    2d11:	c1 ea 38             	shr    $0x38,%edx
+    2d14:	8f                   	(bad)  
+    2d15:	64 02 00             	add    %fs:(%rax),%al
+    2d18:	00 d0                	add    %dl,%al
+    2d1a:	00 00                	add    %al,(%rax)
+    2d1c:	00 1f                	add    %bl,(%rdi)
+    2d1e:	ff                   	(bad)  
+    2d1f:	ff                   	(bad)  
+    2d20:	ff 49 c1             	decl   -0x3f(%rcx)
+    2d23:	ea                   	(bad)  
+    2d24:	11 fc                	adc    %edi,%esp
+    2d26:	eb c6                	jmp    2cee <__ctype_b_loc@plt+0x74e>
+    2d28:	c3                   	ret    
+    2d29:	48 c7                	rex.W (bad) 
+    2d2b:	0f 85 f9 49 01 ce    	jne    ffffffffce01772a <__ctype_b_loc@plt+0xffffffffce01518a>
+    2d31:	ee                   	out    %al,(%dx)
+    2d32:	ba 0f 84 49 39       	mov    $0x3949840f,%edx
+    2d37:	0f 8f 53 fd ff 0f    	jg     10002a90 <__ctype_b_loc@plt+0x100004f0>
+    2d3d:	8f                   	(bad)  
+    2d3e:	7c 02                	jl     2d42 <__ctype_b_loc@plt+0x7a2>
+    2d40:	00 00                	add    %al,(%rax)
+    2d42:	49 ff c3             	inc    %r11
+    2d45:	ef                   	out    %eax,(%dx)
+    2d46:	1b 4c 09 0f          	sbb    0xf(%rcx,%rcx,1),%ecx
+    2d4a:	85 cc                	test   %ecx,%esp
+    2d4c:	02 00                	add    (%rax),%al
+    2d4e:	0f 8c e1 fc ff ff    	jl     2a35 <__ctype_b_loc@plt+0x495>
+    2d54:	00 00                	add    %al,(%rax)
+    2d56:	31 f6                	xor    %esi,%esi
+    2d58:	48 85 df             	test   %rbx,%rdi
+    2d5b:	4c 0f 49 48 f7       	cmovns -0x9(%rax),%r9
+    2d60:	fa                   	cli    
+    2d61:	fd                   	std    
+    2d62:	fe                   	(bad)  
+    2d63:	ff 48 49             	decl   0x49(%rax)
+    2d66:	c1 e6 22             	shl    $0x22,%esi
+    2d69:	31 c0                	xor    %eax,%eax
+    2d6b:	09 ce                	or     %ecx,%esi
+    2d6d:	ff                   	(bad)  
+    2d6e:	ff 49 c1             	decl   -0x3f(%rcx)
+    2d71:	e7 35                	out    %eax,$0x35
+    2d73:	48 85 d3             	test   %rdx,%rbx
+    2d76:	48 39 c7             	cmp    %rax,%rdi
+    2d79:	00 00                	add    %al,(%rax)
+    2d7b:	4d                   	rex.WRB
+    2d7c:	4d 85 7c 8f e8       	test   %r15,-0x18(%r15,%rcx,4)
+    2d81:	4b f7 48 85 ce 4c 89 	rex.WXB testq $0xffffffffe9894cce,-0x7b(%r8)
+    2d88:	e9 
+    2d89:	96                   	xchg   %eax,%esi
+    2d8a:	02 00                	add    (%rax),%al
+    2d8c:	00 ff                	add    %bh,%bh
+    2d8e:	00 00                	add    %al,(%rax)
+    2d90:	c1 4d 21 49          	rorl   $0x49,0x21(%rbp)
+    2d94:	c1 e8 0a             	shr    $0xa,%eax
+    2d97:	01 00                	add    %eax,(%rax)
+    2d99:	e9 6a 48 48 c1       	jmp    ffffffffc1487608 <__ctype_b_loc@plt+0xffffffffc1485068>
+    2d9e:	eb fb                	jmp    2d9b <__ctype_b_loc@plt+0x7fb>
+    2da0:	6d                   	insl   (%dx),%es:(%rdi)
+    2da1:	fd                   	std    
+    2da2:	ff                   	(bad)  
+    2da3:	ff 48 c1             	decl   -0x3f(%rax)
+    2da6:	e1 3b                	loope  2de3 <__ctype_b_loc@plt+0x843>
+    2da8:	49 c1 4d 29 fd       	rorq   $0xfd,0x29(%r13)
+    2dad:	48 0f 84 28 fe ff ff 	rex.W je 2bdc <__ctype_b_loc@plt+0x63c>
+    2db4:	49 c7 c5 4d 21 cf c6 	mov    $0xffffffffc6cf214d,%r13
+    2dbb:	01 00                	add    %eax,(%rax)
+    2dbd:	00 4d 4d             	add    %cl,0x4d(%rbp)
+    2dc0:	21 fe                	and    %edi,%esi
+    2dc2:	89 d1                	mov    %edx,%ecx
+    2dc4:	0d e9 fa 00 00       	or     $0xfae9,%eax
+    2dc9:	00 03                	add    %al,(%rbx)
+    2dcb:	0f 8f 75 03 00 00    	jg     3146 <__ctype_b_loc@plt+0xba6>
+    2dd1:	c5 8c f8             	(bad)
+    2dd4:	00 00                	add    %al,(%rax)
+    2dd6:	00 49 c1             	add    %cl,-0x3f(%rcx)
+    2dd9:	e2 40                	loop   2e1b <__ctype_b_loc@plt+0x87b>
+    2ddb:	49 f7 ff             	idiv   %r15
+    2dde:	ff 0f                	decl   (%rdi)
+    2de0:	8c e5                	mov    %fs,%ebp
+    2de2:	4c                   	rex.WR
+    2de3:	49 31 d9             	xor    %rbx,%r9
+    2de6:	ca 83 49             	lret   $0x4983
+    2de9:	4c 29 e2             	sub    %r12,%rdx
+    2dec:	0f                   	(bad)  
+    2ded:	0f 84 4d 85 f0 49    	je     49f0b340 <__ctype_b_loc@plt+0x49f08da0>
+    2df3:	c7 c6 ae 00 00 00    	mov    $0xae,%esi
+    2df9:	7f 0f                	jg     2e0a <__ctype_b_loc@plt+0x86a>
+    2dfb:	84 32                	test   %dh,(%rdx)
+    2dfd:	02 0f                	add    (%rdi),%cl
+    2dff:	85 8c fd ff ff 48 49 	test   %ecx,0x4948ffff(%rbp,%rdi,8)
+    2e06:	c7 c1 aa fc ff ff    	mov    $0xfffffcaa,%ecx
+    2e0c:	f7 ff                	idiv   %edi
+    2e0e:	39 49 ff             	cmp    %ecx,-0x1(%rcx)
+    2e11:	c5 c8 48             	(bad)
+    2e14:	85 c2                	test   %eax,%edx
+    2e16:	01 ca                	add    %ecx,%edx
+    2e18:	4c 29 c6             	sub    %r8,%rsi
+    2e1b:	49 01 c4             	add    %rax,%r12
+    2e1e:	4c 21 0f             	and    %r9,(%rdi)
+    2e21:	8c 73 ff             	mov    %?,-0x1(%rbx)
+    2e24:	ff                   	(bad)  
+    2e25:	ff 49 0f             	decl   0xf(%rcx)
+    2e28:	84 48 c1             	test   %cl,-0x3f(%rax)
+    2e2b:	eb 18                	jmp    2e45 <__ctype_b_loc@plt+0x8a5>
+    2e2d:	00 0f                	add    %cl,(%rdi)
+    2e2f:	8c d1                	mov    %ss,%ecx
+    2e31:	03 00                	add    (%rax),%eax
+    2e33:	00 8c 49 c7 c2 ea 00 	add    %cl,0xeac2c7(%rcx,%rcx,2)
+    2e3a:	00 00                	add    %al,(%rax)
+    2e3c:	00 4c 0f 85          	add    %cl,-0x7b(%rdi,%rcx,1)
+    2e40:	d2 02                	rolb   %cl,(%rdx)
+    2e42:	00 00                	add    %al,(%rax)
+    2e44:	c7                   	(bad)  
+    2e45:	fc                   	cld    
+    2e46:	ff                   	(bad)  
+    2e47:	ff                   	(bad)  
+    2e48:	f8                   	clc    
+    2e49:	fe                   	(bad)  
+    2e4a:	e9 0f 84 fc fe       	jmp    fffffffffefcb25e <__ctype_b_loc@plt+0xfffffffffefc8cbe>
+    2e4f:	ff                   	(bad)  
+    2e50:	ff ca                	dec    %edx
+    2e52:	09 7f 4c             	or     %edi,0x4c(%rdi)
+    2e55:	09 d7                	or     %edx,%edi
+    2e57:	c1 db 49             	rcr    $0x49,%ebx
+    2e5a:	4d 31 c7             	xor    %r8,%r15
+    2e5d:	0f 84 06 02 00 00    	je     3069 <__ctype_b_loc@plt+0xac9>
+    2e63:	e9 f3 fc ff ff       	jmp    2b5b <__ctype_b_loc@plt+0x5bb>
+    2e68:	01 00                	add    %eax,(%rax)
+    2e6a:	00 0f                	add    %cl,(%rdi)
+    2e6c:	8c 6b ff             	mov    %gs,-0x1(%rbx)
+    2e6f:	ff                   	(bad)  
+    2e70:	ff 4c 31 d6          	decl   -0x2a(%rcx,%rsi,1)
+    2e74:	d2 ef                	shr    %cl,%bh
+    2e76:	49 89 4d 01          	mov    %rcx,0x1(%r13)
+    2e7a:	d4                   	(bad)  
+    2e7b:	d1 7f a5             	sarl   -0x5b(%rdi)
+    2e7e:	4d 29 49 f7          	sub    %r9,-0x9(%r9)
+    2e82:	ff 21                	jmp    *(%rcx)
+    2e84:	d9 4d 49             	(bad)  0x49(%rbp)
+    2e87:	09 c7                	or     %eax,%edi
+    2e89:	4c 21 f0             	and    %r14,%rax
+    2e8c:	8c 69 ff             	mov    %gs,-0x1(%rcx)
+    2e8f:	48 c7 c7 e9 3b 01 00 	mov    $0x13be9,%rdi
+    2e96:	00 16                	add    %dl,(%rsi)
+    2e98:	fe                   	(bad)  
+    2e99:	ff                   	(bad)  
+    2e9a:	ff 0f                	decl   (%rdi)
+    2e9c:	8f                   	(bad)  
+    2e9d:	5a                   	pop    %rdx
+    2e9e:	fd                   	std    
+    2e9f:	49 f7 fa             	idiv   %r10
+    2ea2:	0f 49 c7             	cmovns %edi,%eax
+    2ea5:	c0 75 ff ff          	shlb   $0xff,-0x1(%rbp)
+    2ea9:	49 ff 48 39          	decq   0x39(%r8)
+    2ead:	ce                   	(bad)  
+    2eae:	c7 c3 60 ff ff ff    	mov    $0xffffff60,%ebx
+    2eb4:	0f 8c be 0f 85 bc    	jl     ffffffffbc853e78 <__ctype_b_loc@plt+0xffffffffbc8518d8>
+    2eba:	01 00                	add    %eax,(%rax)
+    2ebc:	00 48 29             	add    %cl,0x29(%rax)
+    2ebf:	d7                   	xlat   %ds:(%rbx)
+    2ec0:	85 48 21             	test   %ecx,0x21(%rax)
+    2ec3:	fa                   	cli    
+    2ec4:	48 0f af 48 ff       	imul   -0x1(%rax),%rcx
+    2ec9:	c6 00 49             	movb   $0x49,(%rax)
+    2ecc:	48 85 4d 39          	test   %rcx,0x39(%rbp)
+    2ed0:	d9 00                	flds   (%rax)
+    2ed2:	00 49 c1             	add    %cl,-0x3f(%rcx)
+    2ed5:	49 c1 e5 1d          	shl    $0x1d,%r13
+    2ed9:	49                   	rex.WB
+    2eda:	49 c7 c3 0f 4c 89 f6 	mov    $0xfffffffff6894c0f,%r11
+    2ee1:	00 00                	add    %al,(%rax)
+    2ee3:	cf                   	iret   
+    2ee4:	64 01 49 48          	add    %ecx,%fs:0x48(%rcx)
+    2ee8:	85 c6                	test   %eax,%esi
+    2eea:	ba 01 0f 8c fa       	mov    $0xfa8c0f01,%edx
+    2eef:	02 00                	add    (%rax),%al
+    2ef1:	00 21                	add    %ah,(%rcx)
+    2ef3:	d4                   	(bad)  
+    2ef4:	29 f9                	sub    %edi,%ecx
+    2ef6:	fd                   	std    
+    2ef7:	4d 89 f1             	mov    %r14,%r9
+    2efa:	01 00                	add    %eax,(%rax)
+    2efc:	00 89 4d 01 f8 f4    	add    %cl,-0xb07feb3(%rcx)
+    2f02:	0f 85 41 fc ff ff    	jne    2b49 <__ctype_b_loc@plt+0x5a9>
+    2f08:	8f                   	(bad)  
+    2f09:	3b fe                	cmp    %esi,%edi
+    2f0b:	ff                   	(bad)  
+    2f0c:	ff 48 09             	decl   0x9(%rax)
+    2f0f:	0f 8c 48 f7 f8 84    	jl     ffffffff84f9265d <__ctype_b_loc@plt+0xffffffff84f900bd>
+    2f15:	4d 02 00             	rex.WRB add (%r8),%r8b
+    2f18:	00 49 0f             	add    %cl,0xf(%rcx)
+    2f1b:	84 4a 01             	test   %cl,0x1(%rdx)
+    2f1e:	00 00                	add    %al,(%rax)
+    2f20:	c1 e1 08             	shl    $0x8,%ecx
+    2f23:	00 4c 39 e2          	add    %cl,-0x1e(%rcx,%rdi,1)
+    2f27:	ff c1                	inc    %ecx
+    2f29:	00 00                	add    %al,(%rax)
+    2f2b:	ff                   	(bad)  
+    2f2c:	ff 48 0f             	decl   0xf(%rax)
+    2f2f:	4c 09 e8             	or     %r13,%rax
+    2f32:	4d 0f af 48 0f       	imul   0xf(%r8),%r9
+    2f37:	af                   	scas   %es:(%rdi),%eax
+    2f38:	c3                   	ret    
+    2f39:	85 f2                	test   %esi,%edx
+    2f3b:	4d                   	rex.WRB
+    2f3c:	48 c7                	rex.W (bad) 
+    2f3e:	48 c7 c6 4c 89 e8 ff 	mov    $0xffffffffffe8894c,%rsi
+    2f45:	dc c7                	fadd   %st,%st(7)
+    2f47:	49 89 e9             	mov    %rbp,%r9
+    2f4a:	24 fc                	and    $0xfc,%al
+    2f4c:	ff                   	(bad)  
+    2f4d:	ff                   	(bad)  
+    2f4e:	fd                   	std    
+    2f4f:	4d 09 fb             	or     %r15,%r11
+    2f52:	49 c7 c5 60 02 00 00 	mov    $0x260,%r13
+    2f59:	8c af fd 48 39 fa    	mov    %gs,-0x5c6b703(%rdi)
+    2f5f:	49 29 c4             	sub    %rax,%r12
+    2f62:	85 e7                	test   %esp,%edi
+    2f64:	02 00                	add    (%rax),%al
+    2f66:	00 48 4d             	add    %cl,0x4d(%rax)
+    2f69:	29 de                	sub    %ebx,%esi
+    2f6b:	c1 84 fc ff ff c3 0f 	roll   $0x8c,0xfc3ffff(%rsp,%rdi,8)
+    2f72:	8c 
+    2f73:	ba 01 00 00 4c       	mov    $0x4c000001,%edx
+    2f78:	01 49 31             	add    %ecx,0x31(%rcx)
+    2f7b:	49 c7 c5 12 ff ff ff 	mov    $0xffffffffffffff12,%r13
+    2f82:	48                   	rex.W
+    2f83:	4d 89 f6             	mov    %r14,%r14
+    2f86:	48 c1 e7 3c          	shl    $0x3c,%rdi
+    2f8a:	8f                   	(bad)  
+    2f8b:	9c                   	pushf  
+    2f8c:	00 49 39             	add    %cl,0x39(%rcx)
+    2f8f:	48 09 ff             	or     %rdi,%rdi
+    2f92:	0f 8c a0 00 48 f7    	jl     fffffffff7483038 <__ctype_b_loc@plt+0xfffffffff7480a98>
+    2f98:	49 c1 e0 11          	shl    $0x11,%r8
+    2f9c:	cb                   	lret   
+    2f9d:	fe                   	(bad)  
+    2f9e:	ff                   	(bad)  
+    2f9f:	ff 00                	incl   (%rax)
+    2fa1:	00 4d 4d             	add    %cl,0x4d(%rbp)
+    2fa4:	39 ea                	cmp    %ebp,%edx
+    2fa6:	49 0f                	rex.WB (bad) 
+    2fa8:	0f 85 58 fd ff ff    	jne    2d06 <__ctype_b_loc@plt+0x766>
+    2fae:	15 ff c1 8f 49       	adc    $0x498fc1ff,%eax
+    2fb3:	49 f7 fc             	idiv   %r12
+    2fb6:	49 09 d6             	or     %rdx,%r14
+    2fb9:	4c 39 c8             	cmp    %r9,%rax
+    2fbc:	48 89 f6             	mov    %rsi,%rsi
+    2fbf:	ff 41 57             	incl   0x57(%rcx)
+    2fc2:	41 56                	push   %r14
+    2fc4:	41 55                	push   %r13
+    2fc6:	41 54                	push   %r12
+    2fc8:	55                   	push   %rbp
+    2fc9:	4c 89 c5             	mov    %r8,%rbp
+    2fcc:	53                   	push   %rbx
+    2fcd:	48 81 ec 58 01 00 00 	sub    $0x158,%rsp
+    2fd4:	49 09 c7             	or     %rax,%r15
+    2fd7:	40 0f 29 84 24 d0 00 	rex movaps %xmm0,0xd0(%rsp)
+    2fde:	00 00 
+    2fe0:	0f 29 8c 24 e0 00 00 	movaps %xmm1,0xe0(%rsp)
+    2fe7:	00 
+    2fe8:	0f 29 94 24 f0 00 00 	movaps %xmm2,0xf0(%rsp)
+    2fef:	00 
+    2ff0:	0f 29 9c 24 00 01 00 	movaps %xmm3,0x100(%rsp)
+    2ff7:	00 
+    2ff8:	0f 29 a4 24 10 01 00 	movaps %xmm4,0x110(%rsp)
+    2fff:	00 
+    3000:	0f 29 ac 24 20 01 00 	movaps %xmm5,0x120(%rsp)
+    3007:	00 
+    3008:	0f 29 b4 24 30 01 00 	movaps %xmm6,0x130(%rsp)
+    300f:	00 
+    3010:	0f 29 bc 24 40 01 00 	movaps %xmm7,0x140(%rsp)
+    3017:	00 
+    3018:	48 8b 1d c9 4f 00 00 	mov    0x4fc9(%rip),%rbx        # 7fe8 <__ctype_b_loc@plt+0x5a48>
+    301f:	49 c1 e4 2e          	shl    $0x2e,%r12
+    3023:	8d 48 39             	lea    0x39(%rax),%ecx
+    3026:	4d 31 d9             	xor    %r11,%r9
+    3029:	48 8d 15 f1 1f 00 00 	lea    0x1ff1(%rip),%rdx        # 5021 <__ctype_b_loc@plt+0x2a81>
+    3030:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    3037:	00 00 
+    3039:	48 89 84 24 98 00 00 	mov    %rax,0x98(%rsp)
+    3040:	00 
+    3041:	31 c0                	xor    %eax,%eax
+    3043:	44 8b 23             	mov    (%rbx),%r12d
+    3046:	0f 85 49 0f af da    	jne    ffffffffdaaf3f95 <__ctype_b_loc@plt+0xffffffffdaaf19f5>
+    304c:	e8 9f f3 ff ff       	call   23f0 <getopt_long@plt>
+    3051:	83 f8 ff             	cmp    $0xffffffff,%eax
+    3054:	0f 84 b3 00 00 00    	je     310d <__ctype_b_loc@plt+0xb6d>
+    305a:	83 4d 0f af          	orl    $0xffffffaf,0xf(%rbp)
+    305e:	f2 ff                	repnz (bad) 
+    3060:	ff 0f                	decl   (%rdi)
+    3062:	8f                   	(bad)  
+    3063:	30 e9                	xor    %ch,%cl
+    3065:	a0 02 00 00 f5 49 01 	movabs 0x149f5000002,%al
+    306c:	00 00 
+    306e:	4d 39 4d 0f          	cmp    %r9,0xf(%r13)
+    3072:	8f                   	(bad)  
+    3073:	8f 03                	pop    (%rbx)
+    3075:	00 00                	add    %al,(%rax)
+    3077:	fe                   	(bad)  
+    3078:	ff 4c 01 c0          	decl   -0x40(%rcx,%rax,1)
+    307c:	cc                   	int3   
+    307d:	0f 85 11 ff 0f 8c    	jne    ffffffff8c102f94 <__ctype_b_loc@plt+0xffffffff8c1009f4>
+    3083:	ae                   	scas   %es:(%rdi),%al
+    3084:	fe                   	(bad)  
+    3085:	ff                   	(bad)  
+    3086:	ff                   	(bad)  
+    3087:	ff                   	(bad)  
+    3088:	ff 00                	incl   (%rax)
+    308a:	00 4c 4d 89          	add    %cl,-0x77(%rbp,%rcx,2)
+    308e:	49 ff c6             	inc    %r14
+    3091:	00 49 4d             	add    %cl,0x4d(%rcx)
+    3094:	09 ce                	or     %ecx,%esi
+    3096:	01 0f                	add    %ecx,(%rdi)
+    3098:	85 86 01 00 00 f3    	test   %eax,-0xcffffff(%rsi)
+    309e:	49 f7 fc             	idiv   %r12
+    30a1:	0f 84 00 01 00 00    	je     31a7 <__ctype_b_loc@plt+0xc07>
+    30a7:	00 e9                	add    %ch,%cl
+    30a9:	80 00 00             	addb   $0x0,(%rax)
+    30ac:	00 29                	add    %ch,(%rcx)
+    30ae:	dc 03                	faddl  (%rbx)
+    30b0:	00 00                	add    %al,(%rax)
+    30b2:	e9 55 4d 39 da       	jmp    ffffffffda397e0c <__ctype_b_loc@plt+0xffffffffda39586c>
+    30b7:	e9 d8 01 0f 8f       	jmp    ffffffff8f0f3294 <__ctype_b_loc@plt+0xffffffff8f0f0cf4>
+    30bc:	6e                   	outsb  %ds:(%rsi),(%dx)
+    30bd:	ff                   	(bad)  
+    30be:	ff                   	(bad)  
+    30bf:	ff 0f                	decl   (%rdi)
+    30c1:	8f                   	(bad)  
+    30c2:	4d 89 e5             	mov    %r12,%r13
+    30c5:	15 00 00 4d 21       	adc    $0x214d0000,%eax
+    30ca:	49                   	rex.WB
+    30cb:	4d 0f af c9          	imul   %r9,%r9
+    30cf:	f7 ff                	idiv   %edi
+    30d1:	8c 0c 0f             	mov    %cs,(%rdi,%rcx,1)
+    30d4:	8c 21                	mov    %fs,(%rcx)
+    30d6:	fc                   	cld    
+    30d7:	ff                   	(bad)  
+    30d8:	7f 5c                	jg     3136 <__ctype_b_loc@plt+0xb96>
+    30da:	4d 0f af 4c 09 d7    	imul   -0x29(%r9,%rcx,1),%r9
+    30e0:	4c 0f af e0          	imul   %rax,%r12
+    30e4:	e9 e9 4c 31 0f       	jmp    f317dd2 <__ctype_b_loc@plt+0xf315832>
+    30e9:	84 36                	test   %dh,(%rsi)
+    30eb:	ff                   	(bad)  
+    30ec:	ff                   	(bad)  
+    30ed:	ff 0f                	decl   (%rdi)
+    30ef:	85 49 39             	test   %ecx,0x39(%rcx)
+    30f2:	cf                   	iret   
+    30f3:	ff 00                	incl   (%rax)
+    30f5:	48 f7 fe             	idiv   %rsi
+    30f8:	fc                   	cld    
+    30f9:	ff                   	(bad)  
+    30fa:	ff 8b 3d 4d 01 e6    	decl   -0x19feb2c3(%rbx)
+    3100:	49 ff c7             	inc    %r15
+    3103:	ff                   	(bad)  
+    3104:	ff cf                	dec    %edi
+    3106:	4d 39 d2             	cmp    %r10,%r10
+    3109:	29 4d 29             	sub    %ecx,0x29(%rbp)
+    310c:	ff 44 89 23          	incl   0x23(%rcx,%rcx,4)
+    3110:	48 8b 84 24 98 00 00 	mov    0x98(%rsp),%rax
+    3117:	00 
+    3118:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    311f:	00 00 
+    3121:	0f 85 4d 85 fa 00    	jne    fab674 <__ctype_b_loc@plt+0xfa90d4>
+    3127:	48 81 c4 58 01 00 00 	add    $0x158,%rsp
+    312e:	5b                   	pop    %rbx
+    312f:	5d                   	pop    %rbp
+    3130:	41 5c                	pop    %r12
+    3132:	41 5d                	pop    %r13
+    3134:	41 5e                	pop    %r14
+    3136:	41 5f                	pop    %r15
+    3138:	c3                   	ret    
+    3139:	40 e9 4d 01 4c 89    	rex jmp ffffffff894c328c <__ctype_b_loc@plt+0xffffffff894c0cec>
+    313f:	f7 d0                	not    %eax
+    3141:	8f 48 01 ff          	(bad)
+    3145:	09 4d 49             	or     %ecx,0x49(%rbp)
+    3148:	ff c7                	inc    %edi
+    314a:	31 d3                	xor    %edx,%ebx
+    314c:	4c 0f 8f 33 02 00 00 	rex.WR jg 3386 <__ctype_b_loc@plt+0xde6>
+    3153:	8f 49 ff c3          	(bad)  
+    3157:	49 89 f8             	mov    %rdi,%r8
+    315a:	e9 4d 29 f1 ff       	jmp    fffffffffff15aac <__ctype_b_loc@plt+0xfffffffffff1350c>
+    315f:	48 c1 e3 29          	shl    $0x29,%rbx
+    3163:	f6 84 43 fc 48 21 c7 	testb  $0x49,-0x38deb704(%rbx,%rax,2)
+    316a:	49 
+    316b:	ff c0                	inc    %eax
+    316d:	09 d5                	or     %edx,%ebp
+    316f:	21 ff                	and    %edi,%edi
+    3171:	0f 85 bc fc ff ff    	jne    2e33 <__ctype_b_loc@plt+0x893>
+    3177:	49 c1 ea 3d          	shr    $0x3d,%r10
+    317b:	c1 4d 39 c1          	rorl   $0xc1,0x39(%rbp)
+    317f:	a0 03 00 00 4d 85 c1 	movabs 0x2949c1854d000003,%al
+    3186:	49 29 
+    3188:	49 c1 ea 22          	shr    $0x22,%r10
+    318c:	0f 8c 17 fc ff ff    	jl     2da9 <__ctype_b_loc@plt+0x809>
+    3192:	4c c9                	rex.WR leave 
+    3194:	4c 09 e2             	or     %r12,%rdx
+    3197:	cb                   	lret   
+    3198:	00 00                	add    %al,(%rax)
+    319a:	48 f7 ff             	idiv   %rdi
+    319d:	4c                   	rex.WR
+    319e:	49 09 0f             	or     %rcx,(%r15)
+    31a1:	84 24 02             	test   %ah,(%rdx,%rax,1)
+    31a4:	00 0f                	add    %cl,(%rdi)
+    31a6:	84 43 fd             	test   %al,-0x3(%rbx)
+    31a9:	ff                   	(bad)  
+    31aa:	ff 49 c1             	decl   -0x3f(%rcx)
+    31ad:	e8 17 cc 48 ff       	call   ffffffffff48fdc9 <__ctype_b_loc@plt+0xffffffffff48d829>
+    31b2:	c7                   	(bad)  
+    31b3:	2d 48 ff 49 c7       	sub    $0xc749ff48,%eax
+    31b8:	c6                   	(bad)  
+    31b9:	7c 19                	jl     31d4 <__ctype_b_loc@plt+0xc34>
+    31bb:	ff                   	(bad)  
+    31bc:	ff 4c 21 d7          	decl   -0x29(%rcx,%riz,1)
+    31c0:	00 49 89             	add    %cl,-0x77(%rcx)
+    31c3:	48 c1 ef 1d          	shr    $0x1d,%rdi
+    31c7:	31 de                	xor    %ebx,%esi
+    31c9:	4d 21 49 39          	and    %r9,0x39(%r9)
+    31cd:	49 f7 ff             	idiv   %r15
+    31d0:	4d 89 49 48          	mov    %r9,0x48(%r9)
+    31d4:	85 d0                	test   %edx,%eax
+    31d6:	e3 03                	jrcxz  31db <__ctype_b_loc@plt+0xc3b>
+    31d8:	fc                   	cld    
+    31d9:	fd                   	std    
+    31da:	49 39 cb             	cmp    %rcx,%r11
+    31dd:	e9 85 03 00 4d       	jmp    4d003567 <__ctype_b_loc@plt+0x4d000fc7>
+    31e2:	29 0f                	sub    %ecx,(%rdi)
+    31e4:	84 4b fc             	test   %cl,-0x4(%rbx)
+    31e7:	ff                   	(bad)  
+    31e8:	ff 48 0f             	decl   0xf(%rax)
+    31eb:	85 be fc ff ff d3    	test   %edi,-0x2c000004(%rsi)
+    31f1:	49 0f af cc          	imul   %r12,%rcx
+    31f5:	48 f7 f8             	idiv   %rax
+    31f8:	ff                   	(bad)  
+    31f9:	ff                   	(bad)  
+    31fa:	ec                   	in     (%dx),%al
+    31fb:	05 01 00 49 f7       	add    $0xf7490001,%eax
+    3200:	fb                   	sti    
+    3201:	00 4c 21 e2          	add    %cl,-0x1e(%rcx,%riz,1)
+    3205:	d6                   	(bad)  
+    3206:	02 00                	add    (%rax),%al
+    3208:	00 1d 7c 0f 8c dc    	add    %bl,-0x2373f084(%rip)        # ffffffffdc8c418a <__ctype_b_loc@plt+0xffffffffdc8c1bea>
+    320e:	75 78                	jne    3288 <__ctype_b_loc@plt+0xce8>
+    3210:	00 09                	add    %cl,(%rcx)
+    3212:	49 0f 8f 44 fe 4d 29 	rex.WB jg 294e305d <__ctype_b_loc@plt+0x294e0abd>
+    3219:	f4                   	hlt    
+    321a:	ff 1a                	lcall  *(%rdx)
+    321c:	48 ff c7             	inc    %rdi
+    321f:	0f af d8             	imul   %eax,%ebx
+    3222:	49 29 df             	sub    %rbx,%r15
+    3225:	0f 8f 19 fc ff ff    	jg     2e44 <__ctype_b_loc@plt+0x8a4>
+    322b:	84 74 48 85          	test   %dh,-0x7b(%rax,%rcx,2)
+    322f:	d3 d1                	rcl    %cl,%ecx
+    3231:	fe 49 f7             	decb   -0x9(%rcx)
+    3234:	f9                   	stc    
+    3235:	49 c7 c7 dc ff ff ff 	mov    $0xffffffffffffffdc,%r15
+    323c:	00 f0                	add    %dh,%al
+    323e:	26 ff 48 c7          	es decl -0x39(%rax)
+    3242:	4c 0f                	rex.WR (bad) 
+    3244:	0f 84 57 03 e9 3b    	je     3be935a1 <__ctype_b_loc@plt+0x3be91001>
+    324a:	fc                   	cld    
+    324b:	ff                   	(bad)  
+    324c:	ff e3                	jmp    *%rbx
+    324e:	00 00                	add    %al,(%rax)
+    3250:	00 2a                	add    %ch,(%rdx)
+    3252:	02 00                	add    (%rax),%al
+    3254:	48 29 f2             	sub    %rsi,%rdx
+    3257:	f1                   	int1   
+    3258:	ff 4c 09 c7          	decl   -0x39(%rcx,%rcx,1)
+    325c:	74 22                	je     3280 <__ctype_b_loc@plt+0xce0>
+    325e:	01 49 ff             	add    %ecx,-0x1(%rcx)
+    3261:	48 0f 8f e9 b0 fe ff 	rex.W jg fffffffffffee351 <__ctype_b_loc@plt+0xfffffffffffebdb1>
+    3268:	ff c1                	inc    %ecx
+    326a:	eb 2a                	jmp    3296 <__ctype_b_loc@plt+0xcf6>
+    326c:	85 c0                	test   %eax,%eax
+    326e:	45 00 00             	add    %r8b,(%r8)
+    3271:	00 4c 21 eb          	add    %cl,-0x15(%rcx,%riz,1)
+    3275:	8e 49 f7             	mov    -0x9(%rcx),%cs
+    3278:	f9                   	stc    
+    3279:	ff 48 09             	decl   0x9(%rax)
+    327c:	cf                   	iret   
+    327d:	ff 0f                	decl   (%rdi)
+    327f:	8c d1                	mov    %ss,%ecx
+    3281:	fc                   	cld    
+    3282:	ff                   	(bad)  
+    3283:	ff 29                	ljmp   *(%rcx)
+    3285:	c3                   	ret    
+    3286:	4d 09 f9             	or     %r15,%r9
+    3289:	2d 48 c1 4c 0f       	sub    $0xf4cc148,%eax
+    328e:	af                   	scas   %es:(%rdi),%eax
+    328f:	48 c1 e1 40          	shl    $0x40,%rcx
+    3293:	4c 29 d6             	sub    %r10,%rsi
+    3296:	c1 e1 3d             	shl    $0x3d,%ecx
+    3299:	cb                   	lret   
+    329a:	24 0f                	and    $0xf,%al
+    329c:	8f                   	(bad)  
+    329d:	90                   	nop
+    329e:	02 00                	add    (%rax),%al
+    32a0:	00 7f 32             	add    %bh,0x32(%rdi)
+    32a3:	c1 e6 4c             	shl    $0x4c,%esi
+    32a6:	89 e8                	mov    %ebp,%eax
+    32a8:	85 ce                	test   %ecx,%esi
+    32aa:	c5 40 e9             	(bad)
+    32ad:	1b 01                	sbb    (%rcx),%eax
+    32af:	00 00                	add    %al,(%rax)
+    32b1:	3d 03 00 00 8b       	cmp    $0x8b000003,%eax
+    32b6:	4c 0f 4c 39          	cmovl  (%rcx),%r15
+    32ba:	ff                   	(bad)  
+    32bb:	ff                   	(bad)  
+    32bc:	ff 48 c1             	decl   -0x3f(%rax)
+    32bf:	48 09 fb             	or     %rdi,%rbx
+    32c2:	26 0f 8f ca 01 48 21 	es jg  21483493 <__ctype_b_loc@plt+0x21480ef3>
+    32c9:	48 ff c0             	inc    %rax
+    32cc:	0e                   	(bad)  
+    32cd:	49                   	rex.WB
+    32ce:	49 c7 c1 21 01 00 00 	mov    $0x121,%r9
+    32d5:	03 00                	add    (%rax),%eax
+    32d7:	00 0f                	add    %cl,(%rdi)
+    32d9:	8c 17                	mov    %ss,(%rdi)
+    32db:	03 00                	add    (%rax),%eax
+    32dd:	00 ff                	add    %bh,%bh
+    32df:	4d 31 49 0f          	xor    %r9,0xf(%r9)
+    32e3:	af                   	scas   %es:(%rdi),%eax
+    32e4:	cf                   	iret   
+    32e5:	f8                   	clc    
+    32e6:	be 4c 4d 09 fd       	mov    $0xfd094d4c,%esi
+    32eb:	29 4d 89             	sub    %ecx,-0x77(%rbp)
+    32ee:	48 31 f1             	xor    %rsi,%rcx
+    32f1:	c9                   	leave  
+    32f2:	c2 e9 49             	ret    $0x49e9
+    32f5:	29 d6                	sub    %edx,%esi
+    32f7:	4c 0f 49 01          	cmovns (%rcx),%r8
+    32fb:	48                   	rex.W
+    32fc:	4d 01 d2             	add    %r10,%r10
+    32ff:	fb                   	sti    
+    3300:	20 49 48             	and    %cl,0x48(%rcx)
+    3303:	48 c7 c7 0d 02 00 00 	mov    $0x20d,%rdi
+    330a:	8f 47 02             	pop    0x2(%rdi)
+    330d:	00 00                	add    %al,(%rax)
+    330f:	4d 85 de             	test   %r11,%r14
+    3312:	0f af d1             	imul   %ecx,%edx
+    3315:	c0 0f 8f             	rorb   $0x8f,(%rdi)
+    3318:	69 fc ff 48 f7 fe    	imul   $0xfef748ff,%esp,%edi
+    331e:	c1 00 48             	roll   $0x48,(%rax)
+    3321:	c7                   	(bad)  
+    3322:	4c 21 c6             	and    %r8,%rsi
+    3325:	ff                   	(bad)  
+    3326:	ff c1                	inc    %ecx
+    3328:	eb 08                	jmp    3332 <__ctype_b_loc@plt+0xd92>
+    332a:	ed                   	in     (%dx),%eax
+    332b:	06                   	(bad)  
+    332c:	03 48 49             	add    0x49(%rax),%ecx
+    332f:	4c 09 49 0f          	or     %r9,0xf(%rcx)
+    3333:	85 94 00 00 00 0f 8c 	test   %edx,-0x73f10000(%rax,%rax,1)
+    333a:	45 fd                	rex.RB std 
+    333c:	ff 0f                	decl   (%rdi)
+    333e:	84 2a                	test   %ch,(%rdx)
+    3340:	48                   	rex.W
+    3341:	49 f7 fe             	idiv   %r14
+    3344:	48 f7 48 09 fa c4 01 	testq  $0xffffffffe301c4fa,0x9(%rax)
+    334b:	e3 
+    334c:	4c                   	rex.WR
+    334d:	4c 85 ea             	test   %r13,%rdx
+    3350:	49                   	rex.WB
+    3351:	4d 09 c6             	or     %r8,%r14
+    3354:	c3                   	ret    
+    3355:	f7 fe                	idiv   %esi
+    3357:	49 c1 e6 2a          	shl    $0x2a,%r14
+    335b:	fe                   	(bad)  
+    335c:	ff 48 39             	decl   0x39(%rax)
+    335f:	c7                   	(bad)  
+    3360:	f7 fe                	idiv   %esi
+    3362:	d0 48 c7             	rorb   -0x39(%rax)
+    3365:	c1 49 01 d3          	rorl   $0xd3,0x1(%rcx)
+    3369:	ff 4c 49 29          	decl   0x29(%rcx,%rcx,2)
+    336d:	d0 02                	rolb   (%rdx)
+    336f:	00 00                	add    %al,(%rax)
+    3371:	4d 29 49 f7          	sub    %r9,-0x9(%r9)
+    3375:	f8                   	clc    
+    3376:	4c e9 fe fe ff 0f    	rex.WR jmp 1000327a <__ctype_b_loc@plt+0x10000cda>
+    337c:	84 eb                	test   %ch,%bl
+    337e:	fc                   	cld    
+    337f:	ff                   	(bad)  
+    3380:	ff 00                	incl   (%rax)
+    3382:	4d 89 f6             	mov    %r14,%r14
+    3385:	e3 49                	jrcxz  33d0 <__ctype_b_loc@plt+0xe30>
+    3387:	21 c6                	and    %eax,%esi
+    3389:	0f 8c 1c 4c 29 de    	jl     ffffffffde297fab <__ctype_b_loc@plt+0xffffffffde295a0b>
+    338f:	75 59                	jne    33ea <__ctype_b_loc@plt+0xe4a>
+    3391:	ff 0f                	decl   (%rdi)
+    3393:	8c 74 b0 ff          	mov    %?,-0x1(%rax,%rsi,4)
+    3397:	ff 48 c1             	decl   -0x3f(%rax)
+    339a:	ea                   	(bad)  
+    339b:	27                   	(bad)  
+    339c:	48 c1 e6 1c          	shl    $0x1c,%rsi
+    33a0:	48 c1 e8 25          	shr    $0x25,%rax
+    33a4:	4d 01 f3             	add    %r14,%r11
+    33a7:	fc                   	cld    
+    33a8:	49 39 d1             	cmp    %rdx,%r9
+    33ab:	9b                   	fwait
+    33ac:	fd                   	std    
+    33ad:	4d 09 f1             	or     %r14,%r9
+    33b0:	49 c1 e7 0f          	shl    $0xf,%r15
+    33b4:	84 24 01             	test   %ah,(%rcx,%rax,1)
+    33b7:	00 00                	add    %al,(%rax)
+    33b9:	4c 0f 4d 85 d9 77 fe 	cmovge -0x18827(%rbp),%r8
+    33c0:	ff 
+    33c1:	ff 49 0f             	decl   0xf(%rcx)
+    33c4:	84 1f                	test   %bl,(%rdi)
+    33c6:	49 85 f7             	test   %rsi,%r15
+    33c9:	31 fe                	xor    %edi,%esi
+    33cb:	4c 85 48 85          	test   %r9,-0x7b(%rax)
+    33cf:	de e1                	fsubp  %st,%st(1)
+    33d1:	31 c0                	xor    %eax,%eax
+    33d3:	85 0f                	test   %ecx,(%rdi)
+    33d5:	85 fb                	test   %edi,%ebx
+    33d7:	00 00                	add    %al,(%rax)
+    33d9:	00 85 fc 4d 09 49    	add    %al,0x49094dfc(%rbp)
+    33df:	c1 4d 01 fc          	rorl   $0xfc,0x1(%rbp)
+    33e3:	4d 39 d0             	cmp    %r10,%r8
+    33e6:	21 48 f7             	and    %ecx,-0x9(%rax)
+    33e9:	ff                   	(bad)  
+    33ea:	ff 4c 0f af          	decl   -0x51(%rdi,%rcx,1)
+    33ee:	4c 31 48 89          	xor    %r9,-0x77(%rax)
+    33f2:	ce                   	(bad)  
+    33f3:	0f 84 27 01 00 00    	je     3520 <__ctype_b_loc@plt+0xf80>
+    33f9:	29 f7                	sub    %esi,%edi
+    33fb:	21 0f                	and    %ecx,(%rdi)
+    33fd:	8c 63 fd             	mov    %fs,-0x3(%rbx)
+    3400:	ff                   	(bad)  
+    3401:	ff                   	(bad)  
+    3402:	ed                   	in     (%dx),%eax
+    3403:	24 4d                	and    $0x4d,%al
+    3405:	31 e0                	xor    %esp,%eax
+    3407:	48 29 48 01          	sub    %rcx,0x1(%rax)
+    340b:	c3                   	ret    
+    340c:	00 00                	add    %al,(%rax)
+    340e:	48 f7 fe             	idiv   %rsi
+    3411:	cf                   	iret   
+    3412:	4c 0f af ca          	imul   %rdx,%r9
+    3416:	49                   	rex.WB
+    3417:	4d 39 cf             	cmp    %r9,%r15
+    341a:	b5 fe                	mov    $0xfe,%ch
+    341c:	ff                   	(bad)  
+    341d:	ff c7                	inc    %edi
+    341f:	c3                   	ret    
+    3420:	b3 0f                	mov    $0xf,%bl
+    3422:	84 11                	test   %dl,(%rcx)
+    3424:	03 00                	add    (%rax),%eax
+    3426:	00 d0                	add    %dl,%al
+    3428:	6d                   	insl   (%dx),%es:(%rdi)
+    3429:	fd                   	std    
+    342a:	ff                   	(bad)  
+    342b:	ff 0f                	decl   (%rdi)
+    342d:	8f                   	(bad)  
+    342e:	14 4d                	adc    $0x4d,%al
+    3430:	89 dd                	mov    %ebx,%ebp
+    3432:	eb 0f                	jmp    3443 <__ctype_b_loc@plt+0xea3>
+    3434:	8f                   	(bad)  
+    3435:	96                   	xchg   %eax,%esi
+    3436:	fe                   	(bad)  
+    3437:	ff                   	(bad)  
+    3438:	ff 4d 21             	decl   0x21(%rbp)
+    343b:	ef                   	out    %eax,(%dx)
+    343c:	03 00                	add    (%rax),%eax
+    343e:	00 49 c7             	add    %cl,-0x39(%rcx)
+    3441:	c7 03 03 00 00 48    	movl   $0x48000003,(%rbx)
+    3447:	8d 4c 31 4c          	lea    0x4c(%rcx,%rsi,1),%ecx
+    344b:	31 e7                	xor    %esp,%edi
+    344d:	f8                   	clc    
+    344e:	5e                   	pop    %rsi
+    344f:	49 0f 8f ca 48 f7 fa 	rex.WB jg fffffffffaf77d20 <__ctype_b_loc@plt+0xfffffffffaf75780>
+    3456:	5d                   	pop    %rbp
+    3457:	fe                   	(bad)  
+    3458:	ff                   	(bad)  
+    3459:	ff 0f                	decl   (%rdi)
+    345b:	8c 55 03             	mov    %ss,0x3(%rbp)
+    345e:	00 00                	add    %al,(%rax)
+    3460:	21 c5                	and    %eax,%ebp
+    3462:	e8 0f 84 11 0f       	call   f11b876 <__ctype_b_loc@plt+0xf1192d6>
+    3467:	8f                   	(bad)  
+    3468:	0d fd ff ff d0       	or     $0xd0fffffd,%eax
+    346d:	01 00                	add    %eax,(%rax)
+    346f:	49 39 c3             	cmp    %rax,%r11
+    3472:	d1 8f 49 48 49 c7    	rorl   -0x38b6b7b7(%rdi)
+    3478:	c6                   	(bad)  
+    3479:	5e                   	pop    %rsi
+    347a:	48 c7 c1 2c 01 48 21 	mov    $0x2148012c,%rcx
+    3481:	49 09 f1             	or     %rsi,%r9
+    3484:	25 9a 03 00 4d       	and    $0x4d00039a,%eax
+    3489:	01 d5                	add    %edx,%ebp
+    348b:	0f 49 4d 21          	cmovns 0x21(%rbp),%ecx
+    348f:	d6                   	(bad)  
+    3490:	48 29 c2             	sub    %rax,%rdx
+    3493:	4d 0f 8f 19 01 00 00 	rex.WRB jg 35b3 <__ctype_b_loc@plt+0x1013>
+    349a:	00 00                	add    %al,(%rax)
+    349c:	49 21 ca             	and    %rcx,%r10
+    349f:	0f 4d 85 eb 4d 09 ee 	cmovge -0x11f6b215(%rbp),%eax
+    34a6:	4d 0f af f1          	imul   %r9,%r14
+    34aa:	e5 2f                	in     $0x2f,%eax
+    34ac:	fd                   	std    
+    34ad:	4c 89 d8             	mov    %r11,%rax
+    34b0:	e7 4d                	out    %eax,$0x4d
+    34b2:	31 e6                	xor    %esp,%esi
+    34b4:	4d 31 c3             	xor    %r8,%r11
+    34b7:	48 f7 49 ff c0 4d 0f 	testq  $0xffffffff850f4dc0,-0x1(%rcx)
+    34be:	85 
+    34bf:	8e fc                	mov    %esp,%?
+    34c1:	ff                   	(bad)  
+    34c2:	ff 0b                	decl   (%rbx)
+    34c4:	49 0f e9 9d 02 00 48 	rex.WB psubsw -0x8b7fffe(%r13),%mm3
+    34cb:	f7 
+    34cc:	49 c1 eb 33          	shr    $0x33,%r11
+    34d0:	85 ce                	test   %ecx,%esi
+    34d2:	49 21 d5             	and    %rdx,%r13
+    34d5:	e9 39 fc 49 09       	jmp    94a3113 <__ctype_b_loc@plt+0x94a0b73>
+    34da:	c9                   	leave  
+    34db:	c7 c4 97 ff 4d 31    	mov    $0x314dff97,%esp
+    34e1:	e0 0d                	loopne 34f0 <__ctype_b_loc@plt+0xf50>
+    34e3:	4c 39 ef             	cmp    %r13,%rdi
+    34e6:	0f 8f e3 fe ff 49    	jg     4a0033cf <__ctype_b_loc@plt+0x4a000e2f>
+    34ec:	ff c1                	inc    %ecx
+    34ee:	c1 01 00             	roll   $0x0,(%rcx)
+    34f1:	00 49 4d             	add    %cl,0x4d(%rcx)
+    34f4:	31 d5                	xor    %edx,%ebp
+    34f6:	ff c1                	inc    %ecx
+    34f8:	48 ff c6             	inc    %rsi
+    34fb:	0f 8c 05 48 31 c3    	jl     ffffffffc3317d06 <__ctype_b_loc@plt+0xffffffffc3315766>
+    3501:	49 0f 8f 0c fe ff ff 	rex.WB jg 3314 <__ctype_b_loc@plt+0xd74>
+    3508:	49 0f af f9          	imul   %r9,%rdi
+    350c:	dc 21                	fsubl  (%rcx)
+    350e:	e1 0f                	loope  351f <__ctype_b_loc@plt+0xf7f>
+    3510:	85 27                	test   %esp,(%rdi)
+    3512:	4c 01 de             	add    %r11,%rsi
+    3515:	0f 84 d9 00 00 00    	je     35f4 <__ctype_b_loc@plt+0x1054>
+    351b:	c1 49 ff c2          	rorl   $0xc2,-0x1(%rcx)
+    351f:	53                   	push   %rbx
+    3520:	ff                   	(bad)  
+    3521:	ff                   	(bad)  
+    3522:	ff 48 c7             	decl   -0x39(%rax)
+    3525:	c2 78 75             	ret    $0x7578
+    3528:	91                   	xchg   %eax,%ecx
+    3529:	ff                   	(bad)  
+    352a:	e9 99 00 00 00       	jmp    35c8 <__ctype_b_loc@plt+0x1028>
+    352f:	00 7d 49             	add    %bh,0x49(%rbp)
+    3532:	ff c4                	inc    %esp
+    3534:	4d                   	rex.WRB
+    3535:	4c 39 fa             	cmp    %r15,%rdx
+    3538:	48 f7 fb             	idiv   %rbx
+    353b:	dd 00                	fldl   (%rax)
+    353d:	49 0f 49 21          	cmovns (%r9),%rsp
+    3541:	d6                   	(bad)  
+    3542:	0f 8f 9e fe ff ff    	jg     33e6 <__ctype_b_loc@plt+0xe46>
+    3548:	da 4c 4d 48          	fimull 0x48(%rbp,%rcx,2)
+    354c:	c1 e1 07             	shl    $0x7,%ecx
+    354f:	00 00                	add    %al,(%rax)
+    3551:	bf fc 4c 09 f8       	mov    $0xf8094cfc,%edi
+    3556:	c7 c1 99 02 4c 31    	mov    $0x314c0299,%ecx
+    355c:	da c0                	fcmovb %st(0),%st
+    355e:	0f 85 dd 01 00 00    	jne    3741 <__ctype_b_loc@plt+0x11a1>
+    3564:	89 49 ff             	mov    %ecx,-0x1(%rcx)
+    3567:	c4 c1 ee e9          	(bad)
+    356b:	0f 84 b9 01 00 00    	je     372a <__ctype_b_loc@plt+0x118a>
+    3571:	0f 8c e9 4d 48 ff    	jl     ffffffffff488360 <__ctype_b_loc@plt+0xffffffffff485dc0>
+    3577:	c6                   	(bad)  
+    3578:	e6 39                	out    %al,$0x39
+    357a:	7c eb                	jl     3567 <__ctype_b_loc@plt+0xfc7>
+    357c:	01 c1                	add    %eax,%ecx
+    357e:	48 01 d9             	add    %rbx,%rcx
+    3581:	ee                   	out    %al,(%dx)
+    3582:	2c fa                	sub    $0xfa,%al
+    3584:	00 0f                	add    %cl,(%rdi)
+    3586:	48 ff c1             	inc    %rcx
+    3589:	00 00                	add    %al,(%rax)
+    358b:	4c 01 d3             	add    %r10,%rbx
+    358e:	4d 0f 84 29 02 49 c1 	rex.WRB je ffffffffc14937be <__ctype_b_loc@plt+0xffffffffc149121e>
+    3595:	e6 06                	out    %al,$0x6
+    3597:	0f 8f 48 21 f3 4d    	jg     4df356e5 <__ctype_b_loc@plt+0x4df33145>
+    359d:	0f af f4             	imul   %esp,%esi
+    35a0:	c7                   	(bad)  
+    35a1:	4d 39 df             	cmp    %r11,%r15
+    35a4:	ff                   	(bad)  
+    35a5:	e9 44 fc 4c 0f       	jmp    f4d31ee <__ctype_b_loc@plt+0xf4d0c4e>
+    35aa:	af                   	scas   %es:(%rdi),%eax
+    35ab:	cf                   	iret   
+    35ac:	4d 0f 85 c9 02 0f 8c 	rex.WRB jne ffffffff8c0f387c <__ctype_b_loc@plt+0xffffffff8c0f12dc>
+    35b3:	ec                   	in     (%dx),%al
+    35b4:	0f 85 af fc ff ff    	jne    3269 <__ctype_b_loc@plt+0xcc9>
+    35ba:	48 39 d6             	cmp    %rdx,%rsi
+    35bd:	49 21 db             	and    %rbx,%r11
+    35c0:	ee                   	out    %al,(%dx)
+    35c1:	1d 4d 4c 48 49       	sbb    $0x49484c4d,%eax
+    35c6:	f7 fd                	idiv   %ebp
+    35c8:	49 ff c1             	inc    %r9
+    35cb:	f7 fb                	idiv   %ebx
+    35cd:	ff 4d 01             	decl   0x1(%rbp)
+    35d0:	e6 d9                	out    %al,$0xd9
+    35d2:	8f                   	(bad)  
+    35d3:	4d 29 c8             	sub    %r9,%r8
+    35d6:	ff 8c 57 4d 01 f3 01 	decl   0x1f3014d(%rdi,%rdx,2)
+    35dd:	00 00                	add    %al,(%rax)
+    35df:	ff                   	(bad)  
+    35e0:	ff 48 31             	decl   0x31(%rax)
+    35e3:	f1                   	int1   
+    35e4:	4c 89 c2             	mov    %r8,%rdx
+    35e7:	49 c1 ec e9          	shr    $0xe9,%r12
+    35eb:	33 03                	xor    (%rbx),%eax
+    35ed:	00 00                	add    %al,(%rax)
+    35ef:	49 21 d6             	and    %rdx,%r14
+    35f2:	c7 c4 e0 4c 09 ea    	mov    $0xea094ce0,%esp
+    35f8:	0f 85 cb 02 00 00    	jne    38c9 <__ctype_b_loc@plt+0x1329>
+    35fe:	c2 c7 0f             	ret    $0xfc7
+    3601:	85 48 01             	test   %ecx,0x1(%rax)
+    3604:	d0 00                	rolb   (%rax)
+    3606:	00 49 c1             	add    %cl,-0x3f(%rcx)
+    3609:	e3 26                	jrcxz  3631 <__ctype_b_loc@plt+0x1091>
+    360b:	21 d3                	and    %edx,%ebx
+    360d:	48 09 c3             	or     %rax,%rbx
+    3610:	4c 89 cf             	mov    %r9,%rdi
+    3613:	01 fd                	add    %edi,%ebp
+    3615:	ff 4c 09 d1          	decl   -0x2f(%rcx,%rcx,1)
+    3619:	4d 89 fe             	mov    %r15,%r14
+    361c:	31 d0                	xor    %edx,%eax
+    361e:	48                   	rex.W
+    361f:	4c                   	rex.WR
+    3620:	48                   	rex.W
+    3621:	4d 29 ef             	sub    %r13,%r15
+    3624:	27                   	(bad)  
+    3625:	cf                   	iret   
+    3626:	85 46 02             	test   %eax,0x2(%rsi)
+    3629:	4c 21 c7             	and    %r8,%rdi
+    362c:	49                   	rex.WB
+    362d:	49 09 0f             	or     %rcx,(%r15)
+    3630:	85 7f 03             	test   %edi,0x3(%rdi)
+    3633:	00 49 c7             	add    %cl,-0x39(%rcx)
+    3636:	c4                   	(bad)  
+    3637:	ad                   	lods   %ds:(%rsi),%eax
+    3638:	fe                   	(bad)  
+    3639:	ff                   	(bad)  
+    363a:	ff 00                	incl   (%rax)
+    363c:	4d                   	rex.WRB
+    363d:	49 c1 ed 18          	shr    $0x18,%r13
+    3641:	49 c7 c3 df fe ff ff 	mov    $0xfffffffffffffedf,%r11
+    3648:	4d 09 e1             	or     %r12,%r9
+    364b:	ff                   	(bad)  
+    364c:	fd                   	std    
+    364d:	0f 85 61 03 00 00    	jne    39b4 <__ctype_b_loc@plt+0x1414>
+    3653:	ff                   	(bad)  
+    3654:	ff 00                	incl   (%rax)
+    3656:	49 0f 4c 39          	cmovl  (%r9),%rdi
+    365a:	e6 00                	out    %al,$0x0
+    365c:	48 c1 4d 01 c6       	rorq   $0xc6,0x1(%rbp)
+    3661:	01 e9                	add    %ebp,%ecx
+    3663:	d5                   	(bad)  
+    3664:	fe                   	(bad)  
+    3665:	ff                   	(bad)  
+    3666:	ff 00                	incl   (%rax)
+    3668:	49 89 fd             	mov    %rdi,%r13
+    366b:	49                   	rex.WB
+    366c:	49 89 48 c1          	mov    %rcx,-0x3f(%r8)
+    3670:	ea                   	(bad)  
+    3671:	09 48 49             	or     %ecx,0x49(%rax)
+    3674:	4d 01 ef             	add    %r13,%r15
+    3677:	d5                   	(bad)  
+    3678:	03 00                	add    (%rax),%eax
+    367a:	48 31 c3             	xor    %rax,%rbx
+    367d:	dd 00                	fldl   (%rax)
+    367f:	e9 fa fe ff ff       	jmp    357e <__ctype_b_loc@plt+0xfde>
+    3684:	d7                   	xlat   %ds:(%rbx)
+    3685:	01 00                	add    %eax,(%rax)
+    3687:	00 4d 29             	add    %cl,0x29(%rbp)
+    368a:	d5                   	(bad)  
+    368b:	ff                   	(bad)  
+    368c:	e9 49 c7 4c 49       	jmp    494cfdda <__ctype_b_loc@plt+0x494cd83a>
+    3691:	4c 09 fe             	or     %r15,%rsi
+    3694:	09 f7                	or     %esi,%edi
+    3696:	49                   	rex.WB
+    3697:	4c                   	rex.WR
+    3698:	49 c1 ee 04          	shr    $0x4,%r14
+    369c:	eb 98                	jmp    3636 <__ctype_b_loc@plt+0x1096>
+    369e:	4d                   	rex.WRB
+    369f:	4d 85 f7             	test   %r14,%r15
+    36a2:	f7 fb                	idiv   %ebx
+    36a4:	4c 0f af cb          	imul   %rbx,%r9
+    36a8:	48 c7                	rex.W (bad) 
+    36aa:	4d 21 ea             	and    %r13,%r10
+    36ad:	ff                   	(bad)  
+    36ae:	ff 01                	incl   (%rcx)
+    36b0:	f1                   	int1   
+    36b1:	49 29 fd             	sub    %rdi,%r13
+    36b4:	0f 00 4d 85          	str    -0x7b(%rbp)
+    36b8:	d3 ff                	sar    %cl,%edi
+    36ba:	48 09 49 ff          	or     %rcx,-0x1(%rcx)
+    36be:	c7                   	(bad)  
+    36bf:	4d 21 0f             	and    %r9,(%r15)
+    36c2:	84 f9                	test   %bh,%cl
+    36c4:	01 4d 39             	add    %ecx,0x39(%rbp)
+    36c7:	e2 0f                	loop   36d8 <__ctype_b_loc@plt+0x1138>
+    36c9:	84 48 c1             	test   %cl,-0x3f(%rax)
+    36cc:	e0 11                	loopne 36df <__ctype_b_loc@plt+0x113f>
+    36ce:	00 00                	add    %al,(%rax)
+    36d0:	79 fd                	jns    36cf <__ctype_b_loc@plt+0x112f>
+    36d2:	49                   	rex.WB
+    36d3:	49 39 0f             	cmp    %rcx,(%r15)
+    36d6:	85 ca                	test   %ecx,%edx
+    36d8:	fc                   	cld    
+    36d9:	ff                   	(bad)  
+    36da:	ff 00                	incl   (%rax)
+    36dc:	0f 8c d1 49 f7 fe    	jl     fffffffffef780b3 <__ctype_b_loc@plt+0xfffffffffef75b13>
+    36e2:	49 c7                	rex.WB (bad) 
+    36e4:	49 c7 c6 27 0f 85 14 	mov    $0x14850f27,%r14
+    36eb:	0f 84 e5 00 4c 21    	je     214c37d6 <__ctype_b_loc@plt+0x214c1236>
+    36f1:	e7 e9                	out    %eax,$0xe9
+    36f3:	fa                   	cli    
+    36f4:	4c 31 c0             	xor    %r8,%rax
+    36f7:	14 4d                	adc    $0x4d,%al
+    36f9:	21 f2                	and    %esi,%edx
+    36fb:	48 74 48             	rex.W je 3746 <__ctype_b_loc@plt+0x11a6>
+    36fe:	c1 e7 0d             	shl    $0xd,%edi
+    3701:	ff c2                	inc    %edx
+    3703:	7c 7b                	jl     3780 <__ctype_b_loc@plt+0x11e0>
+    3705:	f1                   	int1   
+    3706:	ff 49 31             	decl   0x31(%rcx)
+    3709:	cb                   	lret   
+    370a:	49 0f 48 0f          	cmovs  (%r15),%rcx
+    370e:	8c 49 0f             	mov    %cs,0xf(%rcx)
+    3711:	af                   	scas   %es:(%rdi),%eax
+    3712:	f2 e7 49             	repnz out %eax,$0x49
+    3715:	29 cd                	sub    %ecx,%ebp
+    3717:	48 0f 8f 49 0f af 49 	rex.W jg 49af4667 <__ctype_b_loc@plt+0x49af20c7>
+    371e:	c1 eb 20             	shr    $0x20,%ebx
+    3721:	bb 01 00 00 c3       	mov    $0xc3000001,%ebx
+    3726:	e0 4c                	loopne 3774 <__ctype_b_loc@plt+0x11d4>
+    3728:	89 e2                	mov    %esp,%edx
+    372a:	8c e1                	mov    %fs,%ecx
+    372c:	02 00                	add    (%rax),%al
+    372e:	48 01 ce             	add    %rcx,%rsi
+    3731:	c7 c3 5a fe 49 09    	mov    $0x949fe5a,%ebx
+    3737:	cd 01                	int    $0x1
+    3739:	4c 39 d3             	cmp    %r10,%rbx
+    373c:	48                   	rex.W
+    373d:	4c                   	rex.WR
+    373e:	4c 89 eb             	mov    %r13,%rbx
+    3741:	04 e9                	add    $0xe9,%al
+    3743:	48 c1 4d 29 48       	rorq   $0x48,0x29(%rbp)
+    3748:	c7                   	(bad)  
+    3749:	49 0f af d7          	imul   %r15,%rdx
+    374d:	ff 89 48 29 f0 49    	decl   0x49f02948(%rcx)
+    3753:	ff c1                	inc    %ecx
+    3755:	33 c1                	xor    %ecx,%eax
+    3757:	e8 3a 0f 0f 85       	call   ffffffff850f4696 <__ctype_b_loc@plt+0xffffffff850f20f6>
+    375c:	bb 01 00 00 24       	mov    $0x24000001,%ebx
+    3761:	0f 8f 49 c1 e9 07    	jg     7e9f8b0 <__ctype_b_loc@plt+0x7e9d310>
+    3767:	49 c7                	rex.WB (bad) 
+    3769:	eb a3                	jmp    370e <__ctype_b_loc@plt+0x116e>
+    376b:	4c 39 d6             	cmp    %r10,%rsi
+    376e:	6c                   	insb   (%dx),%es:(%rdi)
+    376f:	fe 49 c7             	decb   -0x39(%rcx)
+    3772:	4d 31 dd             	xor    %r11,%r13
+    3775:	00 00                	add    %al,(%rax)
+    3777:	0f 8f 08 01 00 00    	jg     3885 <__ctype_b_loc@plt+0x12e5>
+    377d:	89 c1                	mov    %eax,%ecx
+    377f:	48 c1 e7 35          	shl    $0x35,%rdi
+    3783:	49 c7 c6 32 00 00 00 	mov    $0x32,%r14
+    378a:	00 e9                	add    %ch,%cl
+    378c:	4d 39 49 39          	cmp    %r9,0x39(%r9)
+    3790:	fd                   	std    
+    3791:	16                   	(bad)  
+    3792:	02 00                	add    (%rax),%al
+    3794:	4c                   	rex.WR
+    3795:	4d 01 0f             	add    %r9,(%r15)
+    3798:	84 f5                	test   %dh,%ch
+    379a:	01 00                	add    %eax,(%rax)
+    379c:	49 09 c0             	or     %rax,%r8
+    379f:	df 48 4c             	fisttps 0x4c(%rax)
+    37a2:	49 c1 e2 35          	shl    $0x35,%r10
+    37a6:	d8 4d 85             	fmuls  -0x7b(%rbp)
+    37a9:	cc                   	int3   
+    37aa:	cb                   	lret   
+    37ab:	49                   	rex.WB
+    37ac:	4c 21 d1             	and    %r10,%rcx
+    37af:	c7                   	(bad)  
+    37b0:	0f 85 e5 00 00 00    	jne    389b <__ctype_b_loc@plt+0x12fb>
+    37b6:	c8 49 c1 ee          	enter  $0xc149,$0xee
+    37ba:	21 4d 89             	and    %ecx,-0x77(%rbp)
+    37bd:	48 89 c0             	mov    %rax,%rax
+    37c0:	c7 c1 7f 00 00 00    	mov    $0x7f,%ecx
+    37c6:	49 ff 0f             	decq   (%r15)
+    37c9:	85 c3                	test   %eax,%ebx
+    37cb:	00 00                	add    %al,(%rax)
+    37cd:	00 c6                	add    %al,%dh
+    37cf:	ff 49 49             	decl   0x49(%rcx)
+    37d2:	31 c2                	xor    %eax,%edx
+    37d4:	48 c7 c1 0e 02 00 00 	mov    $0x20e,%rcx
+    37db:	09 f4                	or     %esi,%esp
+    37dd:	e9 54 03 48 c7       	jmp    ffffffffc7483b36 <__ctype_b_loc@plt+0xffffffffc7481596>
+    37e2:	e9 6d 02 00 00       	jmp    3a54 <__ctype_b_loc@plt+0x14b4>
+    37e7:	fe 48 0f             	decb   0xf(%rax)
+    37ea:	48 0f af fe          	imul   %rsi,%rdi
+    37ee:	4d 01 d8             	add    %r11,%r8
+    37f1:	31 f6                	xor    %esi,%esi
+    37f3:	c6                   	(bad)  
+    37f4:	48 c1 e9 1c          	shr    $0x1c,%rcx
+    37f8:	48                   	rex.W
+    37f9:	49 ff c3             	inc    %r11
+    37fc:	49 21 fd             	and    %rdi,%r13
+    37ff:	48 21 f0             	and    %rsi,%rax
+    3802:	00 4c 09 ce          	add    %cl,-0x32(%rcx,%rcx,1)
+    3806:	ff c5                	inc    %ebp
+    3808:	4c                   	rex.WR
+    3809:	4d 01 ce             	add    %r9,%r14
+    380c:	4d                   	rex.WRB
+    380d:	48 09 49 c1          	or     %rcx,-0x3f(%rcx)
+    3811:	e1 18                	loope  382b <__ctype_b_loc@plt+0x128b>
+    3813:	48 29 c6             	sub    %rax,%rsi
+    3816:	d9 cf                	fxch   %st(7)
+    3818:	0f 85 0d 01 00 00    	jne    392b <__ctype_b_loc@plt+0x138b>
+    381e:	35 03 48 4d 85       	xor    $0x854d4803,%eax
+    3823:	cd 84                	int    $0x84
+    3825:	eb 01                	jmp    3828 <__ctype_b_loc@plt+0x1288>
+    3827:	00 00                	add    %al,(%rax)
+    3829:	ff 48 c1             	decl   -0x3f(%rax)
+    382c:	48 ff 4c 0f af       	decq   -0x51(%rdi,%rcx,1)
+    3831:	fb                   	sti    
+    3832:	48                   	rex.W
+    3833:	48 29 e9             	sub    %rbp,%rcx
+    3836:	8e 01                	mov    (%rcx),%es
+    3838:	00 4d 85             	add    %cl,-0x7b(%rbp)
+    383b:	ff 49 29             	decl   0x29(%rcx)
+    383e:	f7 85 f1 31 c9 0f 48 	testl  $0xcbaf0f48,0xfc931f1(%rbp)
+    3845:	0f af cb 
+    3848:	ff 00                	incl   (%rax)
+    384a:	00 00                	add    %al,(%rax)
+    384c:	c3                   	ret    
+    384d:	71 ff                	jno    384e <__ctype_b_loc@plt+0x12ae>
+    384f:	4c                   	rex.WR
+    3850:	4d 0f af f5          	imul   %r13,%r14
+    3854:	ff cc                	dec    %esp
+    3856:	1c 0f                	sbb    $0xf,%al
+    3858:	41                   	rex.B
+    3859:	4d 29 db             	sub    %r11,%r11
+    385c:	f2 4c 85 fa          	repnz test %r15,%rdx
+    3860:	d7                   	xlat   %ds:(%rbx)
+    3861:	c2 fa fc             	ret    $0xfcfa
+    3864:	ff                   	(bad)  
+    3865:	ff 4d 48             	decl   0x48(%rbp)
+    3868:	c1 e1 49             	shl    $0x49,%ecx
+    386b:	f7 fa                	idiv   %edx
+    386d:	5a                   	pop    %rdx
+    386e:	02 00                	add    (%rax),%al
+    3870:	00 0f                	add    %cl,(%rdi)
+    3872:	8f 47 ff             	pop    -0x1(%rdi)
+    3875:	ff                   	(bad)  
+    3876:	ff c6                	inc    %esi
+    3878:	01 cf                	add    %ecx,%edi
+    387a:	4c                   	rex.WR
+    387b:	49 0f af db          	imul   %r11,%rbx
+    387f:	0f 85 49 e9 7d fe    	jne    fffffffffe7e21ce <__ctype_b_loc@plt+0xfffffffffe7dfc2e>
+    3885:	ff 0f                	decl   (%rdi)
+    3887:	8c 96 02 00 00 8f    	mov    %ss,-0x70fffffe(%rsi)
+    388d:	a6                   	cmpsb  %es:(%rdi),%ds:(%rsi)
+    388e:	fe                   	(bad)  
+    388f:	ff                   	(bad)  
+    3890:	ff 49 c7             	decl   -0x39(%rcx)
+    3893:	c3                   	ret    
+    3894:	d5                   	(bad)  
+    3895:	fe                   	(bad)  
+    3896:	ff                   	(bad)  
+    3897:	ff 8f 01 e9 5b fd    	decl   -0x2a416ff(%rdi)
+    389d:	ff                   	(bad)  
+    389e:	ff 31                	push   (%rcx)
+    38a0:	ff 48 c7             	decl   -0x39(%rax)
+    38a3:	c6                   	(bad)  
+    38a4:	4d 01 f1             	add    %r14,%r9
+    38a7:	00 c7                	add    %al,%bh
+    38a9:	3a 4c 49 4d          	cmp    0x4d(%rcx,%rcx,2),%cl
+    38ad:	49 39 d0             	cmp    %rdx,%r8
+    38b0:	e9 49 4d 49 ff       	jmp    ffffffffff4985fe <__ctype_b_loc@plt+0xffffffffff49605e>
+    38b5:	c6 c6 0f             	mov    $0xf,%dh
+    38b8:	4c 0f af fa          	imul   %rdx,%r15
+    38bc:	00 00                	add    %al,(%rax)
+    38be:	00 f7                	add    %dh,%bh
+    38c0:	49 29 c4             	sub    %rax,%r12
+    38c3:	c4                   	(bad)  
+    38c4:	4d 39 e6             	cmp    %r12,%r14
+    38c7:	fe                   	(bad)  
+    38c8:	ff                   	(bad)  
+    38c9:	ff 85 ca 48 c7 c1    	incl   -0x3e38b736(%rbp)
+    38cf:	0f 84 cf fd ff ff    	je     36a4 <__ctype_b_loc@plt+0x1104>
+    38d5:	f8                   	clc    
+    38d6:	4c 74 4c             	rex.WR je 3925 <__ctype_b_loc@plt+0x1385>
+    38d9:	89 f0                	mov    %esi,%eax
+    38db:	4c 0f e9 89 01 00 00 	rex.WR psubsw -0x7affffff(%rcx),%mm1
+    38e2:	85 
+    38e3:	d8 ff                	fdivr  %st(7),%st
+    38e5:	c1 eb 15             	shr    $0x15,%ebx
+    38e8:	e3 49                	jrcxz  3933 <__ctype_b_loc@plt+0x1393>
+    38ea:	29 0f                	sub    %ecx,(%rdi)
+    38ec:	0f 8c 92 02 00 00    	jl     3b84 <__ctype_b_loc@plt+0x15e4>
+    38f2:	48 c7 c7 37 00 49 ff 	mov    $0xffffffffff490037,%rdi
+    38f9:	c1 e7 0f             	shl    $0xf,%edi
+    38fc:	85 54 0f 84          	test   %edx,-0x7c(%rdi,%rcx,1)
+    3900:	95                   	xchg   %eax,%ebp
+    3901:	fc                   	cld    
+    3902:	ff                   	(bad)  
+    3903:	ff d0                	call   *%rax
+    3905:	ef                   	out    %eax,(%dx)
+    3906:	16                   	(bad)  
+    3907:	ff                   	(bad)  
+    3908:	ff 48 c1             	decl   -0x3f(%rax)
+    390b:	e8 4d 09 ee ef       	call   ffffffffefee425d <__ctype_b_loc@plt+0xffffffffefee1cbd>
+    3910:	2b e4                	sub    %esp,%esp
+    3912:	1d cc 02 00 00       	sbb    $0x2cc,%eax
+    3917:	48 0f 84 9e 03 00 00 	rex.W je 3cbc <__ctype_b_loc@plt+0x171c>
+    391e:	0f 4c 29             	cmovl  (%rcx),%ebp
+    3921:	d1 48 c1             	rorl   -0x3f(%rax)
+    3924:	e0 49                	loopne 396f <__ctype_b_loc@plt+0x13cf>
+    3926:	31 49 ff             	xor    %ecx,-0x1(%rcx)
+    3929:	c7 c6 f7 fe ff ff    	mov    $0xfffffef7,%esi
+    392f:	f8                   	clc    
+    3930:	48 7c 75             	rex.W jl 39a8 <__ctype_b_loc@plt+0x1408>
+    3933:	4d 21 e5             	and    %r12,%r13
+    3936:	01 f4                	add    %esi,%esp
+    3938:	29 f3                	sub    %esi,%ebx
+    393a:	39 da                	cmp    %ebx,%edx
+    393c:	ea                   	(bad)  
+    393d:	3e 4c 85 0f          	ds test %r9,(%rdi)
+    3941:	84 d6                	test   %dl,%dh
+    3943:	fe 4c 21 ff          	decb   -0x1(%rcx,%riz,1)
+    3947:	28 e9                	sub    %ch,%cl
+    3949:	19 fd                	sbb    %edi,%ebp
+    394b:	ff                   	(bad)  
+    394c:	ff 48 74             	decl   0x74(%rax)
+    394f:	91                   	xchg   %eax,%ecx
+    3950:	0f 49 7c 49 01       	cmovns 0x1(%rcx,%rcx,2),%edi
+    3955:	d6                   	(bad)  
+    3956:	4c 29 0f             	sub    %r9,(%rdi)
+    3959:	85 26                	test   %esp,(%rsi)
+    395b:	fe                   	(bad)  
+    395c:	ff                   	(bad)  
+    395d:	ff f0                	push   %rax
+    395f:	48 31 cf             	xor    %rcx,%rdi
+    3962:	4d 21 49 48          	and    %r9,0x48(%r9)
+    3966:	c7 c6 81 01 00 00    	mov    $0x181,%esi
+    396c:	e9 13 03 00 00       	jmp    3c84 <__ctype_b_loc@plt+0x16e4>
+    3971:	c0 c1 e4             	rol    $0xe4,%cl
+    3974:	02 0f                	add    (%rdi),%cl
+    3976:	84 49 e9             	test   %cl,-0x17(%rcx)
+    3979:	e7 01                	out    %eax,$0x1
+    397b:	00 00                	add    %al,(%rax)
+    397d:	e5 dd                	in     $0xdd,%eax
+    397f:	c1 0f 85             	rorl   $0x85,(%rdi)
+    3982:	7f 49                	jg     39cd <__ctype_b_loc@plt+0x142d>
+    3984:	29 c5                	sub    %eax,%ebp
+    3986:	83 0f 4d             	orl    $0x4d,(%rdi)
+    3989:	31 db                	xor    %ebx,%ebx
+    398b:	e5 49                	in     $0x49,%eax
+    398d:	c1 e1 37             	shl    $0x37,%ecx
+    3990:	6d                   	insl   (%dx),%es:(%rdi)
+    3991:	03 00                	add    (%rax),%eax
+    3993:	00 fc                	add    %bh,%ah
+    3995:	ff                   	(bad)  
+    3996:	ff                   	(bad)  
+    3997:	da 4d 09             	fimull 0x9(%rbp)
+    399a:	c9                   	leave  
+    399b:	01 00                	add    %eax,(%rax)
+    399d:	00 d8                	add    %bl,%al
+    399f:	02 00                	add    (%rax),%al
+    39a1:	4c 0f af c1          	imul   %rcx,%r8
+    39a5:	ff                   	(bad)  
+    39a6:	ff 0f                	decl   (%rdi)
+    39a8:	49 c1 e9 29          	shr    $0x29,%r9
+    39ac:	00 09                	add    %cl,(%rcx)
+    39ae:	d2 49 c7             	rorb   %cl,-0x39(%rcx)
+    39b1:	7c b9                	jl     396c <__ctype_b_loc@plt+0x13cc>
+    39b3:	31 f0                	xor    %esi,%eax
+    39b5:	00 0f                	add    %cl,(%rdi)
+    39b7:	48 c1 e3 02          	shl    $0x2,%rbx
+    39bb:	d5                   	(bad)  
+    39bc:	c1 e3 15             	shl    $0x15,%ebx
+    39bf:	0f 8f 34 02 00 00    	jg     3bf9 <__ctype_b_loc@plt+0x1659>
+    39c5:	7c 0f                	jl     39d6 <__ctype_b_loc@plt+0x1436>
+    39c7:	8c c4                	mov    %es,%esp
+    39c9:	00 00                	add    %al,(%rax)
+    39cb:	00 ff                	add    %bh,%bh
+    39cd:	c7                   	(bad)  
+    39ce:	75 43                	jne    3a13 <__ctype_b_loc@plt+0x1473>
+    39d0:	e0 c7                	loopne 3999 <__ctype_b_loc@plt+0x13f9>
+    39d2:	c3                   	ret    
+    39d3:	0e                   	(bad)  
+    39d4:	fd                   	std    
+    39d5:	ff                   	(bad)  
+    39d6:	ff c7                	inc    %edi
+    39d8:	c3                   	ret    
+    39d9:	57                   	push   %rdi
+    39da:	e9 c0 4d 21 db       	jmp    ffffffffdb21879f <__ctype_b_loc@plt+0xffffffffdb2161ff>
+    39df:	af                   	scas   %es:(%rdi),%eax
+    39e0:	d2 c1                	rol    %cl,%cl
+    39e2:	4c 29 df             	sub    %r11,%rdi
+    39e5:	0f 84 29 01 4d 0f    	je     f4d3b14 <__ctype_b_loc@plt+0xf4d1574>
+    39eb:	af                   	scas   %es:(%rdi),%eax
+    39ec:	e7 49                	out    %eax,$0x49
+    39ee:	85 de                	test   %ebx,%esi
+    39f0:	00 00                	add    %al,(%rax)
+    39f2:	12 48 ff             	adc    -0x1(%rax),%cl
+    39f5:	c2 02 00             	ret    $0x2
+    39f8:	49 c7 c0 48 0f af 49 	mov    $0x49af0f48,%r8
+    39ff:	0f af c8             	imul   %eax,%ecx
+    3a02:	89 ff                	mov    %edi,%edi
+    3a04:	00 48 89             	add    %cl,-0x77(%rax)
+    3a07:	49 21 d5             	and    %rdx,%r13
+    3a0a:	4d 0f af dd          	imul   %r13,%r11
+    3a0e:	07                   	(bad)  
+    3a0f:	48 ff c2             	inc    %rdx
+    3a12:	57                   	push   %rdi
+    3a13:	01 00                	add    %eax,(%rax)
+    3a15:	4d 39 ca             	cmp    %r9,%r10
+    3a18:	0f                   	(bad)  
+    3a19:	0f 8f 3e 4c 09 d2    	jg     ffffffffd209865d <__ctype_b_loc@plt+0xffffffffd20960bd>
+    3a1f:	4d 39 e7             	cmp    %r12,%r15
+    3a22:	00 49 29             	add    %cl,0x29(%rcx)
+    3a25:	c3                   	ret    
+    3a26:	49 39 d1             	cmp    %rdx,%r9
+    3a29:	4d 31 e9             	xor    %r13,%r9
+    3a2c:	3e 02 00             	ds add (%rax),%al
+    3a2f:	4d 09 e5             	or     %r12,%r13
+    3a32:	ea                   	(bad)  
+    3a33:	09 fe                	or     %edi,%esi
+    3a35:	ff                   	(bad)  
+    3a36:	ff 8c 48 c1 e2 34 49 	decl   0x4934e2c1(%rax,%rcx,2)
+    3a3d:	89 d3                	mov    %edx,%ebx
+    3a3f:	00 4d 49             	add    %cl,0x49(%rbp)
+    3a42:	f7 f9                	idiv   %ecx
+    3a44:	ee                   	out    %al,(%dx)
+    3a45:	0e                   	(bad)  
+    3a46:	d7                   	xlat   %ds:(%rbx)
+    3a47:	01 00                	add    %eax,(%rax)
+    3a49:	00 c0                	add    %al,%al
+    3a4b:	0f 85 e9 f7 fe 4d    	jne    4dff323a <__ctype_b_loc@plt+0x4dff0c9a>
+    3a51:	49 09 cf             	or     %rcx,%r15
+    3a54:	48                   	rex.W
+    3a55:	49 29 c1             	sub    %rax,%r9
+    3a58:	48 f7 fb             	idiv   %rbx
+    3a5b:	f2 00 00             	repnz add %al,(%rax)
+    3a5e:	4d 01 c3             	add    %r8,%r11
+    3a61:	c7 c6 4a 01 00 00    	mov    $0x14a,%esi
+    3a67:	49 31 d8             	xor    %rbx,%r8
+    3a6a:	ff 4d 85             	decl   -0x7b(%rbp)
+    3a6d:	f6 48 29 c2          	testb  $0xc2,0x29(%rax)
+    3a71:	0c fd                	or     $0xfd,%al
+    3a73:	ff                   	(bad)  
+    3a74:	ff 00                	incl   (%rax)
+    3a76:	49 c7 c4 d6 fd ff ff 	mov    $0xfffffffffffffdd6,%r12
+    3a7d:	e9 bd 02 0f 85       	jmp    ffffffff850f3d3f <__ctype_b_loc@plt+0xffffffff850f179f>
+    3a82:	14 fc                	adc    $0xfc,%al
+    3a84:	ff                   	(bad)  
+    3a85:	ff                   	(bad)  
+    3a86:	7c 48                	jl     3ad0 <__ctype_b_loc@plt+0x1530>
+    3a88:	ff c3                	inc    %ebx
+    3a8a:	48                   	rex.W
+    3a8b:	4c 21 e2             	and    %r12,%rdx
+    3a8e:	a5                   	movsl  %ds:(%rsi),%es:(%rdi)
+    3a8f:	fc                   	cld    
+    3a90:	ff                   	(bad)  
+    3a91:	ff 0f                	decl   (%rdi)
+    3a93:	85 e1                	test   %esp,%ecx
+    3a95:	0f 84 05 03 00 00    	je     3da0 <__ctype_b_loc@plt+0x1800>
+    3a9b:	ee                   	out    %al,(%dx)
+    3a9c:	00 00                	add    %al,(%rax)
+    3a9e:	0f 8f 67 02 00 00    	jg     3d0b <__ctype_b_loc@plt+0x176b>
+    3aa4:	c1 48 85 fa          	rorl   $0xfa,-0x7b(%rax)
+    3aa8:	0f 8c 49 01 db 49    	jl     49db3bf7 <__ctype_b_loc@plt+0x49db1657>
+    3aae:	0f 48 c1             	cmovs  %ecx,%eax
+    3ab1:	e2 1e                	loop   3ad1 <__ctype_b_loc@plt+0x1531>
+    3ab3:	49 f7 fe             	idiv   %r14
+    3ab6:	00 49 4d             	add    %cl,0x4d(%rcx)
+    3ab9:	39 4d 31             	cmp    %ecx,0x31(%rbp)
+    3abc:	e7 0f                	out    %eax,$0xf
+    3abe:	8f 49 f7 fb          	(bad)
+    3ac2:	00 0f                	add    %cl,(%rdi)
+    3ac4:	49 0f 4d 29          	cmovge (%r9),%rbp
+    3ac8:	cc                   	int3   
+    3ac9:	00 54 49 c1          	add    %dl,-0x3f(%rcx,%rcx,2)
+    3acd:	e7 0d                	out    %eax,$0xd
+    3acf:	49 c7 c5 a8 00 00 00 	mov    $0xa8,%r13
+    3ad6:	8f aa fe ff          	(bad)  
+    3ada:	ff 89 fc 94 49 49    	decl   0x494994fc(%rcx)
+    3ae0:	31 48 c7             	xor    %ecx,-0x39(%rax)
+    3ae3:	c0 c3 fc             	rol    $0xfc,%bl
+    3ae6:	49 f7 fa             	idiv   %r10
+    3ae9:	fe 00                	incb   (%rax)
+    3aeb:	00 00                	add    %al,(%rax)
+    3aed:	01 dc                	add    %ebx,%esp
+    3aef:	d1 4c 29 d6          	rorl   -0x2a(%rcx,%rbp,1)
+    3af3:	49 ff c1             	inc    %r9
+    3af6:	8c 15 fd ff ff 4c    	mov    %ss,0x4cfffffd(%rip)        # 4d003af9 <__ctype_b_loc@plt+0x4d001559>
+    3afc:	89 c8                	mov    %ecx,%eax
+    3afe:	66 90                	xchg   %ax,%ax
+    3b00:	0f 48 85 d7 00 00 e9 	cmovs  -0x16ffff29(%rbp),%eax
+    3b07:	e1 fe                	loope  3b07 <__ctype_b_loc@plt+0x1567>
+    3b09:	ff                   	(bad)  
+    3b0a:	ff 00                	incl   (%rax)
+    3b0c:	49 83 c1 01          	add    $0x1,%r9
+    3b10:	44 21 4d 21          	and    %r9d,0x21(%rbp)
+    3b14:	c9                   	leave  
+    3b15:	c6                   	(bad)  
+    3b16:	0f 4d 31             	cmovge (%rcx),%esi
+    3b19:	c8 ff ff c1          	enter  $0xffff,$0xc1
+    3b1d:	e0 1b                	loopne 3b3a <__ctype_b_loc@plt+0x159a>
+    3b1f:	e9 bc fc 0f 85       	jmp    ffffffff851037e0 <__ctype_b_loc@plt+0xffffffff85101240>
+    3b24:	e4 02                	in     $0x2,%al
+    3b26:	00 00                	add    %al,(%rax)
+    3b28:	e0 49                	loopne 3b73 <__ctype_b_loc@plt+0x15d3>
+    3b2a:	c1 e2 14             	shl    $0x14,%edx
+    3b2d:	49 f7 fa             	idiv   %r10
+    3b30:	57                   	push   %rdi
+    3b31:	00 00                	add    %al,(%rax)
+    3b33:	48 c1 e6 39          	shl    $0x39,%rsi
+    3b37:	ff 18                	lcall  *(%rax)
+    3b39:	fc                   	cld    
+    3b3a:	ff                   	(bad)  
+    3b3b:	e9 ba fd ff ff       	jmp    38fa <__ctype_b_loc@plt+0x135a>
+    3b40:	4d 21 c7             	and    %r8,%r15
+    3b43:	4c 85 48 c1          	test   %r9,-0x3f(%rax)
+    3b47:	e7 1c                	out    %eax,$0x1c
+    3b49:	89 f3                	mov    %esi,%ebx
+    3b4b:	fc                   	cld    
+    3b4c:	ff                   	(bad)  
+    3b4d:	e9 1d fd ff ff       	jmp    386f <__ctype_b_loc@plt+0x12cf>
+    3b52:	49 85 49 89          	test   %rcx,-0x77(%r9)
+    3b56:	df eb                	fucomip %st(3),%st
+    3b58:	97                   	xchg   %eax,%edi
+    3b59:	c0 0a 03             	rorb   $0x3,(%rdx)
+    3b5c:	49 0f af f3          	imul   %r11,%rsi
+    3b60:	f1                   	int1   
+    3b61:	39 4d 89             	cmp    %ecx,-0x77(%rbp)
+    3b64:	fd                   	std    
+    3b65:	98                   	cwtl   
+    3b66:	4c 31 d3             	xor    %r10,%rbx
+    3b69:	e6 4d                	out    %al,$0x4d
+    3b6b:	31 c1                	xor    %eax,%ecx
+    3b6d:	49 0f 8f 20 fd ff ff 	rex.WB jg 3894 <__ctype_b_loc@plt+0x12f4>
+    3b74:	c1 4d 31 fb          	rorl   $0xfb,0x31(%rbp)
+    3b78:	4c 85 ea             	test   %r13,%rdx
+    3b7b:	4d 31 e8             	xor    %r13,%r8
+    3b7e:	d9 0f                	(bad)  (%rdi)
+    3b80:	48 31 f0             	xor    %rsi,%rax
+    3b83:	00 48 89             	add    %cl,-0x77(%rax)
+    3b86:	75 f8                	jne    3b80 <__ctype_b_loc@plt+0x15e0>
+    3b88:	49                   	rex.WB
+    3b89:	49 89 f8             	mov    %rdi,%r8
+    3b8c:	48 c1 ef 0a          	shr    $0xa,%rdi
+    3b90:	24 eb                	and    $0xeb,%al
+    3b92:	74 8f                	je     3b23 <__ctype_b_loc@plt+0x1583>
+    3b94:	0f 03 49 48          	lsl    0x48(%rcx),%ecx
+    3b98:	ff c7                	inc    %edi
+    3b9a:	48                   	rex.W
+    3b9b:	49 ff c6             	inc    %r14
+    3b9e:	49 c7                	rex.WB (bad) 
+    3ba0:	49 39 d9             	cmp    %rbx,%r9
+    3ba3:	f1                   	int1   
+    3ba4:	0f 8c b1 02 00 00    	jl     3e5b <__ctype_b_loc@plt+0x18bb>
+    3baa:	30 6b fc             	xor    %ch,-0x4(%rbx)
+    3bad:	ff                   	(bad)  
+    3bae:	ff 48 89             	decl   -0x77(%rax)
+    3bb1:	c8 85 4d 0f          	enter  $0x4d85,$0xf
+    3bb5:	af                   	scas   %es:(%rdi),%eax
+    3bb6:	f2 e0 10             	repnz loopne 3bc9 <__ctype_b_loc@plt+0x1629>
+    3bb9:	48                   	rex.W
+    3bba:	4c 39 c9             	cmp    %r9,%rcx
+    3bbd:	c3                   	ret    
+    3bbe:	8c ac 02 00 00 49 31 	mov    %gs,0x31490000(%rdx,%rax,1)
+    3bc5:	fe 89 d7 e9 fa 00    	decb   0xfae9d7(%rcx)
+    3bcb:	00 00                	add    %al,(%rax)
+    3bcd:	02 0f                	add    (%rdi),%cl
+    3bcf:	84 af fe ff ff 48    	test   %ch,0x48fffffe(%rdi)
+    3bd5:	21 0f                	and    %ecx,(%rdi)
+    3bd7:	8c 96 02 00 00 0f    	mov    %ss,0xf000002(%rsi)
+    3bdd:	8c b8 03 00 00 00    	mov    %?,0x3(%rax)
+    3be3:	31 48 c7             	xor    %ecx,-0x39(%rax)
+    3be6:	49 c1 e2 0a          	shl    $0xa,%r10
+    3bea:	00 c6                	add    %al,%dh
+    3bec:	fc                   	cld    
+    3bed:	49                   	rex.WB
+    3bee:	48 ff c1             	inc    %rcx
+    3bf1:	00 41 0f             	add    %al,0xf(%rcx)
+    3bf4:	e9 32 4d 39 c0       	jmp    ffffffffc039892b <__ctype_b_loc@plt+0xffffffffc039638b>
+    3bf9:	4c 31 db             	xor    %r11,%rbx
+    3bfc:	48 0f                	rex.W (bad) 
+    3bfe:	0f 48 c7             	cmovs  %edi,%eax
+    3c01:	c0 49 c1 e2          	rorb   $0xe2,-0x3f(%rcx)
+    3c05:	0f c1 ec             	xadd   %ebp,%esp
+    3c08:	19 c7                	sbb    %eax,%edi
+    3c0a:	c7                   	(bad)  
+    3c0b:	e9 de fe ff 49       	jmp    4a003aee <__ctype_b_loc@plt+0x4a00154e>
+    3c10:	c1 ea 09             	shr    $0x9,%edx
+    3c13:	da cc                	fcmove %st(4),%st
+    3c15:	49 21 48 89          	and    %rcx,-0x77(%r8)
+    3c19:	4d 31 e7             	xor    %r12,%r15
+    3c1c:	49                   	rex.WB
+    3c1d:	48 0f 8f 26 fd ff ff 	rex.W jg 394a <__ctype_b_loc@plt+0x13aa>
+    3c24:	cb                   	lret   
+    3c25:	49 31 d3             	xor    %rdx,%r11
+    3c28:	e9 38 ff ff ff       	jmp    3b65 <__ctype_b_loc@plt+0x15c5>
+    3c2d:	09 4d 21             	or     %ecx,0x21(%rbp)
+    3c30:	4c 39 48 39          	cmp    %r9,0x39(%rax)
+    3c34:	f8                   	clc    
+    3c35:	48 85 c7             	test   %rax,%rdi
+    3c38:	4d                   	rex.WRB
+    3c39:	4c 31 e0             	xor    %r12,%rax
+    3c3c:	ff                   	(bad)  
+    3c3d:	ff 4c 31 cf          	decl   -0x31(%rcx,%rsi,1)
+    3c41:	4d 09 ef             	or     %r13,%r15
+    3c44:	00 49 31             	add    %cl,0x31(%rcx)
+    3c47:	4d 09 48 89          	or     %r9,-0x77(%r8)
+    3c4b:	cf                   	iret   
+    3c4c:	39 49 ff             	cmp    %ecx,-0x1(%rcx)
+    3c4f:	c6                   	(bad)  
+    3c50:	0f 85 f2 00 00 00    	jne    3d48 <__ctype_b_loc@plt+0x17a8>
+    3c56:	ca ff 40             	lret   $0x40ff
+    3c59:	1f                   	(bad)  
+    3c5a:	48 c7 c6 cf fd 48 c7 	mov    $0xffffffffc748fdcf,%rsi
+    3c61:	c6                   	(bad)  
+    3c62:	f7 02 00 00 48 4d    	testl  $0x4d480000,(%rdx)
+    3c68:	39 de                	cmp    %ebx,%esi
+    3c6a:	ff                   	(bad)  
+    3c6b:	ff 85 de 49 f7 f8    	incl   -0x708b622(%rbp)
+    3c71:	f2 fe 0f             	repnz decb (%rdi)
+    3c74:	8c db                	mov    %ds,%ebx
+    3c76:	03 00                	add    (%rax),%eax
+    3c78:	00 e9                	add    %ch,%cl
+    3c7a:	af                   	scas   %es:(%rdi),%eax
+    3c7b:	4d 21 de             	and    %r11,%r14
+    3c7e:	85 48 09             	test   %ecx,0x9(%rax)
+    3c81:	d1 0f                	rorl   (%rdi)
+    3c83:	8f                   	(bad)  
+    3c84:	b2 00                	mov    $0x0,%dl
+    3c86:	00 49 09             	add    %cl,0x9(%rcx)
+    3c89:	d3 02                	roll   %cl,(%rdx)
+    3c8b:	4d 39 4d 85          	cmp    %r9,-0x7b(%r13)
+    3c8f:	e7 89                	out    %eax,$0x89
+    3c91:	c8 e2 49 21          	enter  $0x49e2,$0x21
+    3c95:	df ef                	fucomip %st(7),%st
+    3c97:	01 0f                	add    %ecx,(%rdi)
+    3c99:	8c e8                	mov    %gs,%eax
+    3c9b:	fd                   	std    
+    3c9c:	ff                   	(bad)  
+    3c9d:	ff 48 c1             	decl   -0x3f(%rax)
+    3ca0:	e9 2d c7 0f 48       	jmp    481003d2 <__ctype_b_loc@plt+0x480fde32>
+    3ca5:	31 fa                	xor    %edi,%edx
+    3ca7:	ff                   	(bad)  
+    3ca8:	ff 0f                	decl   (%rdi)
+    3caa:	84 75 4c             	test   %dh,0x4c(%rbp)
+    3cad:	49                   	rex.WB
+    3cae:	49 c1 ef 03          	shr    $0x3,%r15
+    3cb2:	e3 0f                	jrcxz  3cc3 <__ctype_b_loc@plt+0x1723>
+    3cb4:	84 86 fc ff 48 ff    	test   %al,-0xb70004(%rsi)
+    3cba:	c7 c1 e8 11 31 4d    	mov    $0x4d3111e8,%ecx
+    3cc0:	85 fd                	test   %edi,%ebp
+    3cc2:	48 c1 ea 20          	shr    $0x20,%rdx
+    3cc6:	0f 85 b9 01 00 00    	jne    3e85 <__ctype_b_loc@plt+0x18e5>
+    3ccc:	c1 e4 4c             	shl    $0x4c,%esp
+    3ccf:	29 f2                	sub    %esi,%edx
+    3cd1:	4c 31 c8             	xor    %r9,%rax
+    3cd4:	4d 09 f1             	or     %r14,%r9
+    3cd7:	e9 0f 4c 48 39       	jmp    394888eb <__ctype_b_loc@plt+0x3948634b>
+    3cdc:	df ff                	(bad)  
+    3cde:	d0 ff                	sar    %bh
+    3ce0:	e9 49 31 d5 b9       	jmp    ffffffffb9d56e2e <__ctype_b_loc@plt+0xffffffffb9d5488e>
+    3ce5:	03 00                	add    (%rax),%eax
+    3ce7:	00 4c 09 e0          	add    %cl,-0x20(%rcx,%rcx,1)
+    3ceb:	ff                   	(bad)  
+    3cec:	ff 49 ff             	decl   -0x1(%rcx)
+    3cef:	49 85 c2             	test   %rax,%r10
+    3cf2:	49 ff c3             	inc    %r11
+    3cf5:	48 21 49 31          	and    %rcx,0x31(%rcx)
+    3cf9:	dd c3                	ffree  %st(3)
+    3cfb:	01 0f                	add    %ecx,(%rdi)
+    3cfd:	8f e9 a1 fe          	(bad)
+    3d01:	ff                   	(bad)  
+    3d02:	ff f4                	push   %rsp
+    3d04:	ff                   	(bad)  
+    3d05:	ff                   	(bad)  
+    3d06:	ff 48 ff             	decl   -0x1(%rax)
+    3d09:	c3                   	ret    
+    3d0a:	4d 09 dd             	or     %r11,%r13
+    3d0d:	4c 89 eb             	mov    %r13,%rbx
+    3d10:	4d 21 4d 0f          	and    %r9,0xf(%r13)
+    3d14:	af                   	scas   %es:(%rdi),%eax
+    3d15:	48 89 c6             	mov    %rax,%rsi
+    3d18:	01 00                	add    %eax,(%rax)
+    3d1a:	00 cb                	add    %cl,%bl
+    3d1c:	cf                   	iret   
+    3d1d:	fd                   	std    
+    3d1e:	ff                   	(bad)  
+    3d1f:	ff 4d 39             	decl   0x39(%rbp)
+    3d22:	e3 0f                	jrcxz  3d33 <__ctype_b_loc@plt+0x1793>
+    3d24:	49 01 db             	add    %rbx,%r11
+    3d27:	84 41 03             	test   %al,0x3(%rcx)
+    3d2a:	00 00                	add    %al,(%rax)
+    3d2c:	4d 29 df             	sub    %r11,%r15
+    3d2f:	fb                   	sti    
+    3d30:	02 00                	add    (%rax),%al
+    3d32:	00 f2                	add    %dh,%dl
+    3d34:	74 9d                	je     3cd3 <__ctype_b_loc@plt+0x1733>
+    3d36:	0f 49 31             	cmovns (%rcx),%esi
+    3d39:	fe                   	(bad)  
+    3d3a:	ff 4d 0f             	decl   0xf(%rbp)
+    3d3d:	0f 85 1c fc ff ff    	jne    395f <__ctype_b_loc@plt+0x13bf>
+    3d43:	ed                   	in     (%dx),%eax
+    3d44:	ff                   	(bad)  
+    3d45:	ff 49 c1             	decl   -0x3f(%rcx)
+    3d48:	4c 29 f2             	sub    %r14,%rdx
+    3d4b:	48 89 c1             	mov    %rax,%rcx
+    3d4e:	49 31 c9             	xor    %rcx,%r9
+    3d51:	0f 8f e2 fd ff ff    	jg     3b39 <__ctype_b_loc@plt+0x1599>
+    3d57:	00 49 21             	add    %cl,0x21(%rcx)
+    3d5a:	49 ff 0f             	decq   (%r15)
+    3d5d:	8f                   	(bad)  
+    3d5e:	b7 fd                	mov    $0xfd,%bh
+    3d60:	ff                   	(bad)  
+    3d61:	ff 29                	ljmp   *(%rcx)
+    3d63:	fb                   	sti    
+    3d64:	ff 49 49             	decl   0x49(%rcx)
+    3d67:	0f 85 20 02 00 00    	jne    3f8d <__ctype_b_loc@plt+0x19ed>
+    3d6d:	c1 e4 0f             	shl    $0xf,%esp
+    3d70:	8f                   	(bad)  
+    3d71:	26 48 ff c6          	es inc %rsi
+    3d75:	4d 01 d6             	add    %r10,%r14
+    3d78:	f6 fe                	idiv   %dh
+    3d7a:	e9 fa 02 00 00       	jmp    4079 <__ctype_b_loc@plt+0x1ad9>
+    3d7f:	63 ff                	movsxd %edi,%edi
+    3d81:	ff                   	(bad)  
+    3d82:	ff                   	(bad)  
+    3d83:	ff 49 09             	decl   0x9(%rcx)
+    3d86:	f0 0f 8f 7b fd ff ff 	lock jg 3b08 <__ctype_b_loc@plt+0x1568>
+    3d8d:	c1 48 4d 21          	rorl   $0x21,0x4d(%rax)
+    3d91:	c3                   	ret    
+    3d92:	8c 54 02 00          	mov    %ss,0x0(%rdx,%rax,1)
+    3d96:	00 4c 39 d6          	add    %cl,-0x2a(%rcx,%rdi,1)
+    3d9a:	48 09 d9             	or     %rbx,%rcx
+    3d9d:	49 01 f5             	add    %rsi,%r13
+    3da0:	fc                   	cld    
+    3da1:	ff                   	(bad)  
+    3da2:	ff 4c 0f 49          	decl   0x49(%rdi,%rcx,1)
+    3da6:	ff c3                	inc    %ebx
+    3da8:	f2 0f 8f c9 fd ff ff 	bnd jg 3b78 <__ctype_b_loc@plt+0x15d8>
+    3daf:	48                   	rex.W
+    3db0:	48 0f af f7          	imul   %rdi,%rsi
+    3db4:	fe                   	(bad)  
+    3db5:	ff 4d 39             	decl   0x39(%rbp)
+    3db8:	cc                   	int3   
+    3db9:	1f                   	(bad)  
+    3dba:	49 0f af ca          	imul   %r10,%rcx
+    3dbe:	f9                   	stc    
+    3dbf:	e9 48 85 d9 01       	jmp    1d9c30c <__ctype_b_loc@plt+0x1d99d6c>
+    3dc4:	da 48 c1             	fimull -0x3f(%rax)
+    3dc7:	e0 0f                	loopne 3dd8 <__ctype_b_loc@plt+0x1838>
+    3dc9:	85 4c 02 00          	test   %ecx,0x0(%rdx,%rax,1)
+    3dcd:	00 fd                	add    %bh,%ch
+    3dcf:	ff                   	(bad)  
+    3dd0:	ff 49 c1             	decl   -0x3f(%rcx)
+    3dd3:	e1 49                	loope  3e1e <__ctype_b_loc@plt+0x187e>
+    3dd5:	09 4d 01             	or     %ecx,0x1(%rbp)
+    3dd8:	f5                   	cmc    
+    3dd9:	ff                   	(bad)  
+    3dda:	ff                   	(bad)  
+    3ddb:	ff 4d 39             	decl   0x39(%rbp)
+    3dde:	fe 48 01             	decb   0x1(%rax)
+    3de1:	f2 4d 89 ec          	repnz mov %r13,%r12
+    3de5:	d9 e9                	fldl2t 
+    3de7:	44 ff                	rex.R (bad) 
+    3de9:	ff                   	(bad)  
+    3dea:	ff 4d 21             	decl   0x21(%rbp)
+    3ded:	f2 0f e9             	(bad)
+    3df0:	49 29 cc             	sub    %rcx,%r12
+    3df3:	00 84 e1 02 00 00 09 	add    %al,0x9000002(%rcx,%riz,8)
+    3dfa:	f3 48                	repz rex.W
+    3dfc:	4c 01 ff             	add    %r15,%rdi
+    3dff:	01 49 f7             	add    %ecx,-0x9(%rcx)
+    3e02:	f9                   	stc    
+    3e03:	49                   	rex.WB
+    3e04:	4d 09 cc             	or     %r9,%r12
+    3e07:	85 0f                	test   %ecx,(%rdi)
+    3e09:	48 31 d1             	xor    %rdx,%rcx
+    3e0c:	00 00                	add    %al,(%rax)
+    3e0e:	c7 c4 dd 00 00 00    	mov    $0xdd,%esp
+    3e14:	ff 44 4c 85          	incl   -0x7b(%rsp,%rcx,2)
+    3e18:	49 29 4c 21 ef       	sub    %rcx,-0x11(%r9,%riz,1)
+    3e1d:	c6 00 e9             	movb   $0xe9,(%rax)
+    3e20:	48 c7 c1 df 02 e9 85 	mov    $0xffffffff85e902df,%rcx
+    3e27:	02 00                	add    (%rax),%al
+    3e29:	00 0f                	add    %cl,(%rdi)
+    3e2b:	af                   	scas   %es:(%rdi),%eax
+    3e2c:	f2 31 48 31          	repnz xor %ecx,0x31(%rax)
+    3e30:	c8 00 4d 39          	enter  $0x4d00,$0x39
+    3e34:	c1 c1 eb             	rol    $0xeb,%ecx
+    3e37:	2c 48                	sub    $0x48,%al
+    3e39:	49 c1 e9 36          	shr    $0x36,%r9
+    3e3d:	fc                   	cld    
+    3e3e:	ff                   	(bad)  
+    3e3f:	ff 4d 21             	decl   0x21(%rbp)
+    3e42:	4d                   	rex.WRB
+    3e43:	4d 0f af f7          	imul   %r15,%r14
+    3e47:	49 0f 48 31          	cmovs  (%r9),%rsi
+    3e4b:	f8                   	clc    
+    3e4c:	af                   	scas   %es:(%rdi),%eax
+    3e4d:	d9 dc                	(bad)  
+    3e4f:	f9                   	stc    
+    3e50:	49 85 c8             	test   %rcx,%r8
+    3e53:	f0 48 f7 fe          	lock idiv %rsi
+    3e57:	0f af db             	imul   %ebx,%ebx
+    3e5a:	fe                   	(bad)  
+    3e5b:	ff                   	(bad)  
+    3e5c:	ff                   	(bad)  
+    3e5d:	39 4c 01 f2          	cmp    %ecx,-0xe(%rcx,%rax,1)
+    3e61:	19 0f                	sbb    %ecx,(%rdi)
+    3e63:	8c f9                	mov    %?,%ecx
+    3e65:	02 00                	add    (%rax),%al
+    3e67:	00 0f                	add    %cl,(%rdi)
+    3e69:	85 09                	test   %ecx,(%rcx)
+    3e6b:	fd                   	std    
+    3e6c:	48                   	rex.W
+    3e6d:	48                   	rex.W
+    3e6e:	4d 29 f7             	sub    %r14,%r15
+    3e71:	00 00                	add    %al,(%rax)
+    3e73:	00 df                	add    %bl,%bh
+    3e75:	8b 48 c1             	mov    -0x3f(%rax),%ecx
+    3e78:	ea                   	(bad)  
+    3e79:	07                   	(bad)  
+    3e7a:	48 31 fa             	xor    %rdi,%rdx
+    3e7d:	48 8d 0f             	lea    (%rdi),%rcx
+    3e80:	84 3b                	test   %bh,(%rbx)
+    3e82:	fe                   	(bad)  
+    3e83:	ff                   	(bad)  
+    3e84:	ff 49 c7             	decl   -0x39(%rcx)
+    3e87:	c2 ce fe             	ret    $0xfece
+    3e8a:	ff                   	(bad)  
+    3e8b:	ff                   	(bad)  
+    3e8c:	e9 48 03 00 00       	jmp    41d9 <__ctype_b_loc@plt+0x1c39>
+    3e91:	d2 49 c1             	rorb   %cl,-0x3f(%rcx)
+    3e94:	ef                   	out    %eax,(%dx)
+    3e95:	0e                   	(bad)  
+    3e96:	0f 84 00 fd ff ff    	je     3b9c <__ctype_b_loc@plt+0x15fc>
+    3e9c:	d8 fd                	fdivr  %st(5),%st
+    3e9e:	e9 70 01 00 00       	jmp    4013 <__ctype_b_loc@plt+0x1a73>
+    3ea3:	85 f7                	test   %esi,%edi
+    3ea5:	4c 09 ee             	or     %r13,%rsi
+    3ea8:	4d 29 0f             	sub    %r9,(%r15)
+    3eab:	8c 4c 85 e6          	mov    %cs,-0x1a(%rbp,%rax,4)
+    3eaf:	ff 00                	incl   (%rax)
+    3eb1:	48 29 cb             	sub    %rcx,%rbx
+    3eb4:	0f 85 69 03 00 00    	jne    4223 <__ctype_b_loc@plt+0x1c83>
+    3eba:	fe 49 49             	decb   0x49(%rcx)
+    3ebd:	c1 ec 2a             	shr    $0x2a,%esp
+    3ec0:	a6                   	cmpsb  %es:(%rdi),%ds:(%rsi)
+    3ec1:	48                   	rex.W
+    3ec2:	4d 01 db             	add    %r11,%r11
+    3ec5:	03 00                	add    (%rax),%eax
+    3ec7:	00 02                	add    %al,(%rdx)
+    3ec9:	4c 01 c6             	add    %r8,%rsi
+    3ecc:	ff 4d 48             	decl   0x48(%rbp)
+    3ecf:	e9 49 85 d8 00       	jmp    d8c41d <__ctype_b_loc@plt+0xd89e7d>
+    3ed4:	03 00                	add    (%rax),%eax
+    3ed6:	00 4c 89 d1          	add    %cl,-0x2f(%rcx,%rcx,4)
+    3eda:	29 4c 85 f8          	sub    %ecx,-0x8(%rbp,%rax,4)
+    3ede:	f7 fa                	idiv   %edx
+    3ee0:	93                   	xchg   %eax,%ebx
+    3ee1:	fd                   	std    
+    3ee2:	0f 84 08 0f 8f 20    	je     208f4df0 <__ctype_b_loc@plt+0x208f2850>
+    3ee8:	fc                   	cld    
+    3ee9:	ff 49 f7             	decl   -0x9(%rcx)
+    3eec:	f9                   	stc    
+    3eed:	29 d6                	sub    %edx,%esi
+    3eef:	49 c7 c1 9d fe ff 0f 	mov    $0xffffe9d,%r9
+    3ef6:	84 89 01 00 00 aa    	test   %cl,-0x55ffffff(%rcx)
+    3efc:	02 00                	add    (%rax),%al
+    3efe:	00 ff                	add    %bh,%bh
+    3f00:	49                   	rex.WB
+    3f01:	48 85 c3             	test   %rax,%rbx
+    3f04:	f7 f8                	idiv   %eax
+    3f06:	0f 8c ea 4d 29 48    	jl     48298cf6 <__ctype_b_loc@plt+0x48296756>
+    3f0c:	c1 e6 31             	shl    $0x31,%esi
+    3f0f:	49 c1 e0 07          	shl    $0x7,%r8
+    3f13:	49 c7 c3 5d fe ff ff 	mov    $0xfffffffffffffe5d,%r11
+    3f1a:	e9 6a 01 4d 85       	jmp    ffffffff854d4089 <__ctype_b_loc@plt+0xffffffff854d1ae9>
+    3f1f:	ff 49 4d             	decl   0x4d(%rcx)
+    3f22:	4c 29 48 85          	sub    %r9,-0x7b(%rax)
+    3f26:	fa                   	cli    
+    3f27:	48 29 d7             	sub    %rdx,%rdi
+    3f2a:	00 00                	add    %al,(%rax)
+    3f2c:	48 09 f6             	or     %rsi,%rsi
+    3f2f:	48 09 f9             	or     %rdi,%rcx
+    3f32:	ff 49 4c             	decl   0x4c(%rcx)
+    3f35:	09 e6                	or     %esp,%esi
+    3f37:	8c 5a fd             	mov    %ds,-0x3(%rdx)
+    3f3a:	ff                   	(bad)  
+    3f3b:	ff 49 0f             	decl   0xf(%rcx)
+    3f3e:	8c d5                	mov    %ss,%ebp
+    3f40:	03 00                	add    (%rax),%eax
+    3f42:	00 fc                	add    %bh,%ah
+    3f44:	ff                   	(bad)  
+    3f45:	ff 0f                	decl   (%rdi)
+    3f47:	af                   	scas   %es:(%rdi),%eax
+    3f48:	49 c7 c3 a3 4d 21 e1 	mov    $0xffffffffe1214da3,%r11
+    3f4f:	48 89 d1             	mov    %rdx,%rcx
+    3f52:	00 8f e9 49 f7 fa    	add    %cl,-0x508b617(%rdi)
+    3f58:	00 4d 0f             	add    %cl,0xf(%rbp)
+    3f5b:	af                   	scas   %es:(%rdi),%eax
+    3f5c:	f7 e7                	mul    %edi
+    3f5e:	49 f7 fc             	idiv   %r12
+    3f61:	c1 e4 3a             	shl    $0x3a,%esp
+    3f64:	49                   	rex.WB
+    3f65:	49 f7 fa             	idiv   %r10
+    3f68:	4d 09 f8             	or     %r15,%r8
+    3f6b:	ff                   	(bad)  
+    3f6c:	ff                   	(bad)  
+    3f6d:	ff 49 85             	decl   -0x7b(%rcx)
+    3f70:	d5                   	(bad)  
+    3f71:	e2 1a                	loop   3f8d <__ctype_b_loc@plt+0x19ed>
+    3f73:	ff f3                	push   %rbx
+    3f75:	fa                   	cli    
+    3f76:	ff 4c 0f e9          	decl   -0x17(%rdi,%rcx,1)
+    3f7a:	ca fe ff             	lret   $0xfffe
+    3f7d:	ff                   	(bad)  
+    3f7e:	ff 00                	incl   (%rax)
+    3f80:	00 c2                	add    %al,%dl
+    3f82:	48 c7                	rex.W (bad) 
+    3f84:	0f 84 d3 fe ff ff    	je     3e5d <__ctype_b_loc@plt+0x18bd>
+    3f8a:	4d 0f 8f ca 03 00 00 	rex.WRB jg 435b <__ctype_b_loc@plt+0x1dbb>
+    3f91:	f7 4d 4d 29 d2 49 f7 	testl  $0xf749d229,0x4d(%rbp)
+    3f98:	fb                   	sti    
+    3f99:	0f af c6             	imul   %esi,%eax
+    3f9c:	49                   	rex.WB
+    3f9d:	48                   	rex.W
+    3f9e:	4c 89 fa             	mov    %r15,%rdx
+    3fa1:	89 ce                	mov    %ecx,%esi
+    3fa3:	da fb                	(bad)  
+    3fa5:	48 c1 eb 40          	shr    $0x40,%rbx
+    3fa9:	ec                   	in     (%dx),%al
+    3faa:	01 4d 85             	add    %ecx,-0x7b(%rbp)
+    3fad:	c7                   	(bad)  
+    3fae:	0f 4d 0f             	cmovge (%rdi),%ecx
+    3fb1:	af                   	scas   %es:(%rdi),%eax
+    3fb2:	49 ff c2             	inc    %r10
+    3fb5:	1d fd ff ff fd       	sbb    $0xfdfffffd,%eax
+    3fba:	ff                   	(bad)  
+    3fbb:	ff 5f 49             	lcall  *0x49(%rdi)
+    3fbe:	c1 ef 1e             	shr    $0x1e,%edi
+    3fc1:	d2 4d 09             	rorb   %cl,0x9(%rbp)
+    3fc4:	c0 00 00             	rolb   $0x0,(%rax)
+    3fc7:	0f 4d 39             	cmovge (%rcx),%edi
+    3fca:	48 85 d0             	test   %rdx,%rax
+    3fcd:	ee                   	out    %al,(%dx)
+    3fce:	1e                   	(bad)  
+    3fcf:	48 c1 ea 2b          	shr    $0x2b,%rdx
+    3fd3:	c2 00 0f             	ret    $0xf00
+    3fd6:	49 c1 e6 1f          	shl    $0x1f,%r14
+    3fda:	46 01 eb             	rex.RX add %r13d,%ebx
+    3fdd:	77 49                	ja     4028 <__ctype_b_loc@plt+0x1a88>
+    3fdf:	09 f3                	or     %esi,%ebx
+    3fe1:	ff 49 0f             	decl   0xf(%rcx)
+    3fe4:	af                   	scas   %es:(%rdi),%eax
+    3fe5:	c5 d3 48             	(bad)
+    3fe8:	c1 0f 84             	rorl   $0x84,(%rdi)
+    3feb:	c6 00 00             	movb   $0x0,(%rax)
+    3fee:	eb 63                	jmp    4053 <__ctype_b_loc@plt+0x1ab3>
+    3ff0:	ff                   	(bad)  
+    3ff1:	ff                   	(bad)  
+    3ff2:	ff 83 fc ff 4c 09    	incl   0x94cfffc(%rbx)
+    3ff8:	de 8b 4d e9 33 48    	fimuls 0x4833e94d(%rbx)
+    3ffe:	c1 e6 13             	shl    $0x13,%esi
+    4001:	49 21 ca             	and    %rcx,%r10
+    4004:	49 01 c8             	add    %rcx,%r8
+    4007:	4c 21 e0             	and    %r12,%rax
+    400a:	4d 0f 4d 0f          	cmovge (%r15),%r9
+    400e:	af                   	scas   %es:(%rdi),%eax
+    400f:	c9                   	leave  
+    4010:	0f 8c 45 fc ff ff    	jl     3c5b <__ctype_b_loc@plt+0x16bb>
+    4016:	0f 85 34 fe ff ff    	jne    3e50 <__ctype_b_loc@plt+0x18b0>
+    401c:	00 c1                	add    %al,%cl
+    401e:	e9 48 c1 e1 1c       	jmp    1ce2016b <__ctype_b_loc@plt+0x1ce1dbcb>
+    4023:	3d e9 48 f7 f9       	cmp    $0xf9f748e9,%eax
+    4028:	0f 8c 34 03 00 00    	jl     4362 <__ctype_b_loc@plt+0x1dc2>
+    402e:	4d 89 ee             	mov    %r13,%r14
+    4031:	f1                   	int1   
+    4032:	fd                   	std    
+    4033:	ff                   	(bad)  
+    4034:	ff 0f                	decl   (%rdi)
+    4036:	84 2b                	test   %ch,(%rbx)
+    4038:	01 00                	add    %eax,(%rax)
+    403a:	00 3d 01 da 48 48    	add    %bh,0x4848da01(%rip)        # 48491a41 <__ctype_b_loc@plt+0x4848f4a1>
+    4040:	39 c0                	cmp    %eax,%eax
+    4042:	48 21 4d 49          	and    %rcx,0x49(%rbp)
+    4046:	4d 39 e7             	cmp    %r12,%r15
+    4049:	00 0f                	add    %cl,(%rdi)
+    404b:	8c df                	mov    %ds,%edi
+    404d:	03 0f                	add    (%rdi),%ecx
+    404f:	8c fc                	mov    %?,%esp
+    4051:	02 00                	add    (%rax),%al
+    4053:	00 c1                	add    %al,%cl
+    4055:	35 49 48 c1 e6       	xor    $0xe6c14849,%eax
+    405a:	31 02                	xor    %eax,(%rdx)
+    405c:	48                   	rex.W
+    405d:	4c 01 ee             	add    %r13,%rsi
+    4060:	29 0f                	sub    %ecx,(%rdi)
+    4062:	84 1b                	test   %bl,(%rbx)
+    4064:	02 00                	add    (%rax),%al
+    4066:	00 00                	add    %al,(%rax)
+    4068:	49 f7 fb             	idiv   %r11
+    406b:	db 49 39             	fisttpl 0x39(%rcx)
+    406e:	4c 01 df             	add    %r11,%rdi
+    4071:	ff 4d 85             	decl   -0x7b(%rbp)
+    4074:	f1                   	int1   
+    4075:	4c                   	rex.WR
+    4076:	4c 0f af c2          	imul   %rdx,%r8
+    407a:	b3 48                	mov    $0x48,%bl
+    407c:	c1 eb 40             	shr    $0x40,%ebx
+    407f:	49                   	rex.WB
+    4080:	48 0f 85 ff fd ff ff 	rex.W jne 3e86 <__ctype_b_loc@plt+0x18e6>
+    4087:	fc                   	cld    
+    4088:	03 00                	add    (%rax),%eax
+    408a:	49 c1 e4 18          	shl    $0x18,%r12
+    408e:	49 c1 e5 31          	shl    $0x31,%r13
+    4092:	01 00                	add    %eax,(%rax)
+    4094:	00 31                	add    %dh,(%rcx)
+    4096:	49                   	rex.WB
+    4097:	4d 09 48 39          	or     %r9,0x39(%r8)
+    409b:	c1 4c 01 de 4d       	rorl   $0x4d,-0x22(%rcx,%rax,1)
+    40a0:	e9 ad 4d 09 e2       	jmp    ffffffffe2098e52 <__ctype_b_loc@plt+0xffffffffe20968b2>
+    40a5:	0f 8f fc fd ff ff    	jg     3ea7 <__ctype_b_loc@plt+0x1907>
+    40ab:	e9 c8 fc ff 48       	jmp    49003d78 <__ctype_b_loc@plt+0x490017d8>
+    40b0:	0f af f0             	imul   %eax,%esi
+    40b3:	0f 49 c1             	cmovns %ecx,%eax
+    40b6:	e6 2f                	out    %al,$0x2f
+    40b8:	49                   	rex.WB
+    40b9:	48                   	rex.W
+    40ba:	4d                   	rex.WRB
+    40bb:	48 21 f7             	and    %rsi,%rdi
+    40be:	df 00                	filds  (%rax)
+    40c0:	00 ff                	add    %bh,%bh
+    40c2:	84 49 75             	test   %cl,0x75(%rcx)
+    40c5:	55                   	push   %rbp
+    40c6:	32 31                	xor    (%rcx),%dh
+    40c8:	49 21 d8             	and    %rbx,%r8
+    40cb:	4c                   	rex.WR
+    40cc:	4c 31 d0             	xor    %r10,%rax
+    40cf:	85 c6                	test   %eax,%esi
+    40d1:	21 f2                	and    %esi,%edx
+    40d3:	09 d6                	or     %edx,%esi
+    40d5:	d9 4d 39             	(bad)  0x39(%rbp)
+    40d8:	49 c1 49 ff c1       	rorq   $0xc1,-0x1(%r9)
+    40dd:	48 c1 49 0f 8f       	rorq   $0x8f,0xf(%rcx)
+    40e2:	75 03                	jne    40e7 <__ctype_b_loc@plt+0x1b47>
+    40e4:	00 00                	add    %al,(%rax)
+    40e6:	49 eb 58             	rex.WB jmp 4141 <__ctype_b_loc@plt+0x1ba1>
+    40e9:	e9 6d 49 48 21       	jmp    21488a5b <__ctype_b_loc@plt+0x214864bb>
+    40ee:	c6                   	(bad)  
+    40ef:	4d                   	rex.WRB
+    40f0:	48 21 f6             	and    %rsi,%rsi
+    40f3:	ff c7                	inc    %edi
+    40f5:	0f 85 0f 85 da 03    	jne    3dac60a <__ctype_b_loc@plt+0x3daa06a>
+    40fb:	e9 0a ff ff ff       	jmp    400a <__ctype_b_loc@plt+0x1a6a>
+    4100:	49 29 d9             	sub    %rbx,%r9
+    4103:	e2 2d                	loop   4132 <__ctype_b_loc@plt+0x1b92>
+    4105:	00 0f                	add    %cl,(%rdi)
+    4107:	4d 89 dc             	mov    %r11,%r12
+    410a:	c6 85 e9 86 0f 85 63 	movb   $0x63,-0x7af07917(%rbp)
+    4111:	fc                   	cld    
+    4112:	ff                   	(bad)  
+    4113:	ff 48 0f             	decl   0xf(%rax)
+    4116:	0f 8f 81 fc ff ff    	jg     3d9d <__ctype_b_loc@plt+0x17fd>
+    411c:	85 ef                	test   %ebp,%edi
+    411e:	f8                   	clc    
+    411f:	eb e9                	jmp    410a <__ctype_b_loc@plt+0x1b6a>
+    4121:	48                   	rex.W
+    4122:	4c 0f af 48 ff       	imul   -0x1(%rax),%r9
+    4127:	c7                   	(bad)  
+    4128:	31 48 48             	xor    %ecx,0x48(%rax)
+    412b:	48 c7 c7 28 fe ff ff 	mov    $0xfffffffffffffe28,%rdi
+    4132:	af                   	scas   %es:(%rdi),%eax
+    4133:	df ff                	(bad)  
+    4135:	8c 0f                	mov    %cs,(%rdi)
+    4137:	8f                   	(bad)  
+    4138:	5e                   	pop    %rsi
+    4139:	ff                   	(bad)  
+    413a:	ff                   	(bad)  
+    413b:	ff 85 0f 85 b0 01    	incl   0x1b0850f(%rbp)
+    4141:	00 00                	add    %al,(%rax)
+    4143:	f7 fa                	idiv   %edx
+    4145:	49                   	rex.WB
+    4146:	48                   	rex.W
+    4147:	48 39 da             	cmp    %rbx,%rdx
+    414a:	3a 49 39             	cmp    0x39(%rcx),%cl
+    414d:	f4                   	hlt    
+    414e:	c0 e9 37             	shr    $0x37,%cl
+    4151:	03 00                	add    (%rax),%eax
+    4153:	00 35 89 f9 4c 8b    	add    %dh,-0x74b30677(%rip)        # ffffffff8b4d3ae2 <__ctype_b_loc@plt+0xffffffff8b4d1542>
+    4159:	49 ff 4d 21          	decq   0x21(%r13)
+    415d:	cf                   	iret   
+    415e:	4c 31 f1             	xor    %r14,%rcx
+    4161:	0f 8c 95 49 85 d7    	jl     ffffffffd7858afc <__ctype_b_loc@plt+0xffffffffd785655c>
+    4167:	a5                   	movsl  %ds:(%rsi),%es:(%rdi)
+    4168:	fe                   	(bad)  
+    4169:	ff                   	(bad)  
+    416a:	ff                   	(bad)  
+    416b:	fa                   	cli    
+    416c:	00 3f                	add    %bh,(%rdi)
+    416e:	4d 31 49 f7          	xor    %r9,-0x9(%r9)
+    4172:	fa                   	cli    
+    4173:	fb                   	sti    
+    4174:	8f                   	(bad)  
+    4175:	e7 fe                	out    %eax,$0xfe
+    4177:	ff                   	(bad)  
+    4178:	ff                   	(bad)  
+    4179:	39 ee                	cmp    %ebp,%esi
+    417b:	0f 8f 4d 0f 8f 4e    	jg     4e8f50ce <__ctype_b_loc@plt+0x4e8f2b2e>
+    4181:	fe                   	(bad)  
+    4182:	ff                   	(bad)  
+    4183:	ff c5                	inc    %ebp
+    4185:	09 fe                	or     %edi,%esi
+    4187:	00 00                	add    %al,(%rax)
+    4189:	49 c1 ec 1e          	shr    $0x1e,%r12
+    418d:	48 0f 49 ff          	cmovns %rdi,%rdi
+    4191:	c3                   	ret    
+    4192:	48 c7 c1 85 00 00 00 	mov    $0x85,%rcx
+    4199:	c7                   	(bad)  
+    419a:	31 d4                	xor    %edx,%esp
+    419c:	7f 0f                	jg     41ad <__ctype_b_loc@plt+0x1c0d>
+    419e:	49 c1 ed 16          	shr    $0x16,%r13
+    41a2:	00 48 c1             	add    %cl,-0x3f(%rax)
+    41a5:	e8 37 49 49 39       	call   39498ae1 <__ctype_b_loc@plt+0x39496541>
+    41aa:	f9                   	stc    
+    41ab:	0f 85 4d 48 39 48    	jne    483989fe <__ctype_b_loc@plt+0x4839645e>
+    41b1:	c1 ee 20             	shr    $0x20,%esi
+    41b4:	ff                   	(bad)  
+    41b5:	ff 49 01             	decl   0x1(%rcx)
+    41b8:	d6                   	(bad)  
+    41b9:	0f 48 c7             	cmovs  %edi,%eax
+    41bc:	c0 34 00 00          	shlb   $0x0,(%rax,%rax,1)
+    41c0:	00 e9                	add    %ch,%cl
+    41c2:	58                   	pop    %rax
+    41c3:	01 00                	add    %eax,(%rax)
+    41c5:	4d 0f 4d 89 f6 02 49 	cmovge -0x3eb6fd0a(%r9),%r9
+    41cc:	c1 
+    41cd:	4c 89 f6             	mov    %r14,%rsi
+    41d0:	8c 90 e9 0f 84 f6    	mov    %ss,-0x97bf017(%rax)
+    41d6:	fc                   	cld    
+    41d7:	ff                   	(bad)  
+    41d8:	ff                   	(bad)  
+    41d9:	ff 48 c1             	decl   -0x3f(%rax)
+    41dc:	eb 2c                	jmp    420a <__ctype_b_loc@plt+0x1c6a>
+    41de:	01 f8                	add    %edi,%eax
+    41e0:	00 0f                	add    %cl,(%rdi)
+    41e2:	84 a9 48 c1 ee 39    	test   %ch,0x39eec148(%rcx)
+    41e8:	21 d7                	and    %edx,%edi
+    41ea:	0f 85 95 0f 8c a2    	jne    ffffffffa28c5185 <__ctype_b_loc@plt+0xffffffffa28c2be5>
+    41f0:	fd                   	std    
+    41f1:	ff                   	(bad)  
+    41f2:	ff                   	(bad)  
+    41f3:	fd                   	std    
+    41f4:	ff                   	(bad)  
+    41f5:	ff 00                	incl   (%rax)
+    41f7:	00 ff                	add    %bh,%bh
+    41f9:	fd                   	std    
+    41fa:	0f 8c ab 03 00 00    	jl     45ab <__ctype_b_loc@plt+0x200b>
+    4200:	49 c1 ee 1c          	shr    $0x1c,%r14
+    4204:	f7 49 39 4d 0f 8c 88 	testl  $0x888c0f4d,0x39(%rcx)
+    420b:	00 00                	add    %al,(%rax)
+    420d:	00 49 01             	add    %cl,0x1(%rcx)
+    4210:	ce                   	(bad)  
+    4211:	8f                   	(bad)  
+    4212:	14 fe                	adc    $0xfe,%al
+    4214:	49 c7 c5 de 02 00 00 	mov    $0x2de,%r13
+    421b:	fd                   	std    
+    421c:	00 49 c7             	add    %cl,-0x39(%rcx)
+    421f:	c7                   	(bad)  
+    4220:	49 09 48 f7          	or     %rcx,-0x9(%r8)
+    4224:	fb                   	sti    
+    4225:	49 ff c5             	inc    %r13
+    4228:	c2 0f af             	ret    $0xaf0f
+    422b:	49 31 f9             	xor    %rdi,%r9
+    422e:	48 c7 c6 f0 00 00 00 	mov    $0xf0,%rsi
+    4235:	e5 f0                	in     $0xf0,%eax
+    4237:	0f                   	(bad)  
+    4238:	0f 85 a3 03 00 49    	jne    490045e1 <__ctype_b_loc@plt+0x49002041>
+    423e:	ff c7                	inc    %edi
+    4240:	29 0f                	sub    %ecx,(%rdi)
+    4242:	85 d9                	test   %ebx,%ecx
+    4244:	fd                   	std    
+    4245:	4d 85 ea             	test   %r13,%r10
+    4248:	e9 02 fd ff ff       	jmp    3f4f <__ctype_b_loc@plt+0x19af>
+    424d:	01 44 4c 0f          	add    %eax,0xf(%rsp,%rcx,2)
+    4251:	0f 8f 01 fd ff ff    	jg     3f58 <__ctype_b_loc@plt+0x19b8>
+    4257:	ff 48 49             	decl   0x49(%rax)
+    425a:	49 01 f8             	add    %rdi,%r8
+    425d:	fd                   	std    
+    425e:	ff 4d 85             	decl   -0x7b(%rbp)
+    4261:	d4                   	(bad)  
+    4262:	c7                   	(bad)  
+    4263:	48 c1 e9 10          	shr    $0x10,%rcx
+    4267:	0f 85 98 00 00 00    	jne    4305 <__ctype_b_loc@plt+0x1d65>
+    426d:	25 05 00 49 39       	and    $0x39490005,%eax
+    4272:	c3                   	ret    
+    4273:	8c 13                	mov    %ss,(%rbx)
+    4275:	fc                   	cld    
+    4276:	ff 49 f7             	decl   -0x9(%rcx)
+    4279:	fb                   	sti    
+    427a:	ff                   	(bad)  
+    427b:	7c 74                	jl     42f1 <__ctype_b_loc@plt+0x1d51>
+    427d:	c8 af c2 fc          	enter  $0xc2af,$0xfc
+    4281:	4d 39 d6             	cmp    %r10,%r14
+    4284:	31 e9                	xor    %ebp,%ecx
+    4286:	40 fe                	rex (bad) 
+    4288:	ff                   	(bad)  
+    4289:	ff c1                	inc    %ecx
+    428b:	e2 03                	loop   4290 <__ctype_b_loc@plt+0x1cf0>
+    428d:	ff c4                	inc    %esp
+    428f:	49 c1 e3 0f          	shl    $0xf,%r11
+    4293:	85 48 c1             	test   %ecx,-0x3f(%rax)
+    4296:	e8 17 c1 0b 00       	call   c03b2 <__ctype_b_loc@plt+0xbde12>
+    429b:	00 00                	add    %al,(%rax)
+    429d:	00 00                	add    %al,(%rax)
+    429f:	49 c7 c1 06 fd ff ff 	mov    $0xfffffffffffffd06,%r9
+    42a6:	09 e7                	or     %esp,%edi
+    42a8:	c1 d8 03             	rcr    $0x3,%eax
+    42ab:	00 00                	add    %al,(%rax)
+    42ad:	83 fc 48             	cmp    $0x48,%esp
+    42b0:	c7 c0 f1 fc ff ff    	mov    $0xfffffcf1,%eax
+    42b6:	c1 e9 2a             	shr    $0x2a,%ecx
+    42b9:	1f                   	(bad)  
+    42ba:	4c                   	rex.WR
+    42bb:	49 29 d1             	sub    %rdx,%r9
+    42be:	eb 61                	jmp    4321 <__ctype_b_loc@plt+0x1d81>
+    42c0:	c1 4d 29 c8          	rorl   $0xc8,0x29(%rbp)
+    42c4:	85 f7                	test   %esi,%edi
+    42c6:	e6 49                	out    %al,$0x49
+    42c8:	c7 c1 d6 fc ff ff    	mov    $0xfffffcd6,%ecx
+    42ce:	85 d1                	test   %edx,%ecx
+    42d0:	41 83 4c 89 d7 ca    	orl    $0xffffffca,-0x29(%r9,%rcx,4)
+    42d6:	c2 31 ed             	ret    $0xed31
+    42d9:	e9 03 f8 0f 84       	jmp    ffffffff84103ae1 <__ctype_b_loc@plt+0xffffffff84101541>
+    42de:	8d 03                	lea    (%rbx),%eax
+    42e0:	00 00                	add    %al,(%rax)
+    42e2:	1b 49 89             	sbb    -0x77(%rcx),%ecx
+    42e5:	fc                   	cld    
+    42e6:	48 c1 e6 3c          	shl    $0x3c,%rsi
+    42ea:	8f                   	(bad)  
+    42eb:	0e                   	(bad)  
+    42ec:	ff                   	(bad)  
+    42ed:	ff                   	(bad)  
+    42ee:	ff 49 0f             	decl   0xf(%rcx)
+    42f1:	af                   	scas   %es:(%rdi),%eax
+    42f2:	e9 99 49 c7 c1       	jmp    ffffffffc1c78c90 <__ctype_b_loc@plt+0xffffffffc1c766f0>
+    42f7:	46                   	rex.RX
+    42f8:	49 c1 e0 16          	shl    $0x16,%r8
+    42fc:	0f 84 48 4d 09 e4    	je     ffffffffe409904a <__ctype_b_loc@plt+0xffffffffe4096aaa>
+    4302:	ff                   	(bad)  
+    4303:	e9 c2 fe ff ff       	jmp    41ca <__ctype_b_loc@plt+0x1c2a>
+    4308:	ed                   	in     (%dx),%eax
+    4309:	3f                   	(bad)  
+    430a:	00 00                	add    %al,(%rax)
+    430c:	00 49 01             	add    %cl,0x1(%rcx)
+    430f:	fe                   	(bad)  
+    4310:	7c 6a                	jl     437c <__ctype_b_loc@plt+0x1ddc>
+    4312:	01 d6                	add    %edx,%esi
+    4314:	01 49 21             	add    %ecx,0x21(%rcx)
+    4317:	f6 49 85 48          	testb  $0x48,-0x7b(%rcx)
+    431b:	01 f8                	add    %edi,%eax
+    431d:	49 c1 48 85 d1       	rorq   $0xd1,-0x7b(%r8)
+    4322:	75 04                	jne    4328 <__ctype_b_loc@plt+0x1d88>
+    4324:	4c                   	rex.WR
+    4325:	48                   	rex.W
+    4326:	49 85 d0             	test   %rdx,%r8
+    4329:	48 c1 e6 37          	shl    $0x37,%rsi
+    432d:	4d 09 c8             	or     %r9,%r8
+    4330:	e9 2c 01 00 00       	jmp    4461 <__ctype_b_loc@plt+0x1ec1>
+    4335:	ff                   	(bad)  
+    4336:	e9 49 f7 48 c1       	jmp    ffffffffc1493a84 <__ctype_b_loc@plt+0xffffffffc14914e4>
+    433b:	ea                   	(bad)  
+    433c:	29 00                	sub    %eax,(%rax)
+    433e:	00 0f                	add    %cl,(%rdi)
+    4340:	84 17                	test   %dl,(%rdi)
+    4342:	03 00                	add    (%rax),%eax
+    4344:	00 49 49             	add    %cl,0x49(%rcx)
+    4347:	0f 8f 56 fe ff ff    	jg     41a3 <__ctype_b_loc@plt+0x1c03>
+    434d:	0f 84 83 02 00 49    	je     490045d6 <__ctype_b_loc@plt+0x49002036>
+    4353:	39 f9                	cmp    %edi,%ecx
+    4355:	ff 48 f7             	decl   -0x9(%rax)
+    4358:	ff                   	(bad)  
+    4359:	fa                   	cli    
+    435a:	48 c1 e7 1a          	shl    $0x1a,%rdi
+    435e:	c1 ec 1a             	shr    $0x1a,%esp
+    4361:	af                   	scas   %es:(%rdi),%eax
+    4362:	4c 39 e0             	cmp    %r12,%rax
+    4365:	e9 5e fc ff ff       	jmp    3fc8 <__ctype_b_loc@plt+0x1a28>
+    436a:	48                   	rex.W
+    436b:	49                   	rex.WB
+    436c:	48                   	rex.W
+    436d:	48 c7 c2 d2 00 00 00 	mov    $0xd2,%rdx
+    4374:	85 d6                	test   %edx,%esi
+    4376:	c2 49 4d             	ret    $0x4d49
+    4379:	49 31 d1             	xor    %rdx,%r9
+    437c:	fd                   	std    
+    437d:	3a 4e 0f             	cmp    0xf(%rsi),%cl
+    4380:	48 09 fb             	or     %rdi,%rbx
+    4383:	4d 0f 84 e0 48 09 f0 	rex.WRB je fffffffff0098c6a <__ctype_b_loc@plt+0xfffffffff00966ca>
+    438a:	21 f3                	and    %esi,%ebx
+    438c:	0f 48 21             	cmovs  (%rcx),%esp
+    438f:	c6                   	(bad)  
+    4390:	a7                   	cmpsl  %es:(%rdi),%ds:(%rsi)
+    4391:	fc                   	cld    
+    4392:	ff                   	(bad)  
+    4393:	ff f5                	push   %rbp
+    4395:	02 0f                	add    (%rdi),%cl
+    4397:	85 8c 03 00 0f 84 e1 	test   %ecx,-0x1e7bf100(%rbx,%rax,1)
+    439e:	fe                   	(bad)  
+    439f:	ff                   	(bad)  
+    43a0:	ff d1                	call   *%rcx
+    43a2:	03 00                	add    (%rax),%eax
+    43a4:	00 2f                	add    %ch,(%rdi)
+    43a6:	03 00                	add    (%rax),%eax
+    43a8:	00 01                	add    %al,(%rcx)
+    43aa:	00 00                	add    %al,(%rax)
+    43ac:	c3                   	ret    
+    43ad:	4c 21 0f             	and    %r9,(%rdi)
+    43b0:	8c ff                	mov    %?,%edi
+    43b2:	fe                   	(bad)  
+    43b3:	ff                   	(bad)  
+    43b4:	ff                   	(bad)  
+    43b5:	fc                   	cld    
+    43b6:	ff 4d 31             	decl   0x31(%rbp)
+    43b9:	d2 48 0f             	rorb   %cl,0xf(%rax)
+    43bc:	84 34 0f             	test   %dh,(%rdi,%rcx,1)
+    43bf:	85 63 03             	test   %esp,0x3(%rbx)
+    43c2:	00 00                	add    %al,(%rax)
+    43c4:	ff                   	(bad)  
+    43c5:	ff 85 4d 39 f8 ff    	incl   -0x7c6b3(%rbp)
+    43cb:	49 e9 d0 fd ff ff    	rex.WB jmp 41a1 <__ctype_b_loc@plt+0x1c01>
+    43d1:	49                   	rex.WB
+    43d2:	48 39 fb             	cmp    %rdi,%rbx
+    43d5:	4d 85 fb             	test   %r15,%r11
+    43d8:	00 00                	add    %al,(%rax)
+    43da:	49 f7 f8             	idiv   %r8
+    43dd:	00 e9                	add    %ch,%cl
+    43df:	65 01 00             	add    %eax,%gs:(%rax)
+    43e2:	00 c7                	add    %al,%bh
+    43e4:	ff                   	(bad)  
+    43e5:	ff 4c 49 c1          	decl   -0x3f(%rcx,%rcx,2)
+    43e9:	ee                   	out    %al,(%dx)
+    43ea:	19 49 c7             	sbb    %ecx,-0x39(%rcx)
+    43ed:	c0 97 fe ff ff fe 85 	rclb   $0x85,-0x1000002(%rdi)
+    43f4:	48 f7 ff             	idiv   %rdi
+    43f7:	49 c1 e8 0f          	shr    $0xf,%r8
+    43fb:	4c 39 e7             	cmp    %r12,%rdi
+    43fe:	00 00                	add    %al,(%rax)
+    4400:	ce                   	(bad)  
+    4401:	8c ff                	mov    %?,%edi
+    4403:	02 48 0f             	add    0xf(%rax),%cl
+    4406:	8c b5 fd ff ff 84    	mov    %?,-0x7b000003(%rbp)
+    440c:	45 fe                	rex.RB (bad) 
+    440e:	ff                   	(bad)  
+    440f:	ff 49 4d             	decl   0x4d(%rcx)
+    4412:	4c 0f af 4d 0f       	imul   0xf(%rbp),%r9
+    4417:	af                   	scas   %es:(%rdi),%eax
+    4418:	c6                   	(bad)  
+    4419:	eb c5                	jmp    43e0 <__ctype_b_loc@plt+0x1e40>
+    441b:	af                   	scas   %es:(%rdi),%eax
+    441c:	d8 f7                	fdiv   %st(7),%st
+    441e:	f9                   	stc    
+    441f:	49 c7 c3 df 03 00 00 	mov    $0x3df,%r11
+    4426:	49 01 de             	add    %rbx,%r14
+    4429:	49 09 0f             	or     %rcx,(%r15)
+    442c:	8f                   	(bad)  
+    442d:	fc                   	cld    
+    442e:	00 00                	add    %al,(%rax)
+    4430:	4c 31 f1             	xor    %r14,%rcx
+    4433:	4d 85 e8             	test   %r13,%r8
+    4436:	00 ff                	add    %bh,%bh
+    4438:	49                   	rex.WB
+    4439:	49 21 f3             	and    %rsi,%r11
+    443c:	00 e9                	add    %ch,%cl
+    443e:	7d fd                	jge    443d <__ctype_b_loc@plt+0x1e9d>
+    4440:	ff                   	(bad)  
+    4441:	ff                   	(bad)  
+    4442:	df 0f                	fisttps (%rdi)
+    4444:	8c 51 e9             	mov    %ss,-0x17(%rcx)
+    4447:	c0 00 00             	rolb   $0x0,(%rax)
+    444a:	00 01                	add    %al,(%rcx)
+    444c:	48                   	rex.W
+    444d:	48 c7 c2 ab 03 00 00 	mov    $0x3ab,%rdx
+    4454:	89 d4                	mov    %edx,%esp
+    4456:	fc                   	cld    
+    4457:	ff                   	(bad)  
+    4458:	ff 0f                	decl   (%rdi)
+    445a:	85 3f                	test   %edi,(%rdi)
+    445c:	0f 8c 05 4d 01 c6    	jl     ffffffffc6019167 <__ctype_b_loc@plt+0xffffffffc6016bc7>
+    4462:	ec                   	in     (%dx),%al
+    4463:	4d 0f 8f 57 fc ff ff 	rex.WRB jg 40c1 <__ctype_b_loc@plt+0x1b21>
+    446a:	0f 85 48 c1 e8 04    	jne    4e905b8 <__ctype_b_loc@plt+0x4e8e018>
+    4470:	49 31 de             	xor    %rbx,%r14
+    4473:	29 dc                	sub    %ebx,%esp
+    4475:	49                   	rex.WB
+    4476:	49 0f                	rex.WB (bad) 
+    4478:	0f 84 c8 fc ff ff    	je     4146 <__ctype_b_loc@plt+0x1ba6>
+    447e:	49 c1 ea 4d          	shr    $0x4d,%r10
+    4482:	39 dd                	cmp    %ebx,%ebp
+    4484:	4c 89 48 f7          	mov    %r9,-0x9(%rax)
+    4488:	fa                   	cli    
+    4489:	0c 4c                	or     $0x4c,%al
+    448b:	21 db                	and    %ebx,%ebx
+    448d:	0f 74 48 c1          	pcmpeqb -0x3f(%rax),%mm1
+    4491:	e6 2c                	out    %al,$0x2c
+    4493:	e9 48 85 c2 e3       	jmp    ffffffffe3c2c9e0 <__ctype_b_loc@plt+0xffffffffe3c2a440>
+    4498:	1c 29                	sbb    $0x29,%al
+    449a:	4d 39 d3             	cmp    %r10,%r11
+    449d:	0f 8c 38 ff ff ff    	jl     43db <__ctype_b_loc@plt+0x1e3b>
+    44a3:	ff f4                	push   %rsp
+    44a5:	e9 f9 0f 85 e4       	jmp    ffffffffe48554a3 <__ctype_b_loc@plt+0xffffffffe4852f03>
+    44aa:	fd                   	std    
+    44ab:	ff                   	(bad)  
+    44ac:	ff 4c 01 ef          	decl   -0x11(%rcx,%rax,1)
+    44b0:	00 f6                	add    %dh,%dh
+    44b2:	48 31 cb             	xor    %rcx,%rbx
+    44b5:	4d 39 d1             	cmp    %r10,%r9
+    44b8:	00 4c 85 4c          	add    %cl,0x4c(%rbp,%rax,4)
+    44bc:	0f af d1             	imul   %ecx,%edx
+    44bf:	48 09 f8             	or     %rdi,%rax
+    44c2:	e6 4d                	out    %al,$0x4d
+    44c4:	31 4d 89             	xor    %ecx,-0x77(%rbp)
+    44c7:	48 c1 e7 24          	shl    $0x24,%rdi
+    44cb:	ef                   	out    %eax,(%dx)
+    44cc:	00 8c 4d 48 39 4d 49 	add    %cl,0x494d3948(%rbp,%rcx,2)
+    44d3:	c7 c1 49 c1 e7 2c    	mov    $0x2ce7c149,%ecx
+    44d9:	00 00                	add    %al,(%rax)
+    44db:	49 85 d4             	test   %rdx,%r12
+    44de:	4d 21 0f             	and    %r9,(%r15)
+    44e1:	8c 29                	mov    %gs,(%rcx)
+    44e3:	03 00                	add    (%rax),%eax
+    44e5:	00 98 4d 85 e9 4c    	add    %bl,0x4ce9854d(%rax)
+    44eb:	7c 06                	jl     44f3 <__ctype_b_loc@plt+0x1f53>
+    44ed:	39 49 01             	cmp    %ecx,0x1(%rcx)
+    44f0:	f5                   	cmc    
+    44f1:	21 f6                	and    %esi,%esi
+    44f3:	48 89 c0             	mov    %rax,%rax
+    44f6:	ff 4d 29             	decl   0x29(%rbp)
+    44f9:	fb                   	sti    
+    44fa:	ce                   	(bad)  
+    44fb:	4c 21 c1             	and    %r8,%rcx
+    44fe:	8c b0 01 00 00 da    	mov    %?,-0x25ffffff(%rax)
+    4504:	0f 8c 08 fe 49 89    	jl     ffffffff894a4312 <__ctype_b_loc@plt+0xffffffff894a1d72>
+    450a:	cf                   	iret   
+    450b:	3b 00                	cmp    (%rax),%eax
+    450d:	00 00                	add    %al,(%rax)
+    450f:	49 c1 e4 02          	shl    $0x2,%r12
+    4513:	49 c1 ea 1a          	shr    $0x1a,%r10
+    4517:	49 01 dd             	add    %rbx,%r13
+    451a:	4d 29 d8             	sub    %r11,%r8
+    451d:	0f af f8             	imul   %eax,%edi
+    4520:	85 bb 01 00 00 fc    	test   %edi,-0x3ffffff(%rbx)
+    4526:	48 0f 8f e9 5d fe ff 	rex.W jg fffffffffffea316 <__ctype_b_loc@plt+0xfffffffffffe7d76>
+    452d:	ff c1                	inc    %ecx
+    452f:	4c 21 f1             	and    %r14,%rcx
+    4532:	c9                   	leave  
+    4533:	00 4d 39             	add    %cl,0x39(%rbp)
+    4536:	48 0f 48 c7          	cmovs  %rdi,%rax
+    453a:	c6                   	(bad)  
+    453b:	65 49 89 cd          	gs mov %rcx,%r13
+    453f:	ff 84 75 48 31 db c1 	incl   -0x3e24ceb8(%rbp,%rsi,2)
+    4546:	e7 0e                	out    %eax,$0xe
+    4548:	d9 ff                	fcos   
+    454a:	ff 49 29             	decl   0x29(%rcx)
+    454d:	f7 29                	imull  (%rcx)
+    454f:	4c 89 f6             	mov    %r14,%rsi
+    4552:	01 ea                	add    %ebp,%edx
+    4554:	e3 48                	jrcxz  459e <__ctype_b_loc@plt+0x1ffe>
+    4556:	21 c9                	and    %ecx,%ecx
+    4558:	e9 f8 fd ff ff       	jmp    4355 <__ctype_b_loc@plt+0x1db5>
+    455d:	ff 4d 21             	decl   0x21(%rbp)
+    4560:	48 c1 49 c7 c5       	rorq   $0xc5,-0x39(%rcx)
+    4565:	46 fc                	rex.RX cld 
+    4567:	ff                   	(bad)  
+    4568:	ff 64 fe ff          	jmp    *-0x1(%rsi,%rdi,8)
+    456c:	ff 00                	incl   (%rax)
+    456e:	01 00                	add    %eax,(%rax)
+    4570:	00 0b                	add    %cl,(%rbx)
+    4572:	4d 85 c5             	test   %r8,%r13
+    4575:	49                   	rex.WB
+    4576:	4c                   	rex.WR
+    4577:	4d 31 c8             	xor    %r9,%r8
+    457a:	ff                   	(bad)  
+    457b:	ff 4c 39 f7          	decl   -0x9(%rcx,%rdi,1)
+    457f:	f2 29 dc             	repnz sub %ebx,%esp
+    4582:	0f 84 c7 4d 49 01    	je     149934f <__ctype_b_loc@plt+0x1496daf>
+    4588:	f9                   	stc    
+    4589:	49 09 d9             	or     %rbx,%r9
+    458c:	44 24 18             	rex.R and $0x18,%al
+    458f:	4d 01 49 c1          	add    %r9,-0x3f(%r9)
+    4593:	e9 27 01 00 0f       	jmp    f0046bf <__ctype_b_loc@plt+0xf00211f>
+    4598:	8f                   	(bad)  
+    4599:	3d 01 00 49 21       	cmp    $0x21490001,%eax
+    459e:	f4                   	hlt    
+    459f:	ff c6                	inc    %esi
+    45a1:	4d 09 d3             	or     %r10,%r11
+    45a4:	6b 0f 84             	imul   $0xffffff84,(%rdi),%ecx
+    45a7:	48 c1 ee 39          	shr    $0x39,%rsi
+    45ab:	30 fd                	xor    %bh,%ch
+    45ad:	49                   	rex.WB
+    45ae:	4c 89 c7             	mov    %r8,%rdi
+    45b1:	fc                   	cld    
+    45b2:	48 31 c2             	xor    %rax,%rdx
+    45b5:	85 d6                	test   %edx,%esi
+    45b7:	89 49 c7             	mov    %ecx,-0x39(%rcx)
+    45ba:	0f 85 49 c1 e4 25    	jne    25e50709 <__ctype_b_loc@plt+0x25e4e169>
+    45c0:	0f 85 0b 01 00 48    	jne    480046d1 <__ctype_b_loc@plt+0x48002131>
+    45c6:	c1 e6 03             	shl    $0x3,%esi
+    45c9:	4c 31 4d 29          	xor    %r9,0x29(%rbp)
+    45cd:	fc                   	cld    
+    45ce:	49                   	rex.WB
+    45cf:	49 0f af cf          	imul   %r15,%rcx
+    45d3:	49 c1 e5 07          	shl    $0x7,%r13
+    45d7:	00 00                	add    %al,(%rax)
+    45d9:	00 0a                	add    %cl,(%rdx)
+    45db:	4d 75 4d             	rex.WRB jne 462b <__ctype_b_loc@plt+0x208b>
+    45de:	29 0f                	sub    %ecx,(%rdi)
+    45e0:	8c 9d 01 00 00 31    	mov    %ds,0x31000001(%rbp)
+    45e6:	48 01 f3             	add    %rsi,%rbx
+    45e9:	af                   	scas   %es:(%rdi),%eax
+    45ea:	48 0f 85 88 fc ff 48 	rex.W jne 49004279 <__ctype_b_loc@plt+0x49001cd9>
+    45f1:	c1 e8 2c             	shr    $0x2c,%eax
+    45f4:	0b 49 c7             	or     -0x39(%rcx),%ecx
+    45f7:	c2 57 00             	ret    $0x57
+    45fa:	00 00                	add    %al,(%rax)
+    45fc:	f3 48 89 4c 01 48    	xrelease mov %rcx,0x48(%rcx,%rax,1)
+    4602:	0f af c1             	imul   %ecx,%eax
+    4605:	4c 29 d1             	sub    %r10,%rcx
+    4608:	21 4d 89             	and    %ecx,-0x77(%rbp)
+    460b:	d3 49 89             	rorl   %cl,-0x77(%rcx)
+    460e:	d5                   	(bad)  
+    460f:	84 0f                	test   %cl,(%rdi)
+    4611:	8f                   	(bad)  
+    4612:	14 fc                	adc    $0xfc,%al
+    4614:	ff                   	(bad)  
+    4615:	ff 4d 01             	decl   0x1(%rbp)
+    4618:	e5 8c                	in     $0x8c,%eax
+    461a:	26 4c 29 c1          	es sub %r8,%rcx
+    461e:	c3                   	ret    
+    461f:	85 0f                	test   %ecx,(%rdi)
+    4621:	85 de                	test   %ebx,%esi
+    4623:	fd                   	std    
+    4624:	ff                   	(bad)  
+    4625:	ff 4d 49             	decl   0x49(%rbp)
+    4628:	c7 c0 52 00 00 00    	mov    $0x52,%eax
+    462e:	0f 8f 0e 01 00 00    	jg     4742 <__ctype_b_loc@plt+0x21a2>
+    4634:	49 ff c1             	inc    %r9
+    4637:	e0 06                	loopne 463f <__ctype_b_loc@plt+0x209f>
+    4639:	44 24 7d             	rex.R and $0x7d,%al
+    463c:	4c                   	rex.WR
+    463d:	49 0f af d2          	imul   %r10,%rdx
+    4641:	4d 21 d7             	and    %r10,%r15
+    4644:	4c 21 ef             	and    %r13,%rdi
+    4647:	28 49 4d             	sub    %cl,0x4d(%rcx)
+    464a:	0f 4d 09             	cmovge (%rcx),%ecx
+    464d:	dd c7                	ffree  %st(7)
+    464f:	c7                   	(bad)  
+    4650:	9b                   	fwait
+    4651:	02 00                	add    (%rax),%al
+    4653:	00 3e                	add    %bh,(%rsi)
+    4655:	d2 4d 0f             	rorb   %cl,0xf(%rbp)
+    4658:	af                   	scas   %es:(%rdi),%eax
+    4659:	4c 21 c2             	and    %r8,%rdx
+    465c:	48 89 fa             	mov    %rdi,%rdx
+    465f:	4c 39 f8             	cmp    %r15,%rax
+    4662:	09 49 c1             	or     %ecx,-0x3f(%rcx)
+    4665:	ea                   	(bad)  
+    4666:	0c 49                	or     $0x49,%al
+    4668:	c1 e7 3a             	shl    $0x3a,%edi
+    466b:	4c 09 c0             	or     %r8,%rax
+    466e:	00 00                	add    %al,(%rax)
+    4670:	85 c9                	test   %ecx,%ecx
+    4672:	ff 0f                	decl   (%rdi)
+    4674:	48 29 f9             	sub    %rdi,%rcx
+    4677:	00 49 c7             	add    %cl,-0x39(%rcx)
+    467a:	c7                   	(bad)  
+    467b:	a8 fe                	test   $0xfe,%al
+    467d:	48 39 c1             	cmp    %rax,%rcx
+    4680:	0f 85 ca 03 00 00    	jne    4a50 <__ctype_b_loc@plt+0x24b0>
+    4686:	48 31 f6             	xor    %rsi,%rsi
+    4689:	ee                   	out    %al,(%dx)
+    468a:	3e cd ff             	ds int $0xff
+    468d:	0f 4c 39             	cmovl  (%rcx),%edi
+    4690:	f9                   	stc    
+    4691:	ff                   	(bad)  
+    4692:	ff 48 ff             	decl   -0x1(%rax)
+    4695:	49 21 f3             	and    %rsi,%r11
+    4698:	4d 21 f4             	and    %r14,%r12
+    469b:	21 e7                	and    %esp,%edi
+    469d:	48 c1 49 39 fa       	rorq   $0xfa,0x39(%rcx)
+    46a2:	4c 39 4c 0f 84       	cmp    %r9,-0x7c(%rdi,%rcx,1)
+    46a7:	7f 00                	jg     46a9 <__ctype_b_loc@plt+0x2109>
+    46a9:	00 00                	add    %al,(%rax)
+    46ab:	8f 48 29 fe          	(bad)
+    46af:	ff                   	(bad)  
+    46b0:	ff aa 48 e9 71 01    	ljmp   *0x171e948(%rdx)
+    46b6:	00 48 39             	add    %cl,0x39(%rax)
+    46b9:	fa                   	cli    
+    46ba:	fc                   	cld    
+    46bb:	ff 48 01             	decl   0x1(%rax)
+    46be:	c1 0f 85             	rorl   $0x85,(%rdi)
+    46c1:	6c                   	insb   (%dx),%es:(%rdi)
+    46c2:	fd                   	std    
+    46c3:	0f 84 95 02 00 00    	je     495e <__ctype_b_loc@plt+0x23be>
+    46c9:	f7 fa                	idiv   %edx
+    46cb:	4d 31 c1             	xor    %r8,%r9
+    46ce:	4c 8b 64 49 85       	mov    -0x7b(%rcx,%rcx,2),%r12
+    46d3:	f4                   	hlt    
+    46d4:	49 f7 4d 21 d8 0f 8c 	testq  $0x498c0fd8,0x21(%r13)
+    46db:	49 
+    46dc:	31 cd                	xor    %ecx,%ebp
+    46de:	ff 01                	incl   (%rcx)
+    46e0:	00 00                	add    %al,(%rax)
+    46e2:	00 c1                	add    %al,%cl
+    46e4:	e3 2a                	jrcxz  4710 <__ctype_b_loc@plt+0x2170>
+    46e6:	48 f7 fa             	idiv   %rdx
+    46e9:	f7 48 31 fe 83 01 00 	testl  $0x183fe,0x31(%rax)
+    46f0:	00 84 40 4d 29 cc 4c 	add    %al,0x4ccc294d(%rax,%rax,2)
+    46f7:	39 c6                	cmp    %eax,%esi
+    46f9:	48 0f 8f f1 e9 9c fd 	rex.W jg fffffffffd9d30f1 <__ctype_b_loc@plt+0xfffffffffd9d0b51>
+    4700:	ff                   	(bad)  
+    4701:	ff c7                	inc    %edi
+    4703:	f6 49 4d 0f          	testb  $0xf,0x4d(%rcx)
+    4707:	af                   	scas   %es:(%rdi),%eax
+    4708:	f9                   	stc    
+    4709:	8f                   	(bad)  
+    470a:	4d                   	rex.WRB
+    470b:	4d 01 d7             	add    %r10,%r15
+    470e:	fd                   	std    
+    470f:	49 09 d3             	or     %rdx,%r11
+    4712:	48 c1 e2 1e          	shl    $0x1e,%rdx
+    4716:	39 48 c1             	cmp    %ecx,-0x3f(%rax)
+    4719:	e9 1c 4d 0f 8f       	jmp    ffffffff8f0f943a <__ctype_b_loc@plt+0xffffffff8f0f6e9a>
+    471e:	87 02                	xchg   %eax,(%rdx)
+    4720:	00 00                	add    %al,(%rax)
+    4722:	3b c0                	cmp    %eax,%eax
+    4724:	0f 48 c1             	cmovs  %ecx,%eax
+    4727:	e9 0b fe 20 4d       	jmp    4d214537 <__ctype_b_loc@plt+0x4d211f97>
+    472c:	21 0f                	and    %ecx,(%rdi)
+    472e:	85 a1 03 00 48 f7    	test   %esp,-0x8b7fffd(%rcx)
+    4734:	f9                   	stc    
+    4735:	00 4c 21 ff          	add    %cl,-0x1(%rcx,%riz,1)
+    4739:	eb bf                	jmp    46fa <__ctype_b_loc@plt+0x215a>
+    473b:	c0 ee 00             	shr    $0x0,%dh
+    473e:	4d 39 ee             	cmp    %r13,%r14
+    4741:	48 c1 ee 10          	shr    $0x10,%rsi
+    4745:	ff 00                	incl   (%rax)
+    4747:	00 4c 29 d9          	add    %cl,-0x27(%rcx,%rbp,1)
+    474b:	d1 0f                	rorl   (%rdi)
+    474d:	84 ff                	test   %bh,%bh
+    474f:	fd                   	std    
+    4750:	ff                   	(bad)  
+    4751:	ff 00                	incl   (%rax)
+    4753:	4c 01 4d 31          	add    %r9,0x31(%rbp)
+    4757:	ca 4d 29             	lret   $0x294d
+    475a:	c7                   	(bad)  
+    475b:	af                   	scas   %es:(%rdi),%eax
+    475c:	f2 ef                	repnz out %eax,(%dx)
+    475e:	4d 85 d2             	test   %r10,%r10
+    4761:	00 00                	add    %al,(%rax)
+    4763:	ff                   	(bad)  
+    4764:	ff 4d 39             	decl   0x39(%rbp)
+    4767:	49                   	rex.WB
+    4768:	4c 89 49 f7          	mov    %r9,-0x9(%rcx)
+    476c:	fd                   	std    
+    476d:	c1 4d 85 f9          	rorl   $0xf9,-0x7b(%rbp)
+    4771:	ec                   	in     (%dx),%al
+    4772:	48 21 0f             	and    %rcx,(%rdi)
+    4775:	84 dd                	test   %bl,%ch
+    4777:	03 00                	add    (%rax),%eax
+    4779:	00 c5                	add    %al,%ch
+    477b:	49 f7 fb             	idiv   %r11
+    477e:	0f 7c                	(bad)  
+    4780:	96                   	xchg   %eax,%esi
+    4781:	03 00                	add    (%rax),%eax
+    4783:	00 4d 29             	add    %cl,0x29(%rbp)
+    4786:	f8                   	clc    
+    4787:	48                   	rex.W
+    4788:	4c 0f af 49 c1       	imul   -0x3f(%rcx),%r9
+    478d:	e6 1e                	out    %al,$0x1e
+    478f:	8c 0f                	mov    %cs,(%rdi)
+    4791:	03 00                	add    (%rax),%eax
+    4793:	00 c1                	add    %al,%cl
+    4795:	ee                   	out    %al,(%dx)
+    4796:	14 b9                	adc    $0xb9,%al
+    4798:	fd                   	std    
+    4799:	ff                   	(bad)  
+    479a:	ff 0f                	decl   (%rdi)
+    479c:	af                   	scas   %es:(%rdi),%eax
+    479d:	0f 84 77 02 00 00    	je     4a1a <__ctype_b_loc@plt+0x247a>
+    47a3:	c3                   	ret    
+    47a4:	ef                   	out    %eax,(%dx)
+    47a5:	22 01                	and    (%rcx),%al
+    47a7:	00 4c 85 e0          	add    %cl,-0x20(%rbp,%rax,4)
+    47ab:	c3                   	ret    
+    47ac:	fe 49 21             	decb   0x21(%rcx)
+    47af:	0f 8c 48 49 21 f2    	jl     fffffffff22190fd <__ctype_b_loc@plt+0xfffffffff2216b5d>
+    47b5:	49 09 fe             	or     %rdi,%r14
+    47b8:	f0 48 21 f8          	lock and %rdi,%rax
+    47bc:	0f 84 49 49 f7 fb    	je     fffffffffbf7910b <__ctype_b_loc@plt+0xfffffffffbf76b6b>
+    47c2:	48 01 fb             	add    %rdi,%rbx
+    47c5:	0f 8c d1 01 00 00    	jl     499c <__ctype_b_loc@plt+0x23fc>
+    47cb:	41 0f 4c 0f          	cmovl  (%r15),%ecx
+    47cf:	48 c7 c2 62 00 49 ff 	mov    $0xffffffffff490062,%rdx
+    47d6:	c7                   	(bad)  
+    47d7:	fc                   	cld    
+    47d8:	49                   	rex.WB
+    47d9:	48 c1 e7 3d          	shl    $0x3d,%rdi
+    47dd:	c8 02 4c 39          	enter  $0x4c02,$0x39
+    47e1:	c6                   	(bad)  
+    47e2:	0f 4c 39             	cmovl  (%rcx),%edi
+    47e5:	f9                   	stc    
+    47e6:	01 c6                	add    %eax,%esi
+    47e8:	0f 84 13 01 00 00    	je     4901 <__ctype_b_loc@plt+0x2361>
+    47ee:	4d 85 ef             	test   %r13,%r15
+    47f1:	ff                   	(bad)  
+    47f2:	ff c1                	inc    %ecx
+    47f4:	4d 39 0f             	cmp    %r9,(%r15)
+    47f7:	8f                   	(bad)  
+    47f8:	0f 84 0a fe ff ff    	je     4608 <__ctype_b_loc@plt+0x2068>
+    47fe:	49 7c ed             	rex.WB jl 47ee <__ctype_b_loc@plt+0x224e>
+    4801:	e8 48 4c 89 0f       	call   f89944e <__ctype_b_loc@plt+0xf896eae>
+    4806:	48 c1 ea 30          	shr    $0x30,%rdx
+    480a:	0f 8f b7 03 00 00    	jg     4bc7 <__ctype_b_loc@plt+0x2627>
+    4810:	49 39 d6             	cmp    %rdx,%r14
+    4813:	e9 29 fd ff ff       	jmp    4541 <__ctype_b_loc@plt+0x1fa1>
+    4818:	4d 39 f6             	cmp    %r14,%r14
+    481b:	0f af ff             	imul   %edi,%edi
+    481e:	c3                   	ret    
+    481f:	49 85 dd             	test   %rbx,%r13
+    4822:	24 49                	and    $0x49,%al
+    4824:	31 f5                	xor    %esi,%ebp
+    4826:	fd                   	std    
+    4827:	4d 39 4d 01          	cmp    %r9,0x1(%r13)
+    482b:	fc                   	cld    
+    482c:	09 da                	or     %ebx,%edx
+    482e:	fe 48 31             	decb   0x31(%rax)
+    4831:	c2 01 f9             	ret    $0xf901
+    4834:	ff 49 74             	decl   0x74(%rcx)
+    4837:	cc                   	int3   
+    4838:	c4                   	(bad)  
+    4839:	dc fc                	fdivr  %st,%st(4)
+    483b:	ff                   	(bad)  
+    483c:	ff                   	(bad)  
+    483d:	ff 8f f4 fc 4d 85    	decl   -0x7ab2030c(%rdi)
+    4843:	f4                   	hlt    
+    4844:	fc                   	cld    
+    4845:	48 89 da             	mov    %rbx,%rdx
+    4848:	f1                   	int1   
+    4849:	d7                   	xlat   %ds:(%rbx)
+    484a:	48 c7 c0 48 29 fe 00 	mov    $0xfe2948,%rax
+    4851:	48                   	rex.W
+    4852:	48 ff c3             	inc    %rbx
+    4855:	31 e8                	xor    %ebp,%eax
+    4857:	c2 0f 84             	ret    $0x840f
+    485a:	49 c1 ec 19          	shr    $0x19,%r12
+    485e:	0f 48 f7             	cmovs  %edi,%esi
+    4861:	49 c1 e9 2e          	shr    $0x2e,%r9
+    4865:	75 70                	jne    48d7 <__ctype_b_loc@plt+0x2337>
+    4867:	c1 e8 03             	shr    $0x3,%eax
+    486a:	85 c7                	test   %eax,%edi
+    486c:	4c 21 fe             	and    %r15,%rsi
+    486f:	48 89 4d 85          	mov    %rcx,-0x7b(%rbp)
+    4873:	c8 e0 3a 00          	enter  $0x3ae0,$0x0
+    4877:	d1 48 4d             	rorl   0x4d(%rax)
+    487a:	21 4d 85             	and    %ecx,-0x7b(%rbp)
+    487d:	0f 85 4d 29 c7 00    	jne    c771d0 <__ctype_b_loc@plt+0xc74c30>
+    4883:	c1 eb 19             	shr    $0x19,%ebx
+    4886:	e9 f9 00 00 00       	jmp    4984 <__ctype_b_loc@plt+0x23e4>
+    488b:	c6 c7 c5             	mov    $0xc5,%bh
+    488e:	c0 fd ff             	sar    $0xff,%ch
+    4891:	ff 0f                	decl   (%rdi)
+    4893:	8c 2c fc             	mov    %gs,(%rsp,%rdi,8)
+    4896:	ff 48 4d             	decl   0x4d(%rax)
+    4899:	49 ff c7             	inc    %r15
+    489c:	21 e3                	and    %esp,%ebx
+    489e:	21 c1                	and    %eax,%ecx
+    48a0:	0f 8f 35 fc ff ff    	jg     44db <__ctype_b_loc@plt+0x1f3b>
+    48a6:	49 09 d2             	or     %rdx,%r10
+    48a9:	49 c1 e2 27          	shl    $0x27,%r10
+    48ad:	c6                   	(bad)  
+    48ae:	ff 74 1e f6          	push   -0xa(%rsi,%rbx,1)
+    48b2:	21 48 c7             	and    %ecx,-0x39(%rax)
+    48b5:	c7                   	(bad)  
+    48b6:	74 ff                	je     48b7 <__ctype_b_loc@plt+0x2317>
+    48b8:	ff                   	(bad)  
+    48b9:	ff                   	(bad)  
+    48ba:	ff 1e                	lcall  *(%rsi)
+    48bc:	4c 29 48 09          	sub    %r9,0x9(%rax)
+    48c0:	4d 0f 4d 49 c1       	cmovge -0x3f(%r9),%r9
+    48c5:	49 c7 c1 0e fe ff ff 	mov    $0xfffffffffffffe0e,%r9
+    48cc:	ff                   	(bad)  
+    48cd:	ff 4d 01             	decl   0x1(%rbp)
+    48d0:	df 85 0f 8c 20 fe    	filds  -0x1df73f1(%rbp)
+    48d6:	ff                   	(bad)  
+    48d7:	ff af de 00 00 35    	ljmp   *0x350000de(%rdi)
+    48dd:	49 f7 fc             	idiv   %r12
+    48e0:	4d 39 0f             	cmp    %r9,(%r15)
+    48e3:	85 68 ff             	test   %ebp,-0x1(%rax)
+    48e6:	ff                   	(bad)  
+    48e7:	ff c1                	inc    %ecx
+    48e9:	a1 4d 0f af e3 4c 48 	movabs 0xf748484ce3af0f4d,%eax
+    48f0:	48 f7 
+    48f2:	f9                   	stc    
+    48f3:	49 85 d1             	test   %rdx,%r9
+    48f6:	ca 03 00             	lret   $0x3
+    48f9:	00 0f                	add    %cl,(%rdi)
+    48fb:	84 c2                	test   %al,%dl
+    48fd:	49 c7 c3 8c 01 00 00 	mov    $0x18c,%r11
+    4904:	fd                   	std    
+    4905:	0f 84 8b 49 21 ca    	je     ffffffffca219296 <__ctype_b_loc@plt+0xffffffffca216cf6>
+    490b:	0f 8c 0f 8f 64 fd    	jl     fffffffffd64d820 <__ctype_b_loc@plt+0xfffffffffd64b280>
+    4911:	ff                   	(bad)  
+    4912:	ff f7                	push   %rdi
+    4914:	fa                   	cli    
+    4915:	0f e9 bf 00 49 ff c0 	psubsw -0x3f00b700(%rdi),%mm7
+    491c:	39 f8                	cmp    %edi,%eax
+    491e:	49 ff c6             	inc    %r14
+    4921:	0f 8c c1 02 00 00    	jl     4be8 <__ctype_b_loc@plt+0x2648>
+    4927:	89 c9                	mov    %ecx,%ecx
+    4929:	04 4c                	add    $0x4c,%al
+    492b:	09 f2                	or     %esi,%edx
+    492d:	0f                   	(bad)  
+    492e:	0f 85 08 03 00 48    	jne    48004c3c <__ctype_b_loc@plt+0x4800269c>
+    4934:	0f af c1             	imul   %ecx,%eax
+    4937:	e9 48 ff ff ff       	jmp    4884 <__ctype_b_loc@plt+0x22e4>
+    493c:	ca ff 4c             	lret   $0x4cff
+    493f:	89 c7                	mov    %eax,%edi
+    4941:	ef                   	out    %eax,(%dx)
+    4942:	7f 84                	jg     48c8 <__ctype_b_loc@plt+0x2328>
+    4944:	ff 48 85             	decl   -0x7b(%rax)
+    4947:	f3 01 00             	repz add %eax,(%rax)
+    494a:	00 4d 39             	add    %cl,0x39(%rbp)
+    494d:	ca 3d fc             	lret   $0xfc3d
+    4950:	ff                   	(bad)  
+    4951:	ff 4c 39 48          	decl   0x48(%rcx,%rdi,1)
+    4955:	c7 c7 9e 0f 8c 4a    	mov    $0x4a8c0f9e,%edi
+    495b:	03 00                	add    (%rax),%eax
+    495d:	00 8b 84 48 ff c1    	add    %cl,-0x3e00b77c(%rbx)
+    4963:	0f 49 c1             	cmovns %ecx,%eax
+    4966:	e1 48                	loope  49b0 <__ctype_b_loc@plt+0x2410>
+    4968:	0f 48 01             	cmovs  (%rcx),%eax
+    496b:	ce                   	(bad)  
+    496c:	ff                   	(bad)  
+    496d:	ff 4c 31 df          	decl   -0x21(%rcx,%rsi,1)
+    4971:	4d 31 ea             	xor    %r13,%r10
+    4974:	c1 eb 48             	shr    $0x48,%ebx
+    4977:	c1 e8 4d             	shr    $0x4d,%eax
+    497a:	39 ef                	cmp    %ebp,%edi
+    497c:	0f af f1             	imul   %ecx,%esi
+    497f:	c2 0d 49             	ret    $0x490d
+    4982:	0f 84 58 ff ff ff    	je     48e0 <__ctype_b_loc@plt+0x2340>
+    4988:	ff 00                	incl   (%rax)
+    498a:	0f 85 58 01 00 00    	jne    4ae8 <__ctype_b_loc@plt+0x2548>
+    4990:	03 00                	add    (%rax),%eax
+    4992:	00 ff                	add    %bh,%bh
+    4994:	ff                   	(bad)  
+    4995:	ff                   	(bad)  
+    4996:	be 0f 85 88 fd       	mov    $0xfd88850f,%esi
+    499b:	ff                   	(bad)  
+    499c:	ff 01                	incl   (%rcx)
+    499e:	d8 d7                	fcom   %st(7)
+    49a0:	49 c1 e4 16          	shl    $0x16,%r12
+    49a4:	fe                   	(bad)  
+    49a5:	ff                   	(bad)  
+    49a6:	ff 49 c7             	decl   -0x39(%rcx)
+    49a9:	4c 21 d6             	and    %r10,%rsi
+    49ac:	48 85 c3             	test   %rax,%rbx
+    49af:	fb                   	sti    
+    49b0:	39 df                	cmp    %ebx,%edi
+    49b2:	2b fd                	sub    %ebp,%edi
+    49b4:	ff 49 4c             	decl   0x4c(%rcx)
+    49b7:	31 f1                	xor    %esi,%ecx
+    49b9:	df 0f                	fisttps (%rdi)
+    49bb:	49 c7 c3 b0 00 00 00 	mov    $0xb0,%r11
+    49c2:	4d 0f af fd          	imul   %r13,%r15
+    49c6:	48 c1 ea 27          	shr    $0x27,%rdx
+    49ca:	e1 74                	loope  4a40 <__ctype_b_loc@plt+0x24a0>
+    49cc:	90                   	nop
+    49cd:	0f 8f 49 02 00 00    	jg     4c1c <__ctype_b_loc@plt+0x267c>
+    49d3:	c5 22 03             	(bad)
+    49d6:	e9 b9 fd ff ff       	jmp    4794 <__ctype_b_loc@plt+0x21f4>
+    49db:	49 e9 dd 7c 4d 29    	rex.WB jmp 294dc6be <__ctype_b_loc@plt+0x294da11e>
+    49e1:	48 f7 0f 8f 73 fd ff 	testq  $0xfffffffffffd738f,(%rdi)
+    49e8:	ff                   	(bad)  
+    49e9:	ff                   	(bad)  
+    49ea:	ff c4                	inc    %esp
+    49ec:	2c 00                	sub    $0x0,%al
+    49ee:	00 00                	add    %al,(%rax)
+    49f0:	0f 84 2d e9 16 ff    	je     ffffffffff173323 <__ctype_b_loc@plt+0xffffffffff170d83>
+    49f6:	ff                   	(bad)  
+    49f7:	ff f0                	push   %rax
+    49f9:	4d 31 49 c1          	xor    %r9,-0x3f(%r9)
+    49fd:	eb 1b                	jmp    4a1a <__ctype_b_loc@plt+0x247a>
+    49ff:	00 7f 48             	add    %bh,0x48(%rdi)
+    4a02:	ff c7                	inc    %edi
+    4a04:	e8 30 4c 39 f6       	call   fffffffff6399639 <__ctype_b_loc@plt+0xfffffffff6397099>
+    4a09:	0f 85 49 c7 c5 e6    	jne    ffffffffe6c61158 <__ctype_b_loc@plt+0xffffffffe6c5ebb8>
+    4a0f:	fe                   	(bad)  
+    4a10:	ff                   	(bad)  
+    4a11:	ff 84 0f 8f 61 fe ff 	incl   -0x19e71(%rdi,%rcx,1)
+    4a18:	ff 00                	incl   (%rax)
+    4a1a:	c1 4d 21 fb          	rorl   $0xfb,0x21(%rbp)
+    4a1e:	ff                   	(bad)  
+    4a1f:	ff                   	(bad)  
+    4a20:	ff 09                	decl   (%rcx)
+    4a22:	d8 4d 48             	fmuls  0x48(%rbp)
+    4a25:	c1 e9 36             	shr    $0x36,%ecx
+    4a28:	2c 89                	sub    $0x89,%al
+    4a2a:	48 c1 e8 13          	shr    $0x13,%rax
+    4a2e:	8f                   	(bad)  
+    4a2f:	33 fe                	xor    %esi,%edi
+    4a31:	ff                   	(bad)  
+    4a32:	ff                   	(bad)  
+    4a33:	e9 4c 21 ce 04       	jmp    4ce6b84 <__ctype_b_loc@plt+0x4ce45e4>
+    4a38:	09 4d 85             	or     %ecx,-0x7b(%rbp)
+    4a3b:	4d 85 c5             	test   %r8,%r13
+    4a3e:	48 39 fa             	cmp    %rdi,%rdx
+    4a41:	c9                   	leave  
+    4a42:	e8 49 4d 09 c1       	call   ffffffffc1099790 <__ctype_b_loc@plt+0xffffffffc10971f0>
+    4a47:	01 00                	add    %eax,(%rax)
+    4a49:	00 48 0f             	add    %cl,0xf(%rax)
+    4a4c:	85 26                	test   %esp,(%rsi)
+    4a4e:	01 00                	add    %eax,(%rax)
+    4a50:	00 4d 49             	add    %cl,0x49(%rbp)
+    4a53:	c1 e0 21             	shl    $0x21,%eax
+    4a56:	c3                   	ret    
+    4a57:	49 09 f4             	or     %rsi,%r12
+    4a5a:	4d 0f 4d 48 85       	cmovge -0x7b(%r8),%r9
+    4a5f:	d2 e9                	shr    %cl,%cl
+    4a61:	00 00                	add    %al,(%rax)
+    4a63:	49 ff c1             	inc    %r9
+    4a66:	e9 4c 09 eb 84       	jmp    ffffffff84eb53b7 <__ctype_b_loc@plt+0xffffffff84eb2e17>
+    4a6b:	0a 48 09             	or     0x9(%rax),%cl
+    4a6e:	fa                   	cli    
+    4a6f:	c1 ea 3e             	shr    $0x3e,%edx
+    4a72:	4c                   	rex.WR
+    4a73:	48                   	rex.W
+    4a74:	49 89 f4             	mov    %rsi,%r12
+    4a77:	21 d8                	and    %ebx,%eax
+    4a79:	49 01 4c 29 db       	add    %rcx,-0x25(%r9,%rbp,1)
+    4a7e:	49 0f 49 29          	cmovns (%r9),%rbp
+    4a82:	c9                   	leave  
+    4a83:	26 d6                	es (bad) 
+    4a85:	49                   	rex.WB
+    4a86:	49 29 fa             	sub    %rdi,%r10
+    4a89:	4d 09 fc             	or     %r15,%r12
+    4a8c:	0f 85 49 c7 c4 a1    	jne    ffffffffa1c511db <__ctype_b_loc@plt+0xffffffffa1c4ec3b>
+    4a92:	49 c7 c1 48 c1 ef 36 	mov    $0x36efc148,%r9
+    4a99:	29 f3                	sub    %esi,%ebx
+    4a9b:	fe                   	(bad)  
+    4a9c:	ff                   	(bad)  
+    4a9d:	ff 49 4c             	decl   0x4c(%rcx)
+    4aa0:	89 fa                	mov    %edi,%edx
+    4aa2:	0f 8f 16 01 00 00    	jg     4bbe <__ctype_b_loc@plt+0x261e>
+    4aa8:	8f                   	(bad)  
+    4aa9:	b0 fe                	mov    $0xfe,%al
+    4aab:	ff                   	(bad)  
+    4aac:	ff 0f                	decl   (%rdi)
+    4aae:	84 fe                	test   %bh,%dh
+    4ab0:	02 48 ff             	add    -0x1(%rax),%cl
+    4ab3:	c3                   	ret    
+    4ab4:	01 e7                	add    %esp,%edi
+    4ab6:	48                   	rex.W
+    4ab7:	49 f7 fb             	idiv   %r11
+    4aba:	02 00                	add    (%rax),%al
+    4abc:	00 ea                	add    %ch,%dl
+    4abe:	2e ff                	cs (bad) 
+    4ac0:	ff c1                	inc    %ecx
+    4ac2:	e9 48 c1 e3 12       	jmp    12e40c0f <__ctype_b_loc@plt+0x12e3e66f>
+    4ac7:	01 c6                	add    %eax,%esi
+    4ac9:	cc                   	int3   
+    4aca:	4c 0f af 4d 29       	imul   0x29(%rbp),%r9
+    4acf:	d0 49 09             	rorb   0x9(%rcx)
+    4ad2:	ca 49 e9             	lret   $0xe949
+    4ad5:	1f                   	(bad)  
+    4ad6:	ff                   	(bad)  
+    4ad7:	ff                   	(bad)  
+    4ad8:	ff 48 49             	decl   0x49(%rax)
+    4adb:	89 cb                	mov    %ecx,%ebx
+    4add:	c0 ca d9             	ror    $0xd9,%dl
+    4ae0:	e1 37                	loope  4b19 <__ctype_b_loc@plt+0x2579>
+    4ae2:	05 f8 05 49 ff       	add    $0xff4905f8,%eax
+    4ae7:	c3                   	ret    
+    4ae8:	49 c1 e1 08          	shl    $0x8,%r9
+    4aec:	31 49 d1             	xor    %ecx,-0x2f(%rcx)
+    4aef:	ee                   	out    %al,(%dx)
+    4af0:	03 00                	add    (%rax),%eax
+    4af2:	4c 39 ea             	cmp    %r13,%rdx
+    4af5:	0f 8f db 03 00 00    	jg     4ed6 <__ctype_b_loc@plt+0x2936>
+    4afb:	af                   	scas   %es:(%rdi),%eax
+    4afc:	cc                   	int3   
+    4afd:	48 c7                	rex.W (bad) 
+    4aff:	4c 85 d8             	test   %r11,%rax
+    4b02:	0f 8f 01 fd ff ff    	jg     4809 <__ctype_b_loc@plt+0x2269>
+    4b08:	49                   	rex.WB
+    4b09:	4d 0f 49 49 39       	cmovns 0x39(%r9),%r9
+    4b0e:	d9 49 85             	(bad)  -0x7b(%rcx)
+    4b11:	c5 00 00             	(bad)
+    4b14:	00 f7                	add    %dh,%bh
+    4b16:	0f 49 e9             	cmovns %ecx,%ebp
+    4b19:	88 fc                	mov    %bh,%ah
+    4b1b:	ff                   	(bad)  
+    4b1c:	ff                   	(bad)  
+    4b1d:	e9 0f 8f a6 01       	jmp    1a6da31 <__ctype_b_loc@plt+0x1a6b491>
+    4b22:	00 00                	add    %al,(%rax)
+    4b24:	0f 49 c1             	cmovns %ecx,%eax
+    4b27:	e4 17                	in     $0x17,%al
+    4b29:	ff 49 09             	decl   0x9(%rcx)
+    4b2c:	fa                   	cli    
+    4b2d:	85 c8                	test   %ecx,%eax
+    4b2f:	48                   	rex.W
+    4b30:	48                   	rex.W
+    4b31:	4c                   	rex.WR
+    4b32:	49 0f af fa          	imul   %r10,%rdi
+    4b36:	c1 59 0f e9          	rcrl   $0xe9,0xf(%rcx)
+    4b3a:	c2 02 00             	ret    $0x2
+    4b3d:	00 f7                	add    %dh,%bh
+    4b3f:	fb                   	sti    
+    4b40:	0f 48 c1             	cmovs  %ecx,%eax
+    4b43:	4c 89 f7             	mov    %r14,%rdi
+    4b46:	01 f1                	add    %esi,%ecx
+    4b48:	48                   	rex.W
+    4b49:	49 c1 ea 48          	shr    $0x48,%r10
+    4b4d:	09 c0                	or     %eax,%eax
+    4b4f:	ff                   	(bad)  
+    4b50:	ff 4d 85             	decl   -0x7b(%rbp)
+    4b53:	f8                   	clc    
+    4b54:	48 f7 0f 8c 39 fd ff 	testq  $0xfffffffffffd398c,(%rdi)
+    4b5b:	ff                   	(bad)  
+    4b5c:	e9 0b 01 00 00       	jmp    4c6c <__ctype_b_loc@plt+0x26cc>
+    4b61:	eb e6                	jmp    4b49 <__ctype_b_loc@plt+0x25a9>
+    4b63:	ce                   	(bad)  
+    4b64:	ee                   	out    %al,(%dx)
+    4b65:	ff c1                	inc    %ecx
+    4b67:	49 85 c6             	test   %rax,%r14
+    4b6a:	0f 8c 4f fc ff ff    	jl     47bf <__ctype_b_loc@plt+0x221f>
+    4b70:	0f 8c 1a fe ff ff    	jl     4990 <__ctype_b_loc@plt+0x23f0>
+    4b76:	c6                   	(bad)  
+    4b77:	db 03                	fildl  (%rbx)
+    4b79:	4d 89 df             	mov    %r11,%r15
+    4b7c:	4d 85 cf             	test   %r9,%r15
+    4b7f:	7e 02                	jle    4b83 <__ctype_b_loc@plt+0x25e3>
+    4b81:	4d 0f af c2          	imul   %r10,%r8
+    4b85:	00 49 4c             	add    %cl,0x4c(%rcx)
+    4b88:	01 fb                	add    %edi,%ebx
+    4b8a:	e9 09 4c 0f 8f       	jmp    ffffffff8f0f9798 <__ctype_b_loc@plt+0xffffffff8f0f71f8>
+    4b8f:	57                   	push   %rdi
+    4b90:	49 c7                	rex.WB (bad) 
+    4b92:	48 c1 e9 36          	shr    $0x36,%rcx
+    4b96:	ff c1                	inc    %ecx
+    4b98:	e6 3c                	out    %al,$0x3c
+    4b9a:	ff 4d 21             	decl   0x21(%rbp)
+    4b9d:	d2 4d 09             	rorb   %cl,0x9(%rbp)
+    4ba0:	0f 85 85 fc ff 4d    	jne    4e00482b <__ctype_b_loc@plt+0x4e00228b>
+    4ba6:	85 c3                	test   %eax,%ebx
+    4ba8:	00 49 49             	add    %cl,0x49(%rcx)
+    4bab:	49 29 ce             	sub    %rcx,%r14
+    4bae:	49 89 c1             	mov    %rax,%r9
+    4bb1:	4d 89 f9             	mov    %r15,%r9
+    4bb4:	4a                   	rex.WX
+    4bb5:	4c                   	rex.WR
+    4bb6:	4d 85 cd             	test   %r9,%r13
+    4bb9:	48                   	rex.W
+    4bba:	49 c1 e4 3f          	shl    $0x3f,%r12
+    4bbe:	4c 21 d1             	and    %r10,%rcx
+    4bc1:	4c 85 e8             	test   %r13,%rax
+    4bc4:	49 c1 49 c1 e1       	rorq   $0xe1,-0x3f(%r9)
+    4bc9:	03 00                	add    (%rax),%eax
+    4bcb:	0f 8f 54 ff ff ff    	jg     4b25 <__ctype_b_loc@plt+0x2585>
+    4bd1:	39 db                	cmp    %ebx,%ebx
+    4bd3:	48 ff c0             	inc    %rax
+    4bd6:	8c 4c 85 f0          	mov    %cs,-0x10(%rbp,%rax,4)
+    4bda:	49 89 c2             	mov    %rax,%r10
+    4bdd:	af                   	scas   %es:(%rdi),%eax
+    4bde:	d6                   	(bad)  
+    4bdf:	48                   	rex.W
+    4be0:	4d 85 d6             	test   %r10,%r14
+    4be3:	48 ff c1             	inc    %rcx
+    4be6:	48 39 ca             	cmp    %rcx,%rdx
+    4be9:	85 f8                	test   %edi,%eax
+    4beb:	fd                   	std    
+    4bec:	ff 4c 29 d1          	decl   -0x2f(%rcx,%rbp,1)
+    4bf0:	c7 c6 e3 0f 8c be    	mov    $0xbe8c0fe3,%esi
+    4bf6:	fc                   	cld    
+    4bf7:	ff                   	(bad)  
+    4bf8:	ff                   	(bad)  
+    4bf9:	39 c8                	cmp    %ecx,%eax
+    4bfb:	4c                   	rex.WR
+    4bfc:	4d 21 fa             	and    %r15,%r10
+    4bff:	ff c0                	inc    %eax
+    4c01:	ff 4c 4c 49          	decl   0x49(%rsp,%rcx,2)
+    4c05:	29 f8                	sub    %edi,%eax
+    4c07:	ff 84 17 49 49 f7 f8 	incl   -0x708b6b7(%rdi,%rdx,1)
+    4c0e:	4c 31 f3             	xor    %r14,%rbx
+    4c11:	00 48 c7             	add    %cl,-0x39(%rax)
+    4c14:	c0 0e 02             	rorb   $0x2,(%rsi)
+    4c17:	00 00                	add    %al,(%rax)
+    4c19:	00 00                	add    %al,(%rax)
+    4c1b:	c8 21 48 ff          	enter  $0x4821,$0xff
+    4c1f:	c0 49 85 c2          	rorb   $0xc2,-0x7b(%rcx)
+    4c23:	4d 39 d8             	cmp    %r11,%r8
+    4c26:	02 00                	add    (%rax),%al
+    4c28:	e9 f9 fe 4d eb       	jmp    ffffffffeb4e4b26 <__ctype_b_loc@plt+0xffffffffeb4e2586>
+    4c2d:	9e                   	sahf   
+    4c2e:	4c 0f 49 49 c7       	cmovns -0x39(%rcx),%r9
+    4c33:	4c 85 d6             	test   %r10,%rsi
+    4c36:	49 0f 49 48 c1       	cmovns -0x3f(%r8),%rcx
+    4c3b:	e2 0e                	loop   4c4b <__ctype_b_loc@plt+0x26ab>
+    4c3d:	48 c7                	rex.W (bad) 
+    4c3f:	4d 85 da             	test   %r11,%r10
+    4c42:	01 00                	add    %eax,(%rax)
+    4c44:	00 01                	add    %al,(%rcx)
+    4c46:	49 c1 e2 3b          	shl    $0x3b,%r10
+    4c4a:	48 01 f0             	add    %rsi,%rax
+    4c4d:	01 4c 31 fe          	add    %ecx,-0x2(%rcx,%rsi,1)
+    4c51:	fb                   	sti    
+    4c52:	0f 8c 04 01 00 00    	jl     4d5c <__ctype_b_loc@plt+0x27bc>
+    4c58:	00 00                	add    %al,(%rax)
+    4c5a:	48 c1 e3 39          	shl    $0x39,%rbx
+    4c5e:	0f 4c 89 d8 00 00 0f 	cmovl  0xf0000d8(%rcx),%ecx
+    4c65:	85 ba fe ff 48 c1    	test   %edi,-0x3eb70002(%rdx)
+    4c6b:	e8 0f 85 86 fe       	call   fffffffffe86d17f <__ctype_b_loc@plt+0xfffffffffe86abdf>
+    4c70:	ff                   	(bad)  
+    4c71:	ff 48 31             	decl   0x31(%rax)
+    4c74:	d3 bf 48 f7 ff ff    	sarl   %cl,-0x8b8(%rdi)
+    4c7a:	48 c7 c2 74 49 ff c2 	mov    $0xffffffffc2ff4974,%rdx
+    4c81:	c0 7f be 0f          	sarb   $0xf,-0x42(%rdi)
+    4c85:	8c a7 03 00 00 84    	mov    %fs,-0x7bfffffd(%rdi)
+    4c8b:	19 fc                	sbb    %edi,%esp
+    4c8d:	ff                   	(bad)  
+    4c8e:	ff 01                	incl   (%rcx)
+    4c90:	49 31 d6             	xor    %rdx,%r14
+    4c93:	e6 00                	out    %al,$0x0
+    4c95:	00 c4                	add    %al,%ah
+    4c97:	7c 48                	jl     4ce1 <__ctype_b_loc@plt+0x2741>
+    4c99:	49 ff c0             	inc    %r8
+    4c9c:	fd                   	std    
+    4c9d:	ff                   	(bad)  
+    4c9e:	ff d6                	call   *%rsi
+    4ca0:	27                   	(bad)  
+    4ca1:	0f 8f 18 ff ff ff    	jg     4bbf <__ctype_b_loc@plt+0x261f>
+    4ca7:	49 c1 e1 2c          	shl    $0x2c,%r9
+    4cab:	48 c1 e2 24          	shl    $0x24,%rdx
+    4caf:	d3 da                	rcr    %cl,%edx
+    4cb1:	fd                   	std    
+    4cb2:	48 e9 4c 01 e8 00    	rex.W jmp e84e04 <__ctype_b_loc@plt+0xe82864>
+    4cb8:	6e                   	outsb  %ds:(%rsi),(%dx)
+    4cb9:	02 00                	add    (%rax),%al
+    4cbb:	00 31                	add    %dh,(%rcx)
+    4cbd:	49                   	rex.WB
+    4cbe:	49 21 d5             	and    %rdx,%r13
+    4cc1:	e4 00                	in     $0x0,%al
+    4cc3:	00 00                	add    %al,(%rax)
+    4cc5:	4c 09 ef             	or     %r13,%rdi
+    4cc8:	4d 21 f6             	and    %r14,%r14
+    4ccb:	f6 0f 84             	testb  $0x84,(%rdi)
+    4cce:	d6                   	(bad)  
+    4ccf:	00 00                	add    %al,(%rax)
+    4cd1:	00 c1                	add    %al,%cl
+    4cd3:	49 ff c2             	inc    %r10
+    4cd6:	fe 0f                	decb   (%rdi)
+    4cd8:	85 e9                	test   %ebp,%ecx
+    4cda:	2b fd                	sub    %ebp,%edi
+    4cdc:	ff                   	(bad)  
+    4cdd:	ff 31                	push   (%rcx)
+    4cdf:	ca 0f 8c             	lret   $0x8c0f
+    4ce2:	4b 02 00             	rex.WXB add (%r8),%al
+    4ce5:	00 05 c5 32 0f 84    	add    %al,-0x7bf0cd3b(%rip)        # ffffffff840f7fb0 <__ctype_b_loc@plt+0xffffffff840f5a10>
+    4ceb:	4d 29 f7             	sub    %r14,%r15
+    4cee:	00 c6                	add    %al,%dh
+    4cf0:	4c 09 48 ff          	or     %r9,-0x1(%rax)
+    4cf4:	c2 49 c1             	ret    $0xc149
+    4cf7:	eb 07                	jmp    4d00 <__ctype_b_loc@plt+0x2760>
+    4cf9:	03 00                	add    (%rax),%eax
+    4cfb:	00 db                	add    %bl,%bl
+    4cfd:	48 f7 4c 85 7c a9 f8 	testq  $0x29caf8a9,0x7c(%rbp,%rax,4)
+    4d04:	ca 29 
+    4d06:	48 c1 e0 36          	shl    $0x36,%rax
+    4d0a:	39 c3                	cmp    %eax,%ebx
+    4d0c:	fe 89 c4 e9 0f 85    	decb   -0x7af0163c(%rcx)
+    4d12:	5c                   	pop    %rsp
+    4d13:	02 49 4c             	add    0x4c(%rcx),%cl
+    4d16:	4c 39 e7             	cmp    %r12,%rdi
+    4d19:	c1 e4 49             	shl    $0x49,%esp
+    4d1c:	74 4c                	je     4d6a <__ctype_b_loc@plt+0x27ca>
+    4d1e:	89 c8                	mov    %ecx,%eax
+    4d20:	89 0f                	mov    %ecx,(%rdi)
+    4d22:	85 08                	test   %ecx,(%rax)
+    4d24:	fe                   	(bad)  
+    4d25:	ff                   	(bad)  
+    4d26:	ff 4c 85 48          	decl   0x48(%rbp,%rax,4)
+    4d2a:	d1 eb                	shr    %ebx
+    4d2c:	af                   	scas   %es:(%rdi),%eax
+    4d2d:	7f 49                	jg     4d78 <__ctype_b_loc@plt+0x27d8>
+    4d2f:	e9 9e fe ff ff       	jmp    4bd2 <__ctype_b_loc@plt+0x2632>
+    4d34:	ff c1                	inc    %ecx
+    4d36:	e4 20                	in     $0x20,%al
+    4d38:	ff                   	(bad)  
+    4d39:	ff 48 09             	decl   0x9(%rax)
+    4d3c:	49 09 c7             	or     %rax,%r15
+    4d3f:	ff c3                	inc    %ebx
+    4d41:	df e8                	fucomip %st(0),%st
+    4d43:	49 f7 0f 8c 4d ff ff 	testq  $0xffffffffffff4d8c,(%r15)
+    4d4a:	ff 48 c1             	decl   -0x3f(%rax)
+    4d4d:	e3 04                	jrcxz  4d53 <__ctype_b_loc@plt+0x27b3>
+    4d4f:	e8 fc ff 49 29       	call   294a4d50 <__ctype_b_loc@plt+0x294a27b0>
+    4d54:	f0 74 3a             	lock je 4d91 <__ctype_b_loc@plt+0x27f1>
+    4d57:	21 c4                	and    %eax,%esp
+    4d59:	d8 fc                	fdivr  %st(4),%st
+    4d5b:	49 c1 e9 0b          	shr    $0xb,%r9
+    4d5f:	48 c1 e2 0b          	shl    $0xb,%rdx
+    4d63:	78 49                	js     4dae <__ctype_b_loc@plt+0x280e>
+    4d65:	c1 e7 05             	shl    $0x5,%edi
+    4d68:	39 c7                	cmp    %eax,%edi
+    4d6a:	00 31                	add    %dh,(%rcx)
+    4d6c:	eb 66                	jmp    4dd4 <__ctype_b_loc@plt+0x2834>
+    4d6e:	ce                   	(bad)  
+    4d6f:	0f 8c 53 fe ff ff    	jl     4bc8 <__ctype_b_loc@plt+0x2628>
+    4d75:	1f                   	(bad)  
+    4d76:	84 0f                	test   %cl,(%rdi)
+    4d78:	49 ff c6             	inc    %r14
+    4d7b:	18 02                	sbb    %al,(%rdx)
+    4d7d:	00 00                	add    %al,(%rax)
+    4d7f:	00 f3                	add    %dh,%bl
+    4d81:	0f 1e fa             	nop    %edx
+    4d84:	48 8b 05 75 2e 00 00 	mov    0x2e75(%rip),%rax        # 7c00 <__ctype_b_loc@plt+0x5660>
+    4d8b:	48 83 f8 ff          	cmp    $0xffffffffffffffff,%rax
+    4d8f:	74 2f                	je     4dc0 <__ctype_b_loc@plt+0x2820>
+    4d91:	49 21 d8             	and    %rbx,%r8
+    4d94:	0c e0                	or     $0xe0,%al
+    4d96:	01 4c 01 de          	add    %ecx,-0x22(%rcx,%rax,1)
+    4d9a:	48 c7 c1 4c 85 4d 0f 	mov    $0xf4d854c,%rcx
+    4da1:	af                   	scas   %es:(%rdi),%eax
+    4da2:	cf                   	iret   
+    4da3:	cc                   	int3   
+    4da4:	0f 4d 0f             	cmovge (%rdi),%ecx
+    4da7:	85 13                	test   %edx,(%rbx)
+    4da9:	fd                   	std    
+    4daa:	4c 39 e0             	cmp    %r12,%rax
+    4dad:	fd                   	std    
+    4dae:	ff                   	(bad)  
+    4daf:	ff                   	(bad)  
+    4db0:	eb 08                	jmp    4dba <__ctype_b_loc@plt+0x281a>
+    4db2:	4c 89 48 31          	mov    %r9,0x31(%rax)
+    4db6:	c2 31 d5             	ret    $0xd531
+    4db9:	49 21 cc             	and    %rcx,%r12
+    4dbc:	49 85 fe             	test   %rdi,%r14
+    4dbf:	90                   	nop
+    4dc0:	c3                   	ret    
