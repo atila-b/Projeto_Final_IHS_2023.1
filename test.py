@@ -7,10 +7,12 @@ from iced_x86 import *
 # Implementação do gerador de instruções aleatórias em x86_64
 
 # Registradores
-regs = ["rdi", "rsi", "rax", "rbx", "rcx", "rdx", "r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15"]
+regs = ["rdi", "rsi", "rax", "rcx", "rdx", "r8", "r9", "r10", "r11"]
          
 # Opcodes das instruções           
-opcodes = ["mov", "cmp", "jmp", "jg", "jl", "je", "jne", "add", "sub", "imul", "idiv",
+#opcodes = ["mov", "cmp", "jmp", "jg", "jl", "je", "jne", "add", "sub", "imul", "idiv",
+           #"and", "or", "xor", "shl", "shr", "test", "inc"]
+opcodes = ["mov", "cmp", "add", "sub", "imul", "idiv",
            "and", "or", "xor", "shl", "shr", "test", "inc"]
 
 # Inicialize o Keystone com a arquitetura x86_64
@@ -26,16 +28,16 @@ def random_instruction_code_x86():
         assembly_code =  f"mov {random.choice(regs)}, {random.choice(regs)}"
     elif opcode == "cmp":
         assembly_code = f"cmp {random.choice(regs)}, {random.choice(regs)}"
-    elif opcode == "jmp":
-        assembly_code = f"jmp {random.randint(-1000, 1000)}"
-    elif opcode == "jg":
-        assembly_code = f"jg {random.randint(-1000, 1000)}"
-    elif opcode == "jl":
-        assembly_code = f"jl {random.randint(-1000, 1000)}"
-    elif opcode == "je":
-        assembly_code = f"je {random.randint(-1000, 1000)}"
-    elif opcode == "jne":
-        assembly_code = f"jne {random.randint(-1000, 1000)}"
+    #elif opcode == "jmp":
+        #assembly_code = f"jmp {random.randint(-1000, 1000)}"
+    #elif opcode == "jg":
+        #assembly_code = f"jg {random.randint(-1000, 1000)}"
+    #elif opcode == "jl":
+        #assembly_code = f"jl {random.randint(-1000, 1000)}"
+    #elif opcode == "je":
+        #assembly_code = f"je {random.randint(-1000, 1000)}"
+    #elif opcode == "jne":
+        #assembly_code = f"jne {random.randint(-1000, 1000)}"
     elif opcode == "add":
         assembly_code = f"add {random.choice(regs)}, {random.choice(regs)}"
     elif opcode == "sub":
@@ -128,7 +130,7 @@ class GA:
                     file.close()
                 
                 # Defina as permissões de execução no arquivo editado.
-                os.chmod(output_file_path, 0o755)  
+                os.chmod(output_file_path, 0o777)  
                 
                 # Execute o arquivo e verifica se o retorno está correto.
                 if(exec_bin() == 0):
@@ -182,6 +184,10 @@ def extract_text_section(input_file_path, output_file_path):
     with open(input_file_path, 'rb') as file:
         # Leitura do arquivo binário
         data = file.read()
+    
+    with open(output_file_path, 'rb+') as file:
+        # Leitura do arquivo binário
+        file.write(data)
         
         # Get objeto ELF do arquivo binário
         elf = ELFFile(file)
@@ -198,15 +204,20 @@ def extract_text_section(input_file_path, output_file_path):
     section_start = elf_section['sh_offset'] 
     section_end   = section_start + elf_section['sh_size']
     
-    return data, text_data, section_start, section_end
+    return data, text_data, section_start, section_end, elf_section
     
 # Edita a section .text do arquivo binário e insere instruções nela até que a execução funcione
 def edit_save_text_section(text_data, input_file_path, output_file_path):
     # Insira instruções na seção .text até a execução ser bem sucedida
+    
+    # Pegue as posições entre as instruções
+    positions = disassemble_bytearray(text_data)
     while 1:
         # Instrução a ser inserida na section .text
         inst = random_instruction_code_x86()
-        position = random.randint(0, len(text_data))
+        
+        # Escolha aleatoriamente uma posição entre as instruções
+        position = random.choice(positions)
         
         # Insira instrução em posição aleatória da section .text
         new_text_data = insert_instruction_in_position(text_data, inst, position)
@@ -215,12 +226,28 @@ def edit_save_text_section(text_data, input_file_path, output_file_path):
         new_data = data[:section_start] + new_text_data + data[section_end:]
     
         # Salve as edições de volta no arquivo binário.
-        with open(output_file_path, 'wb') as file:
-            file.write(new_data)
+        with open(output_file_path, 'rb+') as file:
+            elf = ELFFile(file)
+    
+            # Get seção .text do ELF
+            text_section = elf.get_section_by_name(".text") 
+            
+            # Substitua o conteúdo da seção .text pelo novo conteúdo
+            text_section.data = new_text_data
+            
+            # Atualize os tamanhos dos cabeçalhos apropriados (opcional)
+            text_section.header['sh_size'] = len(new_text_data)
+            
+            # Encontre a posição no arquivo onde a seção .text começa
+            file.seek(text_section['sh_offset'])
+            
+            # Escreva o novo conteúdo da seção .text no arquivo
+            file.write(new_text_data)
+            
             file.close()
         
         # Defina as permissões de execução no arquivo editado.
-        os.chmod(output_file_path, 0o755)  
+        os.chmod(output_file_path, 0o777)  
         
         # Execute o arquivo e verifica se o retorno está correto.
         if(exec_bin() == 0):
@@ -228,10 +255,33 @@ def edit_save_text_section(text_data, input_file_path, output_file_path):
             return new_text_data, [inst, position]
             break
     
+def disassemble_bytearray(bytecode):
+    # Crie um decodificador
+    decoder = Decoder(64, bytearray(bytecode), ip=0x00)
+
+    positions = []
+    offset = 0
+
+    # Loop para decodificar cada instrução
+    for instr in decoder:
+        # Obtém o tamanho da instrução em bytes
+        instr_size = instr.len
+        offset += (instr_size)
+
+        # Obtém os bytes da instrução a partir do bytearray original
+        instruction_bytes = bytecode[:instr_size]
+
+        # Atualize o bytearray original para avançar para a próxima instrução
+        bytecode = bytecode[instr_size:]
+
+        # Adicione os bytes da instrução à lista de instruções
+        positions.append(offset)
+
+    return positions
+
 # Insere código x86_64 em uma posição específica do bytearray
 def insert_instruction_in_position(code, inst, position):
-    code = bytearray(code)
-    code[position:position+len(inst)] = inst
+    code = code[:position] + inst + code[position:]
     return bytes(code)
     
 # Execução de arquivos
@@ -254,7 +304,7 @@ fcntl.fcntl(master, fcntl.F_SETFL, os.O_NONBLOCK)
 subprocess.call(original_command, stdout=sl, stderr=sl, timeout=2)
 
 # Capture a saída da execução
-original_stdout = os.read(master, 1024)
+original_stdout = os.read(master, 4096)
 
 # Comando para executar o binário ofuscado
 output_file_path = f"{input_file_path}_obfuscated"
@@ -263,10 +313,10 @@ obfuscated_command = f'{output_file_path}'
 def exec_bin():
     try:
         # Execute o binário ofuscado
-        subprocess.call(obfuscated_command, stdout=sl, stderr=sl, timeout=0.1)
-        
+        subprocess.call(obfuscated_command, stdout=sl, stderr=sl, timeout=0.5)
+
         # Capture a saída da execução
-        obfuscated_stdout = os.read(master, 1024)
+        obfuscated_stdout = os.read(master, 4096)
         
         # Verifique se as saídas são iguais
         if original_stdout == obfuscated_stdout:
@@ -275,14 +325,14 @@ def exec_bin():
             return -1
         
     except Exception as e:
-        #print(f"Erro ao executar o comando '{command}': {e}")
+        #print(f"Erro ao executar o comando '{obfuscated_command}': {e}")
         return -1
     return -1
 
 # Main
 
 # Extraia os dados e a seção .text do arquivo de entrada
-data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
+data, text_data, section_start, section_end, text_section = extract_text_section(input_file_path, output_file_path)
 
 # Execute o algoritmo genético
 model = GA(population_size=100, generations=30)
@@ -291,7 +341,7 @@ model = GA(population_size=100, generations=30)
  # Gere um indivíduo
 text_section, init_inst = edit_save_text_section(text_data, input_file_path, output_file_path)
 individual = Individual(text_section=text_section, obfuscation_insts=[init_inst], fit_value=1)
-for i in range(1000):
+for i in range(10):
     print(f"Mutação {i}...")
     model.mutation(individual)
     
@@ -315,4 +365,3 @@ with open(output_file_path, 'wb') as file:
 
 # Defina as permissões de execução no arquivo editado.
 os.chmod(output_file_path, 0o777)
-
