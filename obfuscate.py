@@ -10,7 +10,7 @@ from iced_x86 import *
 regs = ["rdi", "rsi", "rax", "rbx", "rcx", "rdx", "r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15"]
          
 # Opcodes das instruções           
-opcodes = ["mov", "cmp", "jmp", "jg", "jl", "je", "jne", "add", "sub", "imul", "idiv",
+opcodes = ["mov int", "mov", "cmp", "jmp", "jg", "jl", "je", "jne", "add", "sub", "imul", "idiv",
            "and", "or", "xor", "shl", "shr", "test", "inc"]
 
 # Inicialize o Keystone com a arquitetura x86_64
@@ -24,6 +24,8 @@ def random_instruction_code_x86():
     # Monte uma instrução aleatória com o opcode
     if opcode == "mov":
         assembly_code =  f"mov {random.choice(regs)}, {random.choice(regs)}"
+    elif opcode == "mov int":
+        assembly_code = f"mov {random.choice(regs)}, {random.randint(-1000, 1000)}"
     elif opcode == "cmp":
         assembly_code = f"cmp {random.choice(regs)}, {random.choice(regs)}"
     elif opcode == "jmp":
@@ -72,96 +74,29 @@ class Individual:
         self.fit_value = fit_value
 
 class GA:
-    def __init__(self, population_size, generations):
-        self.population_size = population_size
+    def __init__(self, generations):
         self.generations = generations
         self.population = []
         self.top_individual = None
         
-    # Inicia uma população de indivíduos de tamanho population_size
+    # Inicia uma população de indivíduos
     def init_population(self):
-        for i in range(self.population_size):
-          # Gere um indivíduo
-          text_section, init_inst = edit_save_text_section(text_data, input_file_path, output_file_path)
-          individual = Individual(text_section=text_section, obfuscation_insts=[init_inst], fit_value=1)
-    
-          # Insira o indivíduo na população
-          self.population.append(individual)
-          
-    # Cruza a população, de 2 em 2 indivíduos
-    def crossover(self):
-        # Selecione o par de indivíduos
-        for i in range(0, int(self.population_size/2), 2):
-            # Escolha aleatoriamente quem será o pai 1 e o pai 2
-            fathers = [self.population[i], self.population[i+1]]
-            father_1 = random.choice(fathers)
-            for i in range(2):
-                if fathers[i] == father_1:
-                    continue
-                else:
-                    father_2 = fathers[i]
-                    
-            # Fit value inicial
-            fit_value = father_1.fit_value
-                    
-            # Get text section do pai 1
-            text_section = father_1.text_section
+      # Gere um indivíduo
+      text_section, init_inst = edit_save_text_section(text_data, input_file_path, output_file_path)
+      individual = Individual(text_section=text_section, obfuscation_insts=[init_inst], fit_value=1)
+
+      # Insira o indivíduo na população
+      self.population.append(individual)
             
-            # Get obfuscation insts do pai 1
-            obfuscation_insts = father_1.obfuscation_insts
-            
-            # Cruze com a text section do pai 2
-            for j in range(len(father_2.obfuscation_insts)):
-                # Get instrução e posição de cada dead code
-                inst = father_2.obfuscation_insts[j][0]
-                position = father_2.obfuscation_insts[j][1]
-                
-                # Insira a instrução em uma posição aleatória da section .text
-                new_text_data = insert_instruction_in_position(text_section, inst, position)
-                
-                # Modificação dos dados do arquivo original
-                new_data = data[:section_start] + new_text_data + data[section_end:]
-            
-                # Salve as edições de volta no arquivo binário.
-                with open(output_file_path, 'wb') as file:
-                    file.write(new_data)
-                    file.close()
-                
-                # Defina as permissões de execução no arquivo editado.
-                os.chmod(output_file_path, 0o755)  
-                
-                # Execute o arquivo e verifica se o retorno está correto.
-                if(exec_bin() == 0):
-                    # Se a instrução ainda não foi inserida
-                    if([inst, position] not in obfuscation_insts):
-                        # Incremente fit value, atualize a text section e insira a instrução de ofuscação
-                        fit_value += 1
-                        text_section = new_text_data
-                        obfuscation_insts.append([inst, position])
-                  
-            # Gere novo filho  
-            children = Individual(text_section=text_section, obfuscation_insts=obfuscation_insts, fit_value=fit_value)
-            
-            # Aplique a mutação no filho
-            self.mutation(children)
-            
-            # Insira novo filho na população
-            self.population.append(children)
-            
-    # Insere uma instrução aleatória no filho gerado pelo crossover
-    def mutation(self, children):
-        # Insira uma instrução aleatória na text section do filho
-        text_section, inst = edit_save_text_section(children.text_section, input_file_path, output_file_path)
+    # Insere uma instrução aleatória no indivíduo
+    def mutation(self, individual):
+        # Insira uma instrução aleatória na text section do indivíduo
+        text_section, inst = edit_save_text_section(individual.text_section, input_file_path, output_file_path)
         
         # Atualize os atributos do filho
-        children.text_section = text_section
-        children.obfuscation_insts.append(inst)
-        children.fit_value += 1
-        
-    # Ordena os indivíduos pelo fit value e retorna os melhores
-    def tournament(self):
-        # Sort population pelo fit value
-        return sorted(self.population, key = lambda x: x.fit_value, reverse=True)[:self.population_size]
+        individual.text_section = text_section
+        individual.obfuscation_insts.append(inst)
+        individual.fit_value += 1
         
     # Inicializa a população e faz o loop de gerações
     def evolution(self):
@@ -170,11 +105,12 @@ class GA:
         self.init_population()
         
         print("Evoluindo as gerações...")
-        # Para cada geração, aplique o crossover e evolua a população
+        # Para cada geração, aplique a mutação
         for i in range(self.generations):
-          print(f"Crossover da geração {i+1}...")
-          self.crossover()
-          self.population = self.tournament()
+          # Printe o andamento de 100 em 100 gerações
+          if (i+1)%100 == 0:
+            print(f"Mutação da geração {i+1}...")
+          self.mutation(self.population[0])
 
 # Extrai a section .text do arquivo binário       
 def extract_text_section(input_file_path, output_file_path):
@@ -206,6 +142,8 @@ def edit_save_text_section(text_data, input_file_path, output_file_path):
     while 1:
         # Instrução a ser inserida na section .text
         inst = random_instruction_code_x86()
+        
+        # Posição aleatória
         position = random.randint(0, len(text_data))
         
         # Insira instrução em posição aleatória da section .text
@@ -251,7 +189,7 @@ import fcntl
 fcntl.fcntl(master, fcntl.F_SETFL, os.O_NONBLOCK)
 
 # Execute o binário original
-subprocess.call(original_command, stdout=sl, stderr=sl, timeout=2)
+subprocess.call(original_command, stdout=sl, stderr=sl, timeout=0.05)
 
 # Capture a saída da execução
 original_stdout = os.read(master, 1024)
@@ -263,7 +201,7 @@ obfuscated_command = f'{output_file_path}'
 def exec_bin():
     try:
         # Execute o binário ofuscado
-        subprocess.call(obfuscated_command, stdout=sl, stderr=sl, timeout=0.1)
+        subprocess.call(obfuscated_command, stdout=sl, stderr=sl, timeout=0.01)
         
         # Capture a saída da execução
         obfuscated_stdout = os.read(master, 1024)
@@ -285,10 +223,9 @@ def exec_bin():
 data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
 
 # Execute o algoritmo genético
-model = GA(population_size=20, generations=20)
+model = GA(generations=10000)
 model.evolution()
-
-# Pegue o melhor indivíduo
+    
 top_individual = model.population[0]
 
 # Printe os resultados
@@ -305,4 +242,5 @@ with open(output_file_path, 'wb') as file:
     file.close()
 
 # Defina as permissões de execução no arquivo editado.
-os.chmod(output_file_path, 0o755)
+os.chmod(output_file_path, 0o777)
+
