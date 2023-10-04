@@ -88,9 +88,9 @@ class GA:
       # Insira o indivíduo na população
       self.population.append(individual)
             
-    # Insere uma instrução aleatória no indivíduo
+    # Sobrescreve uma instrução aleatória no indivíduo
     def mutation(self, individual):
-        # Insira uma instrução aleatória na text section do indivíduo
+        # Sobrescreva uma instrução aleatória na text section do indivíduo
         text_section, inst = edit_save_text_section(individual.text_section, input_file_path, output_file_path)
         
         # Atualize os atributos do filho
@@ -136,9 +136,9 @@ def extract_text_section(input_file_path, output_file_path):
     
     return data, text_data, section_start, section_end
     
-# Edita a section .text do arquivo binário e insere instruções nela até que a execução funcione
+# Edita a section .text do arquivo binário e sobrescreve instruções nela até que a execução funcione
 def edit_save_text_section(text_data, input_file_path, output_file_path):
-    # Insira instruções na seção .text até a execução ser bem sucedida
+    # Sobrescreva instruções na seção .text até a execução ser bem sucedida
     while 1:
         # Instrução a ser inserida na section .text
         inst = random_instruction_code_x86()
@@ -146,7 +146,7 @@ def edit_save_text_section(text_data, input_file_path, output_file_path):
         # Posição aleatória
         position = random.randint(0, len(text_data))
         
-        # Insira instrução em posição aleatória da section .text
+        # Sobrescreva uma instrução em posição aleatória da section .text
         new_text_data = insert_instruction_in_position(text_data, inst, position)
         
         # Modificação dos dados do arquivo original
@@ -161,12 +161,12 @@ def edit_save_text_section(text_data, input_file_path, output_file_path):
         os.chmod(output_file_path, 0o755)  
         
         # Execute o arquivo e verifica se o retorno está correto.
-        if(exec_bin() == 0):
+        if(exec_bin(timeout=0.05) == 0):
             #print(new_text_data)
             return new_text_data, [inst, position]
             break
     
-# Insere código x86_64 em uma posição específica do bytearray
+# Sobrescreve código x86_64 em uma posição específica do bytearray
 def insert_instruction_in_position(code, inst, position):
     code = bytearray(code)
     code[position:position+len(inst)] = inst
@@ -189,7 +189,7 @@ import fcntl
 fcntl.fcntl(master, fcntl.F_SETFL, os.O_NONBLOCK)
 
 # Execute o binário original
-subprocess.call(original_command, stdout=sl, stderr=sl, timeout=0.05)
+subprocess.call(original_command, stdout=sl, stderr=sl)
 
 # Capture a saída da execução
 original_stdout = os.read(master, 1024)
@@ -198,10 +198,10 @@ original_stdout = os.read(master, 1024)
 output_file_path = f"{input_file_path}_obfuscated"
 obfuscated_command = f'{output_file_path}'
 
-def exec_bin():
+def exec_bin(timeout):
     try:
         # Execute o binário ofuscado
-        subprocess.call(obfuscated_command, stdout=sl, stderr=sl, timeout=0.01)
+        subprocess.run(obfuscated_command, stdout=sl, stderr=sl, timeout=timeout)
         
         # Capture a saída da execução
         obfuscated_stdout = os.read(master, 1024)
