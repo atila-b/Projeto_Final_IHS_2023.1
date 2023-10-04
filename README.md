@@ -64,7 +64,7 @@ python obfuscate.py
 
 ## Resultados
 
-Nesta seção se econtram os resultados obtidos nas ofuscações de comandos *Linux*. Para cada binário ofuscado, é apresentada a porcentagem de diferença dos seus disassembles, seguido do número de gerações utilizado e o respectivo tempo de execução.
+Nesta seção se encontram os resultados obtidos nas ofuscações de comandos *Linux*. Para cada binário ofuscado, é apresentada a porcentagem de diferença dos seus disassembles, seguido do número de gerações utilizado e o respectivo tempo de execução.
 
 - **ls**: 84,28% de ofuscação (10.000 gerações, X minutos e X segundos de execução)
 
