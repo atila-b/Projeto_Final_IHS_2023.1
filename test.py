@@ -68,11 +68,16 @@ def random_instruction_code_x86():
     return bytes(bytecode)
 
 class Individual:
-    def __init__(self, text_section, obfuscation_insts, fit_value):
+    def __init__(self, text_section):
         self.text_section = text_section
-        self.obfuscation_insts = obfuscation_insts
-        self.fit_value = fit_value
-        self.versions = None
+        self.obfuscation_insts = []
+        self.fit_value = 0
+        self.last_version = None
+        
+    def return_to_last_version(self):
+        #print("voltou para a versão anterior")
+        if len(self.versions) > 1:
+            self = self.versions[-1]
 
 class GA:
     def __init__(self, generations):
@@ -83,23 +88,53 @@ class GA:
     # Inicia uma população de indivíduos
     def init_population(self):
       # Gere um indivíduo
-      text_section, init_inst = edit_save_text_section(text_data, input_file_path, output_file_path, None)
-      individual = Individual(text_section=text_section, obfuscation_insts=[init_inst], fit_value=1)
-      individual.versions = [individual]
+      individual = Individual(text_section=text_data)
 
       # Insira o indivíduo na população
       self.population.append(individual)
             
-    # Sobrescreve uma instrução aleatória no indivíduo
-    def mutation(self, individual):
-        # Sobrescreva uma instrução aleatória na text section do indivíduo
-        text_section, inst = edit_save_text_section(individual.text_section, input_file_path, output_file_path, individual)
+    # Sobrescreve uma instrução aleatória em uma posição aleatória do indivíduo
+    def mutation(self, output_file_path, individual):
+        # Sobrescreva instruções na seção .text até a execução ser bem sucedida
+        leng = len(text_data)
+        new_individual = individual
+        while 1:
+            # Instrução a ser inserida na section .text
+            inst = random_instruction_code_x86()
+            
+            # Posição aleatória
+            position = random.randint(0, leng)
+            
+            # Sobrescreva a instrução aleatória na posição aleatória da section .text
+            new_text_data = insert_instruction_in_position(new_individual.text_section, inst, position)
+            
+            # Modificação dos dados do arquivo original
+            new_data = data[:section_start] + new_text_data + data[section_end:]
         
-        # Atualize os atributos do filho
-        individual.text_section = text_section
-        individual.obfuscation_insts.append(inst)
-        individual.fit_value += 1
-        individual.versions.append(individual)
+            # Salve as edições de volta no arquivo binário.
+            with open(output_file_path, 'wb') as file:
+                file.write(new_data)
+                file.close()
+            
+            # Defina as permissões de execução no arquivo editado.
+            os.chmod(output_file_path, 0o755)  
+            
+            ret = exec_bin(timeout=0.01)
+            
+            # Execute o arquivo e verifica se o retorno está correto.
+            if ret == 0:
+                # Atualize o indivíduo se a execução for bem sucedida
+                new_individual.last_version = individual
+                new_individual.text_section = new_text_data
+                new_individual.obfuscation_insts.append([inst, position])
+                new_individual.fit_value += 1
+                return new_individual
+            #elif ret == -2:
+            else:
+                # Se der timeout, volte para a versão anterior
+                if new_individual.last_version:
+                    #print("timeout")
+                    new_individual = new_individual.last_version
         
         
     # Inicializa a população e faz o loop de gerações
@@ -114,10 +149,12 @@ class GA:
           # Printe o andamento de 100 em 100 gerações
           if (i+1)%100 == 0:
             print(f"Mutação da geração {i+1}...")
-          self.mutation(self.population[0])
+          #self.mutation(self.population[0])
+          self.population[0] = self.mutation(output_file_path, self.population[0])
+
 
 # Extrai a section .text do arquivo binário       
-def extract_text_section(input_file_path, output_file_path):
+def extract_text_section(input_file_path):
     # Abra o arquivo binário em modo de leitura.
     with open(input_file_path, 'rb') as file:
         # Leitura do arquivo binário
@@ -139,36 +176,6 @@ def extract_text_section(input_file_path, output_file_path):
     section_end   = section_start + elf_section['sh_size']
     
     return data, text_data, section_start, section_end
-    
-# Edita a section .text do arquivo binário e sobrescreve instruções nela até que a execução funcione
-def edit_save_text_section(text_data, input_file_path, output_file_path, individual):
-    # Sobrescreva instruções na seção .text até a execução ser bem sucedida
-    while 1:
-        # Instrução a ser inserida na section .text
-        inst = random_instruction_code_x86()
-        
-        # Posição aleatória
-        position = random.randint(0, len(text_data))
-        
-        # Sobrescreva uma instrução em posição aleatória da section .text
-        new_text_data = insert_instruction_in_position(text_data, inst, position)
-        
-        # Modificação dos dados do arquivo original
-        new_data = data[:section_start] + new_text_data + data[section_end:]
-    
-        # Salve as edições de volta no arquivo binário.
-        with open(output_file_path, 'wb') as file:
-            file.write(new_data)
-            file.close()
-        
-        # Defina as permissões de execução no arquivo editado.
-        os.chmod(output_file_path, 0o755)  
-        
-        # Execute o arquivo e verifica se o retorno está correto.
-        if(exec_bin(timeout=0.01, individual=individual) == 0):
-            #print(new_text_data)
-            return new_text_data, [inst, position]
-            break
     
 # Sobrescreve código x86_64 em uma posição específica do bytearray
 def insert_instruction_in_position(code, inst, position):
@@ -193,47 +200,67 @@ import fcntl
 fcntl.fcntl(master, fcntl.F_SETFL, os.O_NONBLOCK)
 
 # Execute o binário original
-subprocess.run(original_command, stdout=sl, stderr=sl)
+#subprocess.run(original_command, stdout=sl, stderr=sl)
+original_ret = subprocess.run(original_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
 
 # Capture a saída da execução
-original_stdout = os.read(master, 1024)
+#original_stdout = os.read(master, 4096)
+
+os.close(master)
+os.close(sl)
 
 # Comando para executar o binário ofuscado
 output_file_path = f"{input_file_path}_obfuscated"
 obfuscated_command = f'{output_file_path}'
 
-def exec_bin(timeout, individual):
+def exec_bin(timeout):
     try:
+        # Crie um terminal virtual (pty)
+        master, sl = pty.openpty()
+        
         # Execute o binário ofuscado
-        subprocess.run(obfuscated_command, stdout=sl, stderr=sl, timeout=timeout)
+        #subprocess.run(obfuscated_command, stdout=sl, stderr=sl, timeout=timeout)
+        obfuscated_ret = subprocess.run(obfuscated_command,  check=True, shell=True, timeout=timeout)
         
         # Capture a saída da execução
-        obfuscated_stdout = os.read(master, 1024)
+        #obfuscated_stdout = os.read(master, 4096)
+        
+        #print(obfuscated_ret)
+        
+        os.close(master)
+        os.close(sl)
+        
+        if original_ret.stdout == obfuscated_ret.stdout and original_ret.stderr == obfuscated_ret.stderr and obfuscated_ret.returncode == 0:
+            return 0
+        else:
+            return -1
+        
         
         # Verifique se as saídas são iguais
         if original_stdout == obfuscated_stdout:
             return 0
         else:
             return -1
-        
-    except Exception as e:
-        #print(f"Erro ao executar o comando '{command}': {e}")
-        return -1
+    
     except subprocess.TimeoutExpired as e:
         # Se der timeout, retorne para a versão anterior
-        if len(individual.versiona > 0):
-            individual = individual.versions[-1]
-            individual.versions.pop()
+        return -2
+    except subprocess.SubprocessError:
         return -1
-    return -1
+    except subprocess.CalledProcessError:
+        return -1
+    except Exception as e:
+        print(f"Erro ao executar o comando '{obfuscated_command}': {e}")
+        return -1
+
 
 # Main
 
 # Extraia os dados e a seção .text do arquivo de entrada
-data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
+data, text_data, section_start, section_end = extract_text_section(input_file_path)
 
 # Execute o algoritmo genético
-model = GA(generations=10000)
+model = GA(generations=1000)
 model.evolution()
     
 top_individual = model.population[0]
@@ -252,5 +279,5 @@ with open(output_file_path, 'wb') as file:
     file.close()
 
 # Defina as permissões de execução no arquivo editado.
-os.chmod(output_file_path, 0o777)
+os.chmod(output_file_path, 0o755)
 
