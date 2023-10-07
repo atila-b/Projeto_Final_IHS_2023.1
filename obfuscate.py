@@ -60,18 +60,17 @@ def random_instruction_code_x86():
         assembly_code = f"test {random.choice(regs)}, {random.choice(regs)}"
     elif opcode == "inc":
         assembly_code = f"inc {random.choice(regs)}"
-
-    #print(f"Inserindo código x86_64 da instrução: {assembly_code}")
     
-    # Get código x86_64 da instrução e retorne
+    # Extraia o código x86_64 da instrução e retorne
     bytecode, _ = ks.asm(assembly_code)
     return bytes(bytecode)
 
 class Individual:
-    def __init__(self, text_section, obfuscation_insts, fit_value):
+    def __init__(self, text_section):
         self.text_section = text_section
-        self.obfuscation_insts = obfuscation_insts
-        self.fit_value = fit_value
+        self.obfuscation_insts = []
+        self.fit_value = 0
+        self.last_version = self
 
 class GA:
     def __init__(self, generations):
@@ -82,21 +81,71 @@ class GA:
     # Inicia uma população de indivíduos
     def init_population(self):
       # Gere um indivíduo
-      text_section, init_inst = edit_save_text_section(text_data, input_file_path, output_file_path)
-      individual = Individual(text_section=text_section, obfuscation_insts=[init_inst], fit_value=1)
+      individual = Individual(text_section=text_data)
 
       # Insira o indivíduo na população
       self.population.append(individual)
             
-    # Sobrescreve uma instrução aleatória no indivíduo
-    def mutation(self, individual):
-        # Sobrescreva uma instrução aleatória na text section do indivíduo
-        text_section, inst = edit_save_text_section(individual.text_section, input_file_path, output_file_path)
-        
-        # Atualize os atributos do filho
-        individual.text_section = text_section
-        individual.obfuscation_insts.append(inst)
-        individual.fit_value += 1
+    # Sobrescreve uma instrução aleatória em uma posição aleatória do indivíduo
+    def mutation(self, output_file_path, individual):
+        # Sobrescreva instruções na seção .text até a execução ser bem sucedida
+        while 1:
+            # Instrução a ser inserida na section .text
+            inst = random_instruction_code_x86()
+            
+            # Posição aleatória
+            position = random.randint(0, len_text_data)
+            
+            # Sobrescreva a instrução aleatória na posição aleatória da section .text
+            new_text_data = insert_instruction_in_position(individual.text_section, inst, position)
+            
+            # Modificação dos dados do arquivo original
+            new_data = data[:section_start] + new_text_data + data[section_end:]
+
+            # Salve as edições de volta no arquivo binário.
+            with open(output_file_path, 'wb') as file:
+                file.write(new_data)
+                file.close()
+            
+            # Defina as permissões de execução no arquivo editado.
+            os.chmod(output_file_path, 0o755)  
+            
+            ret = exec_bin(timeout=0.05)
+            
+            # Execute o arquivo e verifica se o retorno está correto.
+            if ret == 0:
+                # Atualize a última versão do indivíduo se a execução for bem sucedida
+                individual.last_version = Individual(text_section = individual.text_section)
+                individual.last_version.obfuscation_insts = individual.obfuscation_insts
+                individual.last_version.fit_value = individual.fit_value
+                
+                # Atualize o indivíduo se a execução for bem sucedida
+                individual.text_section = new_text_data
+                individual.obfuscation_insts.append([inst, position])
+                individual.fit_value += 1
+                return individual
+            else:
+                # Se der timeout, volte para a versão anterior
+                individual = individual.last_version
+
+                    
+    # Avalie o indivíduo com a porcentagem de diferença entre o bytecode original e o bytecode ofuscado
+    def evaluate(self, individual):
+        # Extraia os bytecodes
+        bytecode1 = text_data
+        bytecode2 = individual.text_section
+    
+        # Obtenha o número total de bytes nos bytecodes
+        num_bytes = len(bytecode1)
+    
+        # Inicialize uma contagem de diferenças
+        diff_count = sum(1 for i in range(num_bytes) if bytecode1[i] != bytecode2[i])
+    
+        # Calcule a porcentagem de diferença entre os bytecodes
+        difference_percentage = (diff_count / num_bytes) * 100
+    
+        # Atualize o fit value do indivíduo
+        individual.fit_value = difference_percentage
         
     # Inicializa a população e faz o loop de gerações
     def evolution(self):
@@ -110,24 +159,28 @@ class GA:
           # Printe o andamento de 100 em 100 gerações
           if (i+1)%100 == 0:
             print(f"Mutação da geração {i+1}...")
-          self.mutation(self.population[0])
+          #self.mutation(self.population[0])
+          self.population[0] = self.mutation(output_file_path, self.population[0])
+          
+        self.evaluate(self.population[0])
 
 # Extrai a section .text do arquivo binário       
-def extract_text_section(input_file_path, output_file_path):
+def extract_text_section(input_file_path):
     # Abra o arquivo binário em modo de leitura.
     with open(input_file_path, 'rb') as file:
         # Leitura do arquivo binário
         data = file.read()
         
-        # Get objeto ELF do arquivo binário
+        # Extraia o  objeto ELF do arquivo binário
         elf = ELFFile(file)
     
-        # Get seção .text do ELF
+        # Extraia a seção .text do ELF
         elf_section = elf.get_section_by_name(".text") 
         
-        # Get binário da seção .text
+        # Extraia o binário da seção .text
         text_data = elf_section.data()
         
+        # Feche o arquivo
         file.close()
                                            
     # Encontre a posição inicial e final da seção .text
@@ -136,42 +189,12 @@ def extract_text_section(input_file_path, output_file_path):
     
     return data, text_data, section_start, section_end
     
-# Edita a section .text do arquivo binário e sobrescreve instruções nela até que a execução funcione
-def edit_save_text_section(text_data, input_file_path, output_file_path):
-    # Sobrescreva instruções na seção .text até a execução ser bem sucedida
-    while 1:
-        # Instrução a ser inserida na section .text
-        inst = random_instruction_code_x86()
-        
-        # Posição aleatória
-        position = random.randint(0, len(text_data))
-        
-        # Sobrescreva uma instrução em posição aleatória da section .text
-        new_text_data = insert_instruction_in_position(text_data, inst, position)
-        
-        # Modificação dos dados do arquivo original
-        new_data = data[:section_start] + new_text_data + data[section_end:]
-    
-        # Salve as edições de volta no arquivo binário.
-        with open(output_file_path, 'wb') as file:
-            file.write(new_data)
-            file.close()
-        
-        # Defina as permissões de execução no arquivo editado.
-        os.chmod(output_file_path, 0o755)  
-        
-        # Execute o arquivo e verifica se o retorno está correto.
-        if(exec_bin(timeout=0.05) == 0):
-            #print(new_text_data)
-            return new_text_data, [inst, position]
-            break
-    
 # Sobrescreve código x86_64 em uma posição específica do bytearray
 def insert_instruction_in_position(code, inst, position):
     code = bytearray(code)
     code[position:position+len(inst)] = inst
     return bytes(code)
-    
+
 # Execução de arquivos
 import subprocess
 import pty
@@ -183,13 +206,12 @@ original_command = f'{input_file_path}'
 # Crie um terminal virtual (pty)
 master, sl = pty.openpty()
 
-import fcntl
-
 # Configure o master como não bloqueante
-fcntl.fcntl(master, fcntl.F_SETFL, os.O_NONBLOCK)
+os.set_blocking(master, False)
+os.set_blocking(sl, False)
 
 # Execute o binário original
-subprocess.call(original_command, stdout=sl, stderr=sl)
+subprocess.run(original_command, stdout=sl, stderr=sl, check=True)
 
 # Capture a saída da execução
 original_stdout = os.read(master, 1024)
@@ -201,36 +223,44 @@ obfuscated_command = f'{output_file_path}'
 def exec_bin(timeout):
     try:
         # Execute o binário ofuscado
-        subprocess.run(obfuscated_command, stdout=sl, stderr=sl, timeout=timeout)
+        ret = subprocess.run(obfuscated_command, stdout=sl, stderr=sl, check=True, timeout=timeout)
         
-        # Capture a saída da execução
-        obfuscated_stdout = os.read(master, 1024)
+        # Capture a saída da execução           
+        obfuscated_stdout = b''
+        while True:
+            try:
+                data = os.read(master, 1024)
+                if not data:
+                    break
+                obfuscated_stdout += data
+            except:
+                break
         
         # Verifique se as saídas são iguais
-        if original_stdout == obfuscated_stdout:
+        if original_stdout == obfuscated_stdout and ret.returncode == 0:
             return 0
         else:
             return -1
-        
-    except Exception as e:
-        #print(f"Erro ao executar o comando '{command}': {e}")
+    except:
+        # Erro na execução
         return -1
-    return -1
 
 # Main
 
 # Extraia os dados e a seção .text do arquivo de entrada
-data, text_data, section_start, section_end = extract_text_section(input_file_path, output_file_path)
+data, text_data, section_start, section_end = extract_text_section(input_file_path)
+len_text_data = len(text_data)
 
 # Execute o algoritmo genético
-model = GA(generations=10000)
+model = GA(generations=100000)
 model.evolution()
     
+# Selecione o melhor indivíduo
 top_individual = model.population[0]
 
 # Printe os resultados
 print(f"Melhor indivíduo:")
-print(f"Número de instruções de ofuscação inseridas = {top_individual.fit_value}")
+print(f"Porcentagem de ofuscação do bytecode: {round(top_individual.fit_value, 2)}%")
 
 # Crie o arquivo de saída final com a section .text do melhor indivíduo
 # Modificação dos dados do arquivo original
@@ -242,5 +272,9 @@ with open(output_file_path, 'wb') as file:
     file.close()
 
 # Defina as permissões de execução no arquivo editado.
-os.chmod(output_file_path, 0o777)
+os.chmod(output_file_path, 0o755)
+
+# Feche o terminal virtual pty
+os.close(master)
+os.close(sl)
 
