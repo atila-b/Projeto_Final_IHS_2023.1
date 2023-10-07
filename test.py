@@ -208,10 +208,7 @@ original_command = f'{input_file_path}'
 # Crie um terminal virtual (pty)
 master, sl = pty.openpty()
 
-import fcntl
-
 # Configure o master como não bloqueante
-#fcntl.fcntl(master, fcntl.F_SETFL, os.O_NONBLOCK)
 os.set_blocking(master, False)
 os.set_blocking(sl, False)
 
@@ -234,20 +231,13 @@ def exec_bin(timeout):
         ret = subprocess.run(obfuscated_command, stdout=sl, stderr=sl, check=True, timeout=timeout)
         
         with lock:
-            # Capture a saída da execução
-            #obfuscated_stdout = os.read(master, 4096)
-            
+            # Capture a saída da execução           
             obfuscated_stdout = b''
             while True:
                 try:
-                    data = os.read(master, 1024)
-                    if not data:
-                        break
-                    obfuscated_stdout += data
-                except OSError:
+                    obfuscated_stdout = os.read(master, 1024)
+                except Exception:
                     break
-                
-            #print(obfuscated_stdout)
             
             # Verifique se as saídas são iguais
             if original_stdout == obfuscated_stdout and ret.returncode == 0:
@@ -267,7 +257,7 @@ data, text_data, section_start, section_end = extract_text_section(input_file_pa
 len_text_data = len(text_data)
 
 # Execute o algoritmo genético
-model = GA(generations=1000)
+model = GA(generations=10000)
 model.evolution()
     
 # Selecione o melhor indivíduo
