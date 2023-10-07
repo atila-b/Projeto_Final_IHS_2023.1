@@ -3,7 +3,7 @@ import random
 from elftools.elf.elffile import ELFFile
 from keystone import *
 from iced_x86 import *
-import copy
+from filelock import FileLock
 
 # Implementação do gerador de instruções aleatórias em x86_64
 
@@ -102,33 +102,34 @@ class GA:
             
             # Modificação dos dados do arquivo original
             new_data = data[:section_start] + new_text_data + data[section_end:]
-        
-            # Salve as edições de volta no arquivo binário.
-            with open(output_file_path, 'wb') as file:
-                file.write(new_data)
-                file.close()
-            
-            # Defina as permissões de execução no arquivo editado.
-            os.chmod(output_file_path, 0o755)  
-            
-            ret = exec_bin(timeout=2)
-            
-            # Execute o arquivo e verifica se o retorno está correto.
-            if ret == 0:
-                # Atualize a última versão do indivíduo se a execução for bem sucedida
-                individual.last_version = Individual(text_section = individual.text_section)
-                individual.last_version.obfuscation_insts = individual.obfuscation_insts
-                individual.last_version.fit_value = individual.fit_value
+
+            with lock:
+                # Salve as edições de volta no arquivo binário.
+                with open(output_file_path, 'wb') as file:
+                    file.write(new_data)
+                    file.close()
                 
-                # Atualize o indivíduo se a execução for bem sucedida
-                individual.text_section = new_text_data
-                individual.obfuscation_insts.append([inst, position])
-                individual.fit_value += 1
-                return individual
-            else:
-                # Se der timeout, volte para a versão anterior
-                if individual.last_version:
-                    individual = individual.last_version
+                # Defina as permissões de execução no arquivo editado.
+                os.chmod(output_file_path, 0o755)  
+                
+                ret = exec_bin(timeout=0.01)
+                
+                # Execute o arquivo e verifica se o retorno está correto.
+                if ret == 0:
+                    # Atualize a última versão do indivíduo se a execução for bem sucedida
+                    individual.last_version = Individual(text_section = individual.text_section)
+                    individual.last_version.obfuscation_insts = individual.obfuscation_insts
+                    individual.last_version.fit_value = individual.fit_value
+                    
+                    # Atualize o indivíduo se a execução for bem sucedida
+                    individual.text_section = new_text_data
+                    individual.obfuscation_insts.append([inst, position])
+                    individual.fit_value += 1
+                    return individual
+                else:
+                    # Se der timeout, volte para a versão anterior
+                    if individual.last_version:
+                        individual = individual.last_version
                     
     # Avalie o indivíduo com a porcentagem de diferença entre o bytecode original e o bytecode ofuscado
     def evaluate(self, individual):
@@ -165,7 +166,6 @@ class GA:
           
         self.evaluate(self.population[0])
 
-
 # Extrai a section .text do arquivo binário       
 def extract_text_section(input_file_path):
     # Abra o arquivo binário em modo de leitura.
@@ -196,36 +196,53 @@ def insert_instruction_in_position(code, inst, position):
     code = bytearray(code)
     code[position:position+len(inst)] = inst
     return bytes(code)
-    
+
 # Execução de arquivos
 import subprocess
+import pty
 
 # Execute e capture a saída do arquivo executável original
 input_file_path = input("Insira o caminho do arquivo de entrada: ")
 original_command = f'{input_file_path}'
 
-# Execute o binário original
-original_ret = subprocess.run(original_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+# Crie um terminal virtual (pty)
+master, sl = pty.openpty()
 
-# Crie o comando para executar o código ofuscado
+import fcntl
+
+# Configure o master como não bloqueante
+fcntl.fcntl(master, fcntl.F_SETFL, os.O_NONBLOCK)
+
+# Execute o binário original
+subprocess.call(original_command, stdout=sl, stderr=sl)
+
+# Capture a saída da execução
+original_stdout = os.read(master, 1024)
+
+# Comando para executar o binário ofuscado
 output_file_path = f"{input_file_path}_obfuscated"
 obfuscated_command = f'{output_file_path}'
+
+# Crie uma trava para o arquivo
+lock = FileLock(output_file_path + '.lock')
 
 def exec_bin(timeout):
     try:
         # Execute o binário ofuscado
-        obfuscated_ret = subprocess.run(obfuscated_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True, timeout=timeout)
+        ret = subprocess.run(obfuscated_command, stdout=sl, stderr=sl, check=True, timeout=timeout)
         
-        # Verifique se o código executou corretamente
-        if original_ret.stdout == obfuscated_ret.stdout and original_ret.stderr == obfuscated_ret.stderr and obfuscated_ret.returncode == 0:
+        # Capture a saída da execução
+        obfuscated_stdout = os.read(master, 1024)
+        
+        # Verifique se as saídas são iguais
+        if original_stdout == obfuscated_stdout and ret.returncode == 0:
             return 0
         else:
             return -1
-            
+        
     except Exception as e:
-        #print(f"Erro ao executar o comando '{obfuscated_command}': {e}")
+        #print(f"Erro ao executar o comando '{command}': {e}")
         return -1
-
 
 # Main
 
@@ -234,7 +251,7 @@ data, text_data, section_start, section_end = extract_text_section(input_file_pa
 len_text_data = len(text_data)
 
 # Execute o algoritmo genético
-model = GA(generations=1000)
+model = GA(generations=10000)
 model.evolution()
     
 # Selecione o melhor indivíduo
@@ -255,4 +272,7 @@ with open(output_file_path, 'wb') as file:
 
 # Defina as permissões de execução no arquivo editado.
 os.chmod(output_file_path, 0o755)
+
+# Delete o arquivo de trava do filelock
+os.remove(output_file_path + '.lock')
 
