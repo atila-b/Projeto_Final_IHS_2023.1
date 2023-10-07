@@ -230,10 +230,10 @@ lock = FileLock(output_file_path + '.lock')
 
 def exec_bin(timeout):
     try:
+        # Execute o binário ofuscado
+        ret = subprocess.run(obfuscated_command, stdout=sl, stderr=sl, check=True, timeout=timeout)
+        
         with lock:
-            # Execute o binário ofuscado
-            ret = subprocess.run(obfuscated_command, stdout=sl, stderr=sl, check=True, timeout=timeout)
-            
             # Capture a saída da execução
             obfuscated_stdout = os.read(master, 4096)
             
@@ -244,8 +244,9 @@ def exec_bin(timeout):
                 return -1
         
     except Exception as e:
-        #print(f"Erro ao executar o comando '{obfuscated_command}': {e}")
-        return -1
+        with lock:
+            #print(f"Erro ao executar o comando '{obfuscated_command}': {e}")
+            return -1
 
 # Main
 
@@ -278,4 +279,8 @@ os.chmod(output_file_path, 0o755)
 
 # Delete o arquivo de trava do filelock
 os.remove(output_file_path + '.lock')
+
+# Feche o terminal virtual pty
+os.close(master)
+os.close(sl)
 
