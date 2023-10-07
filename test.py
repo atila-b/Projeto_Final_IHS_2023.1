@@ -235,7 +235,19 @@ def exec_bin(timeout):
         
         with lock:
             # Capture a saída da execução
-            obfuscated_stdout = os.read(master, 4096)
+            #obfuscated_stdout = os.read(master, 4096)
+            
+            obfuscated_stdout = b''
+            while True:
+                try:
+                    data = os.read(master, 1024)
+                    if not data:
+                        break
+                    obfuscated_stdout += data
+                except OSError:
+                    break
+                
+            #print(obfuscated_stdout)
             
             # Verifique se as saídas são iguais
             if original_stdout == obfuscated_stdout and ret.returncode == 0:
@@ -255,7 +267,7 @@ data, text_data, section_start, section_end = extract_text_section(input_file_pa
 len_text_data = len(text_data)
 
 # Execute o algoritmo genético
-model = GA(generations=10000)
+model = GA(generations=1000)
 model.evolution()
     
 # Selecione o melhor indivíduo
