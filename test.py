@@ -71,7 +71,7 @@ class Individual:
         self.text_section = text_section
         self.obfuscation_insts = []
         self.fit_value = 0
-        self.last_version = None
+        self.last_version = self
 
 class GA:
     def __init__(self, generations):
@@ -112,7 +112,7 @@ class GA:
                 # Defina as permissões de execução no arquivo editado.
                 os.chmod(output_file_path, 0o755)  
                 
-                ret = exec_bin(timeout=0.01)
+                ret = exec_bin(timeout=0.05)
                 
                 # Execute o arquivo e verifica se o retorno está correto.
                 if ret == 0:
@@ -128,8 +128,8 @@ class GA:
                     return individual
                 else:
                     # Se der timeout, volte para a versão anterior
-                    if individual.last_version:
-                        individual = individual.last_version
+                    individual = individual.last_version
+
                     
     # Avalie o indivíduo com a porcentagem de diferença entre o bytecode original e o bytecode ofuscado
     def evaluate(self, individual):
@@ -211,7 +211,9 @@ master, sl = pty.openpty()
 import fcntl
 
 # Configure o master como não bloqueante
-fcntl.fcntl(master, fcntl.F_SETFL, os.O_NONBLOCK)
+#fcntl.fcntl(master, fcntl.F_SETFL, os.O_NONBLOCK)
+os.set_blocking(master, False)
+os.set_blocking(sl, False)
 
 # Execute o binário original
 subprocess.call(original_command, stdout=sl, stderr=sl)
@@ -228,20 +230,21 @@ lock = FileLock(output_file_path + '.lock')
 
 def exec_bin(timeout):
     try:
-        # Execute o binário ofuscado
-        ret = subprocess.run(obfuscated_command, stdout=sl, stderr=sl, check=True, timeout=timeout)
-        
-        # Capture a saída da execução
-        obfuscated_stdout = os.read(master, 1024)
-        
-        # Verifique se as saídas são iguais
-        if original_stdout == obfuscated_stdout and ret.returncode == 0:
-            return 0
-        else:
-            return -1
+        with lock:
+            # Execute o binário ofuscado
+            ret = subprocess.run(obfuscated_command, stdout=sl, stderr=sl, check=True, timeout=timeout)
+            
+            # Capture a saída da execução
+            obfuscated_stdout = os.read(master, 4096)
+            
+            # Verifique se as saídas são iguais
+            if original_stdout == obfuscated_stdout and ret.returncode == 0:
+                return 0
+            else:
+                return -1
         
     except Exception as e:
-        #print(f"Erro ao executar o comando '{command}': {e}")
+        #print(f"Erro ao executar o comando '{obfuscated_command}': {e}")
         return -1
 
 # Main
