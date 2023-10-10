@@ -159,7 +159,6 @@ class GA:
           # Printe o andamento de 100 em 100 gerações
           if (i+1)%100 == 0:
             print(f"Mutação da geração {i+1}...")
-          #self.mutation(self.population[0])
           self.population[0] = self.mutation(output_file_path, self.population[0])
           
         self.evaluate(self.population[0])
@@ -206,22 +205,29 @@ original_command = f'{input_file_path}'
 # Crie um terminal virtual (pty)
 master, sl = pty.openpty()
 
-# Configure o master como não bloqueante
-os.set_blocking(master, False)
-os.set_blocking(sl, False)
-
 # Execute o binário original
 subprocess.run(original_command, stdout=sl, stderr=sl, check=True)
 
 # Capture a saída da execução
-original_stdout = os.read(master, 1024)
+original_stdout = os.read(master, 4096)
 
 # Comando para executar o binário ofuscado
 output_file_path = f"{input_file_path}_obfuscated"
 obfuscated_command = f'{output_file_path}'
 
+# Feche o terminal virtual pty
+os.close(master)
+os.close(sl)
+
 def exec_bin(timeout):
     try:
+        # Crie um terminal virtual (pty)
+        master, sl = pty.openpty()
+        
+        # Configure o master como não bloqueante
+        os.set_blocking(master, False)
+        os.set_blocking(sl, False)
+            
         # Execute o binário ofuscado
         ret = subprocess.run(obfuscated_command, stdout=sl, stderr=sl, check=True, timeout=timeout)
         
@@ -233,15 +239,26 @@ def exec_bin(timeout):
                 if not data:
                     break
                 obfuscated_stdout += data
-            except:
+            except Exception as e:
+                #print(e)
                 break
+        
+        # Feche o terminal virtual pty
+        os.close(master)
+        os.close(sl)
         
         # Verifique se as saídas são iguais
         if original_stdout == obfuscated_stdout and ret.returncode == 0:
+            # Execução bem sucedida
             return 0
         else:
+            # Erro na execução
             return -1
-    except:
+    except Exception as e:
+        # Feche o terminal virtual pty
+        os.close(master)
+        os.close(sl)
+
         # Erro na execução
         return -1
 
@@ -252,7 +269,7 @@ data, text_data, section_start, section_end = extract_text_section(input_file_pa
 len_text_data = len(text_data)
 
 # Execute o algoritmo genético
-model = GA(generations=100000)
+model = GA(generations=10000)
 model.evolution()
     
 # Selecione o melhor indivíduo
@@ -274,7 +291,4 @@ with open(output_file_path, 'wb') as file:
 # Defina as permissões de execução no arquivo editado.
 os.chmod(output_file_path, 0o755)
 
-# Feche o terminal virtual pty
-os.close(master)
-os.close(sl)
 
