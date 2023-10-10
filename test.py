@@ -159,7 +159,6 @@ class GA:
           # Printe o andamento de 100 em 100 gerações
           if (i+1)%100 == 0:
             print(f"Mutação da geração {i+1}...")
-          #self.mutation(self.population[0])
           self.population[0] = self.mutation(output_file_path, self.population[0])
           
         self.evaluate(self.population[0])
@@ -206,10 +205,6 @@ original_command = f'{input_file_path}'
 # Crie um terminal virtual (pty)
 master, sl = pty.openpty()
 
-# Configure o master como não bloqueante
-#os.set_blocking(master, False)
-#os.set_blocking(sl, False)
-
 # Execute o binário original
 subprocess.run(original_command, stdout=sl, stderr=sl, check=True)
 
@@ -220,6 +215,7 @@ original_stdout = os.read(master, 1024)
 output_file_path = f"{input_file_path}_obfuscated"
 obfuscated_command = f'{output_file_path}'
 
+# Feche o terminal virtual pty
 os.close(master)
 os.close(sl)
 
@@ -231,11 +227,6 @@ def exec_bin(timeout):
         # Configure o master como não bloqueante
         os.set_blocking(master, False)
         os.set_blocking(sl, False)
-        
-        # Limpe o terminal virtual
-        #subprocess.run("clear", stdout=sl, stderr=sl, check=True)
-        
-        #data = os.read(master, 1024)
             
         # Execute o binário ofuscado
         ret = subprocess.run(obfuscated_command, stdout=sl, stderr=sl, check=True, timeout=timeout)
@@ -251,7 +242,8 @@ def exec_bin(timeout):
             except Exception as e:
                 #print(e)
                 break
-            
+        
+        # Feche o terminal virtual pty
         os.close(master)
         os.close(sl)
         
@@ -261,9 +253,10 @@ def exec_bin(timeout):
         else:
             return -1
     except Exception as e:
+        # Feche o terminal virtual pty
         os.close(master)
         os.close(sl)
-        #print(e)
+
         # Erro na execução
         return -1
 
@@ -296,7 +289,4 @@ with open(output_file_path, 'wb') as file:
 # Defina as permissões de execução no arquivo editado.
 os.chmod(output_file_path, 0o755)
 
-# Feche o terminal virtual pty
-#os.close(master)
-#os.close(sl)
 
